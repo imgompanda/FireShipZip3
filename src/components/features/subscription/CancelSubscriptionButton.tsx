@@ -23,10 +23,12 @@ import { useTranslations } from "next-intl";
 
 interface CancelSubscriptionButtonProps {
   isCancelPending?: boolean; // cancel_at_period_end가 true인 경우
+  disabled?: boolean;
 }
 
 export function CancelSubscriptionButton({
   isCancelPending = false,
+  disabled = false,
 }: CancelSubscriptionButtonProps) {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
@@ -71,7 +73,11 @@ export function CancelSubscriptionButton({
   // 이미 취소 예정인 경우: 재활성화 버튼 표시
   if (isCancelPending) {
     return (
-      <Button variant="outline" onClick={handleReactivate} disabled={isLoading}>
+      <Button
+        variant="outline"
+        onClick={handleReactivate}
+        disabled={isLoading || disabled}
+      >
         {isLoading ? t("processing") : t("reactivate")}
       </Button>
     );
@@ -81,7 +87,7 @@ export function CancelSubscriptionButton({
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button variant="destructive" disabled={isLoading}>
+        <Button variant="destructive" disabled={isLoading || disabled}>
           {t("cancelSubscription")}
         </Button>
       </AlertDialogTrigger>
