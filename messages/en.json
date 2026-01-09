@@ -1,0 +1,519 @@
+{
+  "Header": {
+    "features": "Features",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "blog": "Blog",
+    "login": "Log in",
+    "getStarted": "Get Started"
+  },
+  "Metadata": {
+    "title": "SaaS Starter Kit",
+    "description": "The Ultimate Next.js SaaS Boilerplate"
+  },
+  "HomePage": {
+    "badge": "New in 2025",
+    "title": "Build Your SaaS in Hours, Not Months",
+    "description": "The ultimate Next.js boilerplate for indie hackers. Authentication, payments, i18n, and more — all pre-configured.",
+    "features": {
+      "title": "Powerful Features",
+      "subtitle": "Everything you need to launch your SaaS",
+      "fast": {
+        "title": "Lightning Fast",
+        "description": "Built with Next.js 16 for optimal performance"
+      },
+      "global": {
+        "title": "Global Ready",
+        "description": "i18n support for English and Korean out of the box"
+      },
+      "secure": {
+        "title": "Secure by Default",
+        "description": "Supabase Auth with RLS for enterprise-grade security"
+      },
+      "deploy": {
+        "title": "Deploy Instantly",
+        "description": "One-click Vercel deployment with auto-scaling"
+      }
+    },
+    "pricing": {
+      "title": "Simple Pricing",
+      "subtitle": "Choose the plan that's right for you",
+      "basic": {
+        "name": "Basic",
+        "price": "$9",
+        "description": "Perfect for getting started",
+        "features": [
+          "Supabase Auth",
+          "Email Support",
+          "Basic Dashboard",
+          "Community Access"
+        ]
+      },
+      "pro": {
+        "name": "Pro",
+        "price": "$29",
+        "description": "For serious indie hackers",
+        "popular": "Most Popular",
+        "features": [
+          "Everything in Basic",
+          "Priority Support",
+          "Advanced Analytics",
+          "Custom Domain",
+          "API Access"
+        ]
+      },
+      "getStarted": "Get Started"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "questions": [
+        {
+          "q": "What's included in the starter kit?",
+          "a": "Everything you need: Auth, Payments, Email, Blog, i18n, and more. Plus premium UI components from shadcn/ui."
+        },
+        {
+          "q": "Can I use this for commercial projects?",
+          "a": "Yes! This is a boilerplate meant for building and launching real SaaS products."
+        },
+        {
+          "q": "What payment methods do you accept?",
+          "a": "We accept all major credit cards via LemonSqueezy."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready to Launch Your SaaS?",
+      "description": "Join hundreds of indie hackers building the future.",
+      "button": "Start Building Now"
+    },
+    "logos": {
+      "title": "Trusted by innovative teams worldwide"
+    },
+    "deepDives": {
+      "one": {
+        "title": "Global Scale from Day One",
+        "description": "Don't limit your market. Our boilerplate comes with built-in internationalization (i18n) support, allowing you to reach customers in their native language instantly. Default support for English and Korean."
+      },
+      "two": {
+        "title": "Developer Experience First",
+        "description": "We've carefully selected the best modern stack: Next.js 16 (App Router), TypeScript, Tailwind CSS, and Supabase. No more configuration headaches—just start coding your features."
+      },
+      "three": {
+        "title": "Enterprise-Grade Security",
+        "description": "Security isn't an afterthought. We implement Row Level Security (RLS) policies in Supabase, secure authentication flows, and safe API patterns to keep your and your users' data safe."
+      }
+    },
+    "footer": {
+      "product": "Product",
+      "resources": "Resources",
+      "company": "Company",
+      "legal": "Legal",
+      "links": {
+        "features": "Features",
+        "pricing": "Pricing",
+        "faq": "FAQ",
+        "blog": "Blog",
+        "support": "Support Center",
+        "documentation": "Documentation",
+        "community": "Community",
+        "about": "About Us",
+        "careers": "Careers",
+        "privacy": "Privacy",
+        "terms": "Terms"
+      }
+    },
+    "typewriter": [
+      "SaaS Starter Kit",
+      "Next.js Template",
+      "Productivity Booster"
+    ],
+    "holographic": {
+      "database": {
+        "title": "Database Ready",
+        "description": "Supabase configured with RLS policies, typed schemas, and real-time subscriptions."
+      },
+      "payments": {
+        "title": "Payments & Subscriptions",
+        "description": "Lemon Squeezy integration for global payments, tax handling, and subscription management."
+      },
+      "mobile": {
+        "title": "Mobile Responsive",
+        "description": "Fully responsive interface that looks great on desktop, tablet, and mobile devices."
+      },
+      "seo": {
+        "title": "SEO Optimized",
+        "description": "Built-in SEO meta tags, sitemap generation, and Open Graph support for social sharing."
+      },
+      "auth": {
+        "title": "Auth Included",
+        "description": "Secure authentication with Social Login (Google, GitHub) and Magic Link support."
+      }
+    },
+    "testimonial": {
+      "title": "Loved by Developers",
+      "subtitle": "Join 100+ indie hackers building with this kit",
+      "items": {
+        "1": {
+          "content": "This saved me months of work. Launched my SaaS in a weekend!",
+          "role": "Indie Hacker",
+          "name": "Alex Kim"
+        },
+        "2": {
+          "content": "The best investment I made. Clean code, great documentation.",
+          "role": "Startup Founder",
+          "name": "Sarah Chen"
+        },
+        "3": {
+          "content": "LemonSqueezy integration just works. No more payment headaches.",
+          "role": "Developer",
+          "name": "Mike Johnson"
+        }
+      }
+    },
+    "bento": {
+      "title": "Everything you need to ship fast",
+      "description": "Stop wasting time on configuration. Focus on your business logic."
+    }
+  },
+  "Pricing": {
+    "title": "Choose Your Plan",
+    "subtitle": "Start building today. Cancel anytime.",
+    "popular": "Most Popular",
+    "perMonth": "/month",
+    "getStarted": "Get Started",
+    "processing": "Processing...",
+    "error": "An error occurred. Please try again.",
+    "plans": {
+      "basic": {
+        "name": "Basic",
+        "price": "$9",
+        "description": "Perfect for getting started",
+        "features": [
+          "Supabase Auth",
+          "Email Support",
+          "Basic Dashboard",
+          "Community Access",
+          "5 Projects"
+        ]
+      },
+      "pro": {
+        "name": "Pro",
+        "price": "$29",
+        "description": "For serious indie hackers",
+        "features": [
+          "Everything in Basic",
+          "Priority Support",
+          "Advanced Analytics",
+          "Custom Domain",
+          "API Access",
+          "Unlimited Projects",
+          "Team Members (up to 5)"
+        ]
+      }
+    },
+    "faq": {
+      "title": "Common Questions",
+      "questions": [
+        {
+          "q": "Can I cancel anytime?",
+          "a": "Yes, you can cancel your subscription at any time. No questions asked."
+        },
+        {
+          "q": "What payment methods do you accept?",
+          "a": "We accept all major credit cards via LemonSqueezy."
+        }
+      ]
+    }
+  },
+  "Auth": {
+    "welcomeBack": "Welcome back",
+    "loginDescription": "Login with your Google account or email.",
+    "googleLogin": "Continue with Google",
+    "orContinue": "Or continue with",
+    "email": "Email",
+    "sendMagicLink": "Send Magic Link",
+    "magicLinkSent": "Check your email for the magic link!",
+    "softAgreement": "By signing up, you agree to our <terms>Terms of Service</terms> and <privacy>Privacy Policy</privacy>."
+  },
+  "Subscription": {
+    "paymentFailedTitle": "Payment Failed",
+    "paymentFailedDescription": "Your payment couldn't be processed. Please update your card within {days} days to avoid service interruption.",
+    "updateCard": "Update Card",
+    "changePlan": "Change Plan",
+    "currentPlan": "Current Plan",
+    "nextBilling": "Next Billing",
+    "status": {
+      "active": "Active",
+      "trialing": "Trial",
+      "past_due": "Payment Failed",
+      "grace_period": "Grace Period",
+      "unpaid": "Suspended",
+      "canceled": "Canceled",
+      "canceling": "Canceling at Period End",
+      "paused": "Paused",
+      "paid": "Paid",
+      "refunded": "Refunded"
+    },
+    "title": "Subscription",
+    "description": "Manage your subscription and billing.",
+    "planLabel": "Plan:",
+    "priceLabel": "Price:",
+    "renewsOn": "Renews on {date}",
+    "endsOn": "Ends on {date}",
+    "startedOn": "Started on {date}",
+    "expirationDate": "Expiration Date",
+    "startDateOnly": "Start Date",
+    "manageBilling": "Manage Billing",
+    "featuresTitle": "Plan Features",
+    "featuresDescription": "What's included in your {plan} plan",
+    "billingHistoryTitle": "Billing History",
+    "billingHistoryDescription": "Your recent billing and payments.",
+    "purchaseHistoryTitle": "Payment History",
+    "purchaseHistoryDescription": "Your subscription and one-time payments.",
+    "colDate": "Date",
+    "colProduct": "Product",
+    "colAmount": "Amount",
+    "colStatus": "Status",
+    "colReceipt": "Receipt",
+    "viewReceipt": "View",
+    "download": "Download",
+    "upgradeNow": "Upgrade Now",
+    "noPurchases": "No purchase history found.",
+    "billingPortalInfo": "View invoices and update payment method in the billing portal.",
+    "startSubscription": "Start a subscription to access billing history.",
+    "restartSubscription": "Restart Membership",
+    "viewPlans": "View Plans",
+    "cancelSubscription": "Cancel Subscription",
+    "cancelConfirmTitle": "Cancel Subscription?",
+    "cancelConfirmDescription": "Your subscription will remain active until the end of the current billing period. You can reactivate anytime before then.",
+    "keepSubscription": "Keep Subscription",
+    "confirmCancel": "Yes, Cancel",
+    "cancelSuccess": "Subscription will be canceled at period end.",
+    "reactivate": "Reactivate Subscription",
+    "reactivateSuccess": "Subscription reactivated successfully!",
+    "processing": "Processing..."
+  },
+  "Settings": {
+    "title": "Settings",
+    "description": "Manage your account settings and preferences.",
+    "profile": {
+      "title": "Profile",
+      "description": "Update your personal information",
+      "emailLabel": "Email",
+      "emailHelp": "Your email cannot be changed",
+      "nameLabel": "Display Name",
+      "namePlaceholder": "Enter your name",
+      "saveButton": "Save Changes"
+    },
+    "password": {
+      "title": "Password",
+      "description": "Change your password",
+      "currentLabel": "Current Password",
+      "newLabel": "New Password",
+      "confirmLabel": "Confirm New Password",
+      "updateButton": "Update Password"
+    },
+    "danger": {
+      "title": "Danger Zone",
+      "description": "Irreversible actions",
+      "deleteTitle": "Delete Account",
+      "deleteWarning": "Once you delete your account, there is no going back. Please be certain.",
+      "deleteButton": "Delete Account"
+    }
+  },
+  "Dashboard": {
+    "sidebar": {
+      "dashboard": "Dashboard",
+      "settings": "Settings",
+      "subscription": "Subscription",
+      "logout": "Logout",
+      "menu": "Menu"
+    },
+    "demo": {
+      "banner": "👋 You are viewing the <strong>Demo Dashboard</strong>. Data is mocked.",
+      "loginLink": "Login to view real data"
+    },
+    "welcome": "Welcome back, {name}",
+    "title": "Dashboard",
+    "cards": {
+      "subscription": {
+        "title": "Subscription",
+        "manage": "Manage Subscription",
+        "renews": "Renews {date}",
+        "active": "Active",
+        "inactive": "Inactive"
+      },
+      "usage": {
+        "title": "Total Usage",
+        "subtitle": "+20.1% from last month"
+      },
+      "projects": {
+        "title": "Active Projects",
+        "subtitle": "2 active, 1 archived",
+        "button": "View Projects"
+      },
+      "activity": {
+        "title": "Recent Activity",
+        "description": "You made 265 requests this month.",
+        "item": "Project updated",
+        "time": "2 hours ago",
+        "noData": "No recent activity found."
+      },
+      "customize": {
+        "title": "Customize this Dashboard",
+        "description": "This is a template for your SaaS.",
+        "tips": {
+          "one": "1. <strong>Subscription Card</strong>: Connects to real data.",
+          "two": "2. <strong>Placeholders</strong>: Replace these cards with your app's core metrics.",
+          "three": "3. <strong>Sidebar</strong>: Edit <code>DashboardSidebar.tsx</code> to add your navigation links."
+        },
+        "button": "Go to Settings"
+      }
+    }
+  },
+  "Legal": {
+    "termsTitle": "Terms of Service",
+    "privacyTitle": "Privacy Policy",
+    "lastUpdated": "Last Updated",
+    "terms": {
+      "introduction": "Introduction",
+      "usage": "Usage",
+      "termination": "Termination",
+      "contact": "Contact Us"
+    },
+    "privacy": {
+      "collection": "Information Collection",
+      "usage": "Use of Information",
+      "cookies": "Cookies",
+      "contact": "Contact Us"
+    },
+    "agreement": "I agree to the <terms>Terms of Service</terms> and <privacy>Privacy Policy</privacy>."
+  },
+  "Admin": {
+    "overview": {
+      "title": "Admin Overview",
+      "mrr": "Total MRR",
+      "mrrChange": "+20.1% from last month",
+      "activeSubscribers": "Active Subscribers",
+      "subscribersChange": "+180.1% from last month",
+      "salesToday": "Sales (Today)",
+      "salesChange": "+19% from yesterday",
+      "churnRate": "Churn Rate",
+      "churnChange": "-2.1% from last month",
+      "revenueGrowth": "Revenue Growth",
+      "revenueDescription": "Monthly Recurring Revenue (MRR)",
+      "recentSubscriptions": "Recent Subscriptions",
+      "noSubscriptions": "No recent subscriptions.",
+      "daily": "Daily",
+      "weekly": "Weekly",
+      "monthly": "Monthly",
+      "yearly": "Yearly"
+    },
+    "customers": {
+      "title": "Customers",
+      "description": "Manage your customers and view their subscription status.",
+      "customer": "Customer",
+      "status": "Status",
+      "plan": "Plan",
+      "startDate": "Started",
+      "renewsOn": "Renews On",
+      "amount": "Amount",
+      "actions": "Actions",
+      "viewDetails": "View details",
+      "viewOnLemon": "View on Lemon Squeezy",
+      "cancelSubscription": "Cancel subscription",
+      "noCustomers": "No customers found."
+    },
+    "webhooks": {
+      "title": "Webhook Logs",
+      "description": "Monitor Lemon Squeezy webhook events and debug issues.",
+      "total": "Total Events",
+      "processed": "Processed",
+      "failed": "Failed",
+      "pending": "Pending",
+      "recentEvents": "Recent Events",
+      "eventType": "Event Type",
+      "status": "Status",
+      "eventId": "Event ID",
+      "time": "Time",
+      "error": "Error",
+      "noEvents": "No webhook events found."
+    },
+    "backToDashboard": "← Back to Dashboard",
+    "sales": {
+      "title": "Payment History",
+      "description": "History of all subscriptions and one-time payments.",
+      "colDate": "Date",
+      "colCustomer": "Customer",
+      "colProduct": "Product",
+      "colAmount": "Amount",
+      "colStatus": "Status"
+    },
+    "tickets": {
+      "title": "Support Tickets",
+      "description": "Manage customer inquiries and support requests.",
+      "searchPlaceholder": "Search email or subject...",
+      "allStatuses": "All Statuses",
+      "allCategories": "All Categories",
+      "noTickets": "No tickets found.",
+      "colDate": "Date",
+      "colEmail": "Email",
+      "colSubject": "Subject",
+      "colCategory": "Category",
+      "colStatus": "Status"
+    }
+  },
+  "Support": {
+    "title": "Support Center",
+    "description": "How can we help you today?",
+    "tabs": {
+      "newTicket": "New Ticket",
+      "myTickets": "My Tickets"
+    },
+    "myTickets": "My Support Tickets",
+    "noTickets": "You haven't submitted any tickets yet.",
+    "form": {
+      "email": "Email",
+      "subject": "Subject",
+      "priority": "Category",
+      "message": "Message",
+      "submit": "Submit Ticket",
+      "submitting": "Submitting...",
+      "submitAnother": "Submit Another Ticket",
+      "success": "Ticket Submitted!",
+      "error": "Failed to submit ticket.",
+      "title": "Ticket Details",
+      "submittedBy": "Submitted by",
+      "submitReply": "Send Reply & Resolve",
+      "replyPlaceholder": "Type your reply here... (Saving will mark ticket as Resolved)",
+      "reply": "Reply"
+    },
+    "category": {
+      "general": "General Inquiry",
+      "billing": "Billing Issue",
+      "account": "Account Issue",
+      "technical": "Technical Issue"
+    }
+  },
+  "CookieConsent": {
+    "title": "Cookie Consent",
+    "description": "We use cookies to ensure you get the best experience on our website.",
+    "accept": "Accept",
+    "decline": "Decline"
+  },
+  "FeedbackWidget": {
+    "title": "Send Feedback",
+    "subtitle": "Report a bug or suggest a feature.",
+    "placeholder": "How can we improve?",
+    "cancel": "Cancel",
+    "submit": "Send",
+    "success": "Thanks for your feedback! ✅",
+    "error": "Failed to send feedback. ❌"
+  },
+  "Blocked": {
+    "title": "Hm, Access Blocked",
+    "description": "You've sent too many requests. Please try again in 1 minute.",
+    "login": "Login",
+    "home": "Home"
+  }
+}

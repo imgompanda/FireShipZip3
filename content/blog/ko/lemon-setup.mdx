@@ -1,0 +1,49 @@
+---
+title: "LemonSqueezy 결제 연동하기"
+date: "2025-01-05"
+description: "SaaS 앱에 LemonSqueezy 구독 결제를 연동하는 방법을 알려드려요."
+---
+
+# LemonSqueezy 결제 연동하기
+
+결제 설정이 복잡할 필요는 없어요. Next.js 앱에 LemonSqueezy를 연동하는 방법을 알려드릴게요.
+
+## 왜 LemonSqueezy인가요?
+
+Stripe와 달리 LemonSqueezy는:
+
+- **한국 사업자 지원** (해외 법인 불필요)
+- **Merchant of Record** (세금/부가세 처리 대행)
+- 간단하고 개발자 친화적인 API
+
+## 사전 준비
+
+- LemonSqueezy 계정
+- API 키와 Store ID
+
+## 1단계: 상품 생성
+
+1. Dashboard → Products 이동
+2. 구독 상품 생성
+3. 가격 설정
+4. **Variant ID** 복사
+
+## 2단계: Webhook 설정
+
+Settings → Webhooks에서 다음 이벤트로 웹훅 생성:
+
+- `subscription_created`
+- `subscription_updated`
+- `subscription_payment_failed`
+
+## 3단계: 환경변수 추가
+
+```bash
+LEMONSQUEEZY_API_KEY=lmsq_xxx
+LEMONSQUEEZY_STORE_ID=12345
+LEMONSQUEEZY_WEBHOOK_SECRET=your-secret
+```
+
+## 끝!
+
+LemonSqueezy로 글로벌 결제를 쉽게 받을 수 있어요. 오늘부터 매출을 만들어보세요!

@@ -1,0 +1,49 @@
+---
+title: "How to Set Up LemonSqueezy Payments"
+date: "2025-01-05"
+description: "A step-by-step guide to integrating LemonSqueezy subscriptions into your SaaS application."
+---
+
+# How to Set Up LemonSqueezy Payments
+
+Setting up payments shouldn't be complicated. Here's how to integrate LemonSqueezy into your Next.js app.
+
+## Why LemonSqueezy?
+
+Unlike Stripe, LemonSqueezy:
+
+- **Supports Korean businesses** (no overseas entity required)
+- Acts as **Merchant of Record** (handles taxes for you)
+- Simple, developer-friendly API
+
+## Prerequisites
+
+- A LemonSqueezy account
+- Your API key and Store ID
+
+## Step 1: Create Products
+
+1. Go to Dashboard → Products
+2. Create a subscription product
+3. Set your pricing
+4. Copy the **Variant ID**
+
+## Step 2: Set Up Webhooks
+
+Create a webhook in Settings → Webhooks with these events:
+
+- `subscription_created`
+- `subscription_updated`
+- `subscription_payment_failed`
+
+## Step 3: Add Environment Variables
+
+```bash
+LEMONSQUEEZY_API_KEY=lmsq_xxx
+LEMONSQUEEZY_STORE_ID=12345
+LEMONSQUEEZY_WEBHOOK_SECRET=your-secret
+```
+
+## That's It!
+
+LemonSqueezy makes global payments simple. Start collecting revenue today!

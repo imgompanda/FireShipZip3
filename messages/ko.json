@@ -1,0 +1,515 @@
+{
+  "Header": {
+    "features": "기능",
+    "pricing": "요금제",
+    "faq": "FAQ",
+    "blog": "블로그",
+    "login": "로그인",
+    "getStarted": "시작하기"
+  },
+  "Metadata": {
+    "title": "SaaS 스타터 키트",
+    "description": "최고의 Next.js SaaS 보일러플레이트"
+  },
+  "HomePage": {
+    "badge": "2025년 신규",
+    "title": "SaaS를 몇 개월이 아닌 몇 시간 만에 구축하세요",
+    "description": "인디 해커를 위한 최고의 Next.js 보일러플레이트. 인증, 결제, 다국어 지원 등 모든 것이 미리 구성되어 있습니다.",
+    "features": {
+      "title": "강력한 기능",
+      "subtitle": "SaaS 런칭에 필요한 모든 것",
+      "fast": {
+        "title": "초고속 성능",
+        "description": "최적의 성능을 위해 Next.js 16으로 구축되었습니다"
+      },
+      "global": {
+        "title": "글로벌 지원",
+        "description": "즉시 사용 가능한 영어 및 한국어 i18n 지원"
+      },
+      "secure": {
+        "title": "기본 보안",
+        "description": "엔터프라이즈급 보안을 위한 Supabase Auth 및 RLS"
+      },
+      "deploy": {
+        "title": "즉시 배포",
+        "description": "자동 확장되는 Vercel 원클릭 배포"
+      }
+    },
+    "pricing": {
+      "title": "간단한 요금제",
+      "subtitle": "당신에게 맞는 플랜을 선택하세요",
+      "basic": {
+        "name": "베이직",
+        "price": "$9",
+        "description": "시작하기에 완벽한 플랜",
+        "features": [
+          "Supabase 인증",
+          "이메일 지원",
+          "기본 대시보드",
+          "커뮤니티 액세스"
+        ]
+      },
+      "pro": {
+        "name": "프로",
+        "price": "$29",
+        "description": "진지한 인디 해커를 위한 플랜",
+        "popular": "가장 인기있는",
+        "features": [
+          "베이직의 모든 기능",
+          "우선 지원",
+          "고급 분석",
+          "커스텀 도메인",
+          "API 액세스"
+        ]
+      },
+      "getStarted": "시작하기"
+    },
+    "faq": {
+      "title": "자주 묻는 질문",
+      "questions": [
+        {
+          "q": "스타터 키트에 무엇이 포함되나요?",
+          "a": "필요한 모든 것: 인증, 결제, 이메일, 블로그, i18n 등. 게다가 shadcn/ui의 프리미엄 UI 컴포넌트까지."
+        },
+        {
+          "q": "상업용 프로젝트에 사용할 수 있나요?",
+          "a": "네! 이것은 실제 SaaS 제품을 구축하고 출시하기 위한 보일러플레이트입니다."
+        },
+        {
+          "q": "어떤 결제 수단을 지원하나요?",
+          "a": "LemonSqueezy를 통해 모든 주요 신용카드를 받습니다."
+        }
+      ]
+    },
+    "cta": {
+      "title": "SaaS를 런칭할 준비가 되셨나요?",
+      "description": "미래를 만들어가는 수백 명의 인디 해커와 함께하세요.",
+      "button": "지금 시작하기"
+    },
+    "logos": {
+      "title": "전 세계의 혁신적인 팀들이 신뢰합니다"
+    },
+    "deepDives": {
+      "one": {
+        "title": "첫날부터 글로벌 스케일",
+        "description": "시장을 제한하지 마세요. 저희 보일러플레이트는 국제화(i18n) 지원이 내장되어 있어 고객의 모국어로 즉시 다가갈 수 있습니다. 기본적으로 영어와 한국어를 지원합니다."
+      },
+      "two": {
+        "title": "개발자 경험 우선",
+        "description": "우리는 최고의 모던 스택을 신중하게 선택했습니다: Next.js 16 (App Router), TypeScript, Tailwind CSS, 그리고 Supabase. 더 이상 설정으로 골치 썩지 마세요. 바로 기능을 코딩하세요."
+      },
+      "three": {
+        "title": "엔터프라이즈급 보안",
+        "description": "보안은 나중에 생각할 문제가 아닙니다. Supabase의 RLS(Row Level Security) 정책, 안전한 인증 흐름, 그리고 안전한 API 패턴을 구현하여 여러분과 사용자의 데이터를 안전하게 지킵니다."
+      }
+    },
+    "footer": {
+      "product": "제품",
+      "resources": "리소스",
+      "company": "회사",
+      "legal": "법적 고지",
+      "links": {
+        "features": "기능",
+        "pricing": "요금제",
+        "faq": "FAQ",
+        "blog": "블로그",
+        "support": "고객 지원",
+        "documentation": "문서",
+        "community": "커뮤니티",
+        "about": "소개",
+        "careers": "채용",
+        "privacy": "개인정보처리방침",
+        "terms": "이용약관"
+      }
+    },
+    "typewriter": ["SaaS 스타터 키트", "Next.js 템플릿", "생산성 부스터"],
+    "holographic": {
+      "database": {
+        "title": "데이터베이스 준비 완료",
+        "description": "RLS 정책, 타입 스키마, 실시간 구독이 설정된 Supabase."
+      },
+      "payments": {
+        "title": "결제 및 구독",
+        "description": "글로벌 결제, 세금 처리, 구독 관리를 위한 Lemon Squeezy 통합."
+      },
+      "mobile": {
+        "title": "모바일 반응형",
+        "description": "데스크탑, 태블릿, 모바일 기기 모두에서 완벽하게 보이는 인터페이스."
+      },
+      "seo": {
+        "title": "SEO 최적화",
+        "description": "메타 태그, 사이트맵 생성, 소셜 공유를 위한 Open Graph 지원 내장."
+      },
+      "auth": {
+        "title": "인증 포함",
+        "description": "소셜 로그인(Google, GitHub) 및 매직 링크 지원을 통한 보안 인증."
+      }
+    },
+    "testimonial": {
+      "title": "개발자들의 후기",
+      "subtitle": "이 키트로 제품을 만든 100명 이상의 인디 해커들과 함께하세요",
+      "items": {
+        "1": {
+          "content": "몇 달치 작업을 아껴줬어요. 주말 만에 SaaS를 런칭했습니다!",
+          "role": "인디 해커",
+          "name": "Alex Kim"
+        },
+        "2": {
+          "content": "최고의 투자였습니다. 깔끔한 코드와 훌륭한 문서까지.",
+          "role": "스타트업 창업자",
+          "name": "Sarah Chen"
+        },
+        "3": {
+          "content": "LemonSqueezy 연동이 그냥 작동합니다. 더 이상 결제 때문에 골치 썩을 일 없어요.",
+          "role": "개발자",
+          "name": "Mike Johnson"
+        }
+      }
+    },
+    "bento": {
+      "title": "빠른 배포를 위한 모든 것",
+      "description": "설정에 시간 낭비하지 마세요. 비즈니스 로직에 집중하세요."
+    }
+  },
+  "Pricing": {
+    "title": "플랜을 선택하세요",
+    "subtitle": "지금 시작하세요. 언제든 취소 가능합니다.",
+    "popular": "가장 인기있는",
+    "perMonth": "/월",
+    "getStarted": "시작하기",
+    "processing": "처리 중...",
+    "error": "오류가 발생했습니다. 다시 시도해주세요.",
+    "plans": {
+      "basic": {
+        "name": "베이직",
+        "price": "$9",
+        "description": "시작하기에 완벽한 플랜",
+        "features": [
+          "Supabase 인증",
+          "이메일 지원",
+          "기본 대시보드",
+          "커뮤니티 액세스",
+          "5개 프로젝트"
+        ]
+      },
+      "pro": {
+        "name": "프로",
+        "price": "$29",
+        "description": "진지한 인디 해커를 위한 플랜",
+        "features": [
+          "베이직의 모든 기능",
+          "우선 지원",
+          "고급 분석",
+          "커스텀 도메인",
+          "API 액세스",
+          "무제한 프로젝트",
+          "팀 멤버 (최대 5명)"
+        ]
+      }
+    },
+    "faq": {
+      "title": "자주 묻는 질문",
+      "questions": [
+        {
+          "q": "언제든 취소할 수 있나요?",
+          "a": "네, 언제든지 구독을 취소할 수 있습니다. 질문 없이요."
+        },
+        {
+          "q": "어떤 결제 수단을 지원하나요?",
+          "a": "LemonSqueezy를 통해 모든 주요 신용카드를 받습니다."
+        }
+      ]
+    }
+  },
+  "Auth": {
+    "welcomeBack": "다시 오셨군요!",
+    "loginDescription": "Google 계정 또는 이메일로 로그인하세요.",
+    "googleLogin": "Google로 계속하기",
+    "orContinue": "또는 이메일로",
+    "email": "이메일",
+    "sendMagicLink": "로그인 링크 받기",
+    "magicLinkSent": "이메일을 확인해주세요!",
+    "softAgreement": "로그인 시 <terms>이용약관</terms> 및 <privacy>개인정보처리방침</privacy>에 동의하는 것으로 간주됩니다."
+  },
+  "Subscription": {
+    "paymentFailedTitle": "결제 실패",
+    "paymentFailedDescription": "결제가 실패했어요. {days}일 안에 카드 정보를 업데이트해주세요.",
+    "updateCard": "카드 업데이트",
+    "changePlan": "플랜 변경",
+    "currentPlan": "현재 플랜",
+    "nextBilling": "다음 결제일",
+    "status": {
+      "active": "활성",
+      "trialing": "체험 중",
+      "past_due": "결제 실패",
+      "grace_period": "유예 기간",
+      "unpaid": "서비스 중단",
+      "canceled": "해지됨",
+      "canceling": "기간 종료 시 해지 예정",
+      "paused": "일시정지",
+      "paid": "결제 완료",
+      "refunded": "환불됨"
+    },
+    "title": "구독 관리",
+    "description": "구독 및 결제 정보를 관리하세요.",
+    "planLabel": "플랜:",
+    "priceLabel": "가격:",
+    "renewsOn": "{date}에 갱신 예정",
+    "endsOn": "{date}에 종료 예정",
+    "startedOn": "구독 시작일: {date}",
+    "expirationDate": "만료 예정일",
+    "startDateOnly": "시작일",
+    "manageBilling": "결제 관리",
+    "featuresTitle": "플랜 혜택",
+    "featuresDescription": "{plan} 플랜에 포함된 혜택입니다",
+    "billingHistoryTitle": "결제 내역",
+    "billingHistoryDescription": "최근 청구 및 결제 내역입니다.",
+    "purchaseHistoryTitle": "결제 내역",
+    "purchaseHistoryDescription": "구독 및 일회성 결제 내역입니다.",
+    "colDate": "날짜",
+    "colProduct": "상품",
+    "colAmount": "금액",
+    "colStatus": "상태",
+    "colReceipt": "영수증",
+    "viewReceipt": "보기",
+    "download": "다운로드",
+    "upgradeNow": "업그레이드하기",
+    "noPurchases": "구매 내역이 없습니다.",
+    "billingPortalInfo": "결제 포털에서 영수증과 결제 수단을 관리할 수 있어요.",
+    "startSubscription": "구독을 시작하면 결제 내역을 확인할 수 있어요.",
+    "restartSubscription": "멤버십 다시 시작하기",
+    "viewPlans": "플랜 보기",
+    "cancelSubscription": "구독 취소",
+    "cancelConfirmTitle": "구독을 취소하시겠어요?",
+    "cancelConfirmDescription": "현재 결제 기간이 끝날 때까지 구독이 유지됩니다. 그 전에 언제든지 다시 활성화할 수 있어요.",
+    "keepSubscription": "구독 유지",
+    "confirmCancel": "네, 취소할게요",
+    "cancelSuccess": "기간 종료 시 구독이 취소됩니다.",
+    "reactivate": "구독 다시 활성화",
+    "reactivateSuccess": "구독이 다시 활성화되었어요!",
+    "processing": "처리 중..."
+  },
+  "Settings": {
+    "title": "설정",
+    "description": "계정 설정 및 기본 설정을 관리합니다.",
+    "profile": {
+      "title": "프로필",
+      "description": "개인 정보를 업데이트하세요",
+      "emailLabel": "이메일",
+      "emailHelp": "이메일은 변경할 수 없습니다",
+      "nameLabel": "표시 이름",
+      "namePlaceholder": "이름을 입력하세요",
+      "saveButton": "변경 사항 저장"
+    },
+    "password": {
+      "title": "비밀번호",
+      "description": "비밀번호를 변경하세요",
+      "currentLabel": "현재 비밀번호",
+      "newLabel": "새 비밀번호",
+      "confirmLabel": "새 비밀번호 확인",
+      "updateButton": "비밀번호 업데이트"
+    },
+    "danger": {
+      "title": "위험 구역",
+      "description": "되돌릴 수 없는 작업입니다",
+      "deleteTitle": "계정 삭제",
+      "deleteWarning": "계정을 삭제하면 되돌릴 수 없습니다. 신중하게 결정해주세요.",
+      "deleteButton": "계정 삭제"
+    }
+  },
+  "Dashboard": {
+    "sidebar": {
+      "dashboard": "대시보드",
+      "settings": "설정",
+      "subscription": "구독 관리",
+      "logout": "로그아웃",
+      "menu": "메뉴"
+    },
+    "demo": {
+      "banner": "👋 현재 <strong>데모 대시보드</strong>를 보고 계십니다. 데이터는 가상입니다.",
+      "loginLink": "로그인하여 실제 데이터 보기"
+    },
+    "welcome": "환영합니다, {name}님",
+    "title": "대시보드",
+    "cards": {
+      "subscription": {
+        "title": "구독 정보",
+        "manage": "구독 관리하기",
+        "renews": "{date} 갱신",
+        "active": "활성",
+        "inactive": "비활성"
+      },
+      "usage": {
+        "title": "총 사용량",
+        "subtitle": "지난달 대비 +20.1%"
+      },
+      "projects": {
+        "title": "활성 프로젝트",
+        "subtitle": "2개 활성, 1개 보관됨",
+        "button": "프로젝트 보기"
+      },
+      "activity": {
+        "title": "최근 활동",
+        "description": "이번 달에 265건의 요청이 있었습니다.",
+        "item": "프로젝트 업데이트됨",
+        "time": "2시간 전",
+        "noData": "최근 활동 내역이 없습니다."
+      },
+      "customize": {
+        "title": "대시보드 커스터마이징",
+        "description": "이것은 SaaS 템플릿입니다.",
+        "tips": {
+          "one": "1. <strong>구독 카드</strong>: 실제 데이터와 연동됩니다.",
+          "two": "2. <strong>플레이스홀더</strong>: 이 카드들을 앱의 핵심 지표로 교체하세요.",
+          "three": "3. <strong>사이드바</strong>: <code>DashboardSidebar.tsx</code>를 수정하여 링크를 추가하세요."
+        },
+        "button": "설정으로 이동"
+      }
+    }
+  },
+  "Legal": {
+    "termsTitle": "이용약관",
+    "privacyTitle": "개인정보처리방침",
+    "lastUpdated": "최종 수정일",
+    "terms": {
+      "introduction": "소개",
+      "usage": "서비스 이용",
+      "termination": "계정 해지",
+      "contact": "문의하기"
+    },
+    "privacy": {
+      "collection": "정보 수집",
+      "usage": "정보 사용",
+      "cookies": "쿠키",
+      "contact": "문의하기"
+    },
+    "agreement": "<terms>이용약관</terms> 및 <privacy>개인정보처리방침</privacy>에 동의합니다."
+  },
+  "Admin": {
+    "overview": {
+      "title": "관리자 대시보드",
+      "mrr": "총 MRR",
+      "mrrChange": "지난달 대비 +20.1%",
+      "activeSubscribers": "활성 구독자",
+      "subscribersChange": "지난달 대비 +180.1%",
+      "salesToday": "오늘 판매",
+      "salesChange": "어제 대비 +19%",
+      "churnRate": "이탈률",
+      "churnChange": "지난달 대비 -2.1%",
+      "revenueGrowth": "매출 성장",
+      "revenueDescription": "월간 반복 매출(MRR) 현황",
+      "recentSubscriptions": "최근 구독",
+      "noSubscriptions": "최근 구독 내역이 없습니다.",
+      "daily": "일간",
+      "weekly": "주간",
+      "monthly": "월간",
+      "yearly": "연간"
+    },
+    "customers": {
+      "title": "고객",
+      "description": "고객을 관리하고 구독 상태를 확인하세요.",
+      "customer": "고객",
+      "status": "상태",
+      "plan": "플랜",
+      "startDate": "시작일",
+      "renewsOn": "갱신일",
+      "amount": "금액",
+      "actions": "작업",
+      "viewDetails": "상세 보기",
+      "viewOnLemon": "Lemon Squeezy에서 보기",
+      "cancelSubscription": "구독 취소",
+      "noCustomers": "고객이 없습니다."
+    },
+    "webhooks": {
+      "title": "웹훅 로그",
+      "description": "Lemon Squeezy 웹훅 이벤트를 모니터링하고 문제를 디버깅하세요.",
+      "total": "전체 이벤트",
+      "processed": "처리 완료",
+      "failed": "실패",
+      "pending": "대기 중",
+      "recentEvents": "최근 이벤트",
+      "eventType": "이벤트 유형",
+      "status": "상태",
+      "eventId": "이벤트 ID",
+      "time": "시간",
+      "error": "오류",
+      "noEvents": "웹훅 이벤트가 없습니다."
+    },
+    "backToDashboard": "대시보드로 이동",
+    "sales": {
+      "title": "결제 내역",
+      "description": "모든 구독 및 일회성 결제 내역입니다.",
+      "colDate": "날짜",
+      "colCustomer": "고객",
+      "colProduct": "상품",
+      "colAmount": "금액",
+      "colStatus": "상태"
+    },
+    "tickets": {
+      "title": "지원 티켓",
+      "description": "고객 문의 및 지원 요청을 관리합니다.",
+      "searchPlaceholder": "이메일 또는 제목 검색...",
+      "allStatuses": "모든 상태",
+      "allCategories": "모든 카테고리",
+      "noTickets": "티켓이 없습니다.",
+      "colDate": "날짜",
+      "colEmail": "이메일",
+      "colSubject": "제목",
+      "colCategory": "카테고리",
+      "colStatus": "상태"
+    }
+  },
+  "Support": {
+    "title": "고객 지원 센터",
+    "description": "무엇을 도와드릴까요?",
+    "tabs": {
+      "newTicket": "문의하기",
+      "myTickets": "내 문의 내역"
+    },
+    "myTickets": "내 문의 내역",
+    "noTickets": "아직 작성한 문의가 없습니다.",
+    "form": {
+      "email": "이메일",
+      "subject": "제목",
+      "priority": "카테고리",
+      "message": "메시지",
+      "submit": "문의하기",
+      "submitting": "제출 중...",
+      "submitAnother": "다른 문의하기",
+      "success": "문의가 접수되었습니다!",
+      "error": "문의 제출에 실패했습니다.",
+      "title": "문의 상세",
+      "submittedBy": "작성자:",
+      "submitReply": "답변 등록 및 해결 처리",
+      "replyPlaceholder": "답변을 입력하세요... (저장 시 해결됨 상태로 변경됩니다)",
+      "reply": "답변"
+    },
+    "category": {
+      "general": "일반 문의",
+      "billing": "결제 관련",
+      "account": "계정 관련",
+      "technical": "기술적 문제"
+    }
+  },
+  "CookieConsent": {
+    "title": "쿠키 사용 안내",
+    "description": "더 나은 사용자 경험을 위해 쿠키를 사용합니다.",
+    "accept": "동의",
+    "decline": "거부"
+  },
+  "FeedbackWidget": {
+    "title": "의견 보내기",
+    "subtitle": "버그 제보나 기능 요청을 보내주세요.",
+    "placeholder": "어떤 점을 개선하면 좋을까요?",
+    "cancel": "취소",
+    "submit": "보내기",
+    "success": "소중한 의견 감사합니다! ✅",
+    "error": "전송 중 오류가 발생했습니다. ❌"
+  },
+  "Blocked": {
+    "title": "Hm, 접속이 제한되었습니다",
+    "description": "너무 많은 요청을 보내셨어요. 1분 후에 다시 시도해 주세요.",
+    "login": "로그인",
+    "home": "홈으로"
+  }
+}
