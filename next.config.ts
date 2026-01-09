@@ -12,8 +12,9 @@ const nextConfig: NextConfig = {
         headers: [
           // DNS Prefetch 활성화 (성능)
           { key: "X-DNS-Prefetch-Control", value: "on" },
-          // Clickjacking 방지
-          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          // Iframe Embedding 허용 (CSP)
+          { key: "Content-Security-Policy", value: "frame-ancestors *;" },
+
           // MIME-sniffing 방지
           { key: "X-Content-Type-Options", value: "nosniff" },
           // Referrer 정책
