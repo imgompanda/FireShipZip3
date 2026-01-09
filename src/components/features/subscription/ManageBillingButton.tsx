@@ -9,11 +9,13 @@ import { toast } from "sonner";
 interface ManageBillingButtonProps {
   hasSubscription: boolean;
   label: string;
+  disabled?: boolean;
 }
 
 export function ManageBillingButton({
   hasSubscription,
   label,
+  disabled,
 }: ManageBillingButtonProps) {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -45,7 +47,11 @@ export function ManageBillingButton({
   }
 
   return (
-    <Button variant="outline" onClick={handleClick} disabled={isLoading}>
+    <Button
+      variant="outline"
+      onClick={handleClick}
+      disabled={isLoading || disabled}
+    >
       {isLoading ? (
         <>
           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
