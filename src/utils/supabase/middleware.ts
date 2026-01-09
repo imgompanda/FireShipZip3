@@ -8,8 +8,9 @@ export async function updateSession(
   // BOILERPLATE-SAFEGUARD:
   // If Supabase keys are not set or are default placeholders, we skip the session check.
   // This allows the landing page to work without crashing for users who haven't set up .env yet.
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  const supabaseUrl =
+    process.env.NEXT_PUBLIC_SUPABASE_URL || "https://dummy-project.supabase.co";
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "dummy_key";
 
   if (
     !supabaseUrl ||
