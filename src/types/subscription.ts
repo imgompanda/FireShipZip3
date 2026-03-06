@@ -1,3 +1,6 @@
+// 결제 프로바이더 타입
+export type PaymentProviderType = "lemon" | "paddle" | "toss";
+
 // 구독 상태 타입
 export type SubscriptionStatus =
   | "active" // 정상 사용 중
@@ -12,8 +15,18 @@ export type SubscriptionStatus =
 export interface Subscription {
   id: string;
   user_id: string;
-  lemon_customer_id: string;
+  /** 결제 프로바이더 ('lemon' | 'paddle' | 'toss') */
+  payment_provider: PaymentProviderType;
+  // LemonSqueezy 전용
+  lemon_customer_id: string | null;
   lemon_subscription_id: string | null;
+  // Paddle 전용
+  paddle_customer_id: string | null;
+  paddle_subscription_id: string | null;
+  // 토스페이먼츠 전용
+  toss_customer_key: string | null;
+  toss_billing_key: string | null;
+  // 공통
   status: SubscriptionStatus;
   plan_id: string;
   plan_name: string | null;
@@ -24,7 +37,7 @@ export interface Subscription {
   updated_at: string;
 }
 
-// Webhook 이벤트 로그 타입
+// Webhook 이벤트 로그 타입 (LemonSqueezy)
 export interface LemonWebhookEvent {
   id: string;
   event_id: string;
@@ -32,6 +45,18 @@ export interface LemonWebhookEvent {
   payload: Record<string, unknown>;
   status: "pending" | "processed" | "failed";
   error_message: string | null;
+  created_at: string;
+}
+
+// Webhook 이벤트 로그 타입 (Paddle)
+export interface PaddleWebhookEvent {
+  id: string;
+  event_id: string;
+  event_type: string;
+  payload: Record<string, unknown>;
+  status: "pending" | "processed" | "failed";
+  error_message: string | null;
+  processed_at: string | null;
   created_at: string;
 }
 
