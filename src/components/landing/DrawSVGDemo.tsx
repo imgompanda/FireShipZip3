@@ -84,7 +84,7 @@ export function DrawSVGDemo() {
           {/* Flame */}
           <line x1="3" y1="21" x2="3" y2="21" />
         </svg>
-        <p className="mt-4 text-sm text-zinc-400">Rocket (DrawSVG)</p>
+        <p className="mt-4 text-sm text-base-content/50">Rocket (DrawSVG)</p>
       </div>
 
       {/* Checkmark SVG */}
@@ -103,7 +103,7 @@ export function DrawSVGDemo() {
         >
           <path d="M20 6L9 17l-5-5" />
         </svg>
-        <p className="mt-4 text-sm text-zinc-400">Checkmark (DrawSVG)</p>
+        <p className="mt-4 text-sm text-base-content/50">Checkmark (DrawSVG)</p>
       </div>
 
       {/* Circle progress */}
@@ -140,7 +140,7 @@ export function DrawSVGDemo() {
             }}
           />
         </svg>
-        <p className="mt-4 text-sm text-zinc-400">Circle Progress</p>
+        <p className="mt-4 text-sm text-base-content/50">Circle Progress</p>
 
         <style jsx>{`
           @keyframes drawCircle {

@@ -29,11 +29,11 @@ export function CookieConsent() {
   if (!show) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800 p-4 shadow-lg z-50 animate-in slide-in-from-bottom-5">
+    <div className="fixed bottom-0 left-0 right-0 bg-base-100 border-t border-base-300 p-4 shadow-lg z-50 animate-in slide-in-from-bottom-5">
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex-1">
           <h3 className="text-sm font-semibold mb-1">{t("title")}</h3>
-          <p className="text-sm text-zinc-600 dark:text-zinc-400">
+          <p className="text-sm text-base-content/70">
             {t("description")}
           </p>
         </div>

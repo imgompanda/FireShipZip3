@@ -57,7 +57,7 @@ export function FeatureCard({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       className={cn(
-        "relative flex h-full w-full flex-col overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 px-6 py-8 shadow-sm transition-all duration-300 hover:shadow-md",
+        "relative flex h-full w-full flex-col overflow-hidden rounded-xl border border-base-300 bg-base-100 px-6 py-8 shadow-sm transition-all duration-300 hover:shadow-md",
         className
       )}
     >
@@ -72,14 +72,14 @@ export function FeatureCard({
       {/* Content */}
       <div className="relative z-10 flex flex-col gap-4">
         {icon && (
-          <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
+          <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-base-200 border border-base-300">
             {icon}
           </div>
         )}
-        <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-50">
+        <h3 className="text-xl font-bold text-base-content">
           {title}
         </h3>
-        <p className="text-zinc-500 dark:text-zinc-400 leading-relaxed">
+        <p className="text-base-content/50 leading-relaxed">
           {description}
         </p>
       </div>

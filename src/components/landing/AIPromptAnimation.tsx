@@ -80,7 +80,7 @@ export function AIPromptAnimation() {
             <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
             <div className="w-3 h-3 rounded-full bg-green-500/80" />
           </div>
-          <div className="text-xs text-zinc-500 font-mono flex items-center gap-1.5">
+          <div className="text-xs text-base-content/50 font-mono flex items-center gap-1.5">
             <Terminal className="w-3 h-3" />
             <span>AI Onboarding Manager</span>
           </div>
@@ -97,10 +97,10 @@ export function AIPromptAnimation() {
               </div>
             </div>
             <div className="flex-1 space-y-1">
-              <div className="text-xs text-zinc-500 font-bold mb-1">
+              <div className="text-xs text-base-content/50 font-bold mb-1">
                 {t("user")}
               </div>
-              <div className="text-zinc-100">
+              <div className="text-base-content">
                 {typedPrompt}
                 {isTypingPrompt && (
                   <motion.span
@@ -133,7 +133,7 @@ export function AIPromptAnimation() {
                       Thinking...
                     </span>
                   </div>
-                  <div className="text-zinc-300 leading-relaxed">
+                  <div className="text-base-content/70 leading-relaxed">
                     {typedResponse}
                     {!isTypingPrompt &&
                       showResponse &&
@@ -156,7 +156,7 @@ export function AIPromptAnimation() {
                       <div className="w-6 h-6 bg-blue-900/30 rounded flex items-center justify-center text-xs font-bold text-blue-400">
                         MD
                       </div>
-                      <span className="text-xs text-zinc-400">docs/llm.md</span>
+                      <span className="text-xs text-base-content/50">docs/llm.md</span>
                       <span className="text-[10px] text-green-500 ml-2">
                         ● Loaded
                       </span>

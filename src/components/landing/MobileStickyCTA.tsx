@@ -24,7 +24,7 @@ export function MobileStickyCTA() {
 
   return (
     <>
-      <div className="fixed bottom-0 left-0 right-0 z-50 p-4 pb-8 bg-black/80 backdrop-blur-xl border-t border-zinc-800 md:hidden animate-in slide-in-from-bottom-full duration-300">
+      <div className="fixed bottom-0 left-0 right-0 z-50 p-4 pb-8 bg-base-300/80 backdrop-blur-xl border-t border-base-content/20 md:hidden animate-in slide-in-from-bottom-full duration-300">
         <div className="flex gap-3">
           <Button
             onClick={() => setIsModalOpen(true)}
@@ -40,7 +40,7 @@ export function MobileStickyCTA() {
                 ?.scrollIntoView({ behavior: "smooth" });
             }}
             variant="outline"
-            className="flex-1 border-zinc-700 bg-zinc-900/50 text-white hover:bg-zinc-800 h-12 font-bold"
+            className="flex-1 border-base-content/20 bg-base-200/50 text-base-content hover:bg-base-300 h-12 font-bold"
           >
             <Zap className="w-4 h-4 mr-2" />
             구매하기

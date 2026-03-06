@@ -107,12 +107,12 @@ export function PricingSection({ onCheckout }: PricingSectionProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-zinc-50 to-white dark:from-zinc-950 dark:to-black py-20">
+    <div className="min-h-screen bg-gradient-to-b from-base-100 to-base-100 py-20">
       <div className="container mx-auto px-4 max-w-6xl">
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold mb-4">{t("title")}</h1>
-          <p className="text-xl text-zinc-600 dark:text-zinc-400">
+          <p className="text-xl text-base-content/70">
             {t("subtitle")}
           </p>
         </div>
@@ -134,10 +134,10 @@ export function PricingSection({ onCheckout }: PricingSectionProps) {
                 key={plan.id}
                 className={`border-2 relative cursor-pointer transition-all hover:shadow-md ${
                   isPlanSelected
-                    ? "border-zinc-900 dark:border-zinc-100 shadow-md"
+                    ? "border-base-content shadow-md"
                     : plan.popular
-                      ? "border-zinc-400 dark:border-zinc-600"
-                      : "border-zinc-200 dark:border-zinc-800"
+                      ? "border-base-content/40"
+                      : "border-base-300"
                 }`}
                 onClick={() => handlePlanSelect(plan.id)}
                 role="button"
@@ -156,7 +156,7 @@ export function PricingSection({ onCheckout }: PricingSectionProps) {
                 )}
                 {isPlanSelected && (
                   <div className="absolute top-3 right-3">
-                    <CheckIcon className="h-6 w-6 text-zinc-900 dark:text-zinc-100" />
+                    <CheckIcon className="h-6 w-6 text-base-content" />
                   </div>
                 )}
                 <CardHeader>
@@ -164,7 +164,7 @@ export function PricingSection({ onCheckout }: PricingSectionProps) {
                   <CardDescription>{planT.description}</CardDescription>
                   <div className="mt-4">
                     <span className="text-5xl font-bold">{planT.price}</span>
-                    <span className="text-zinc-600 dark:text-zinc-400">
+                    <span className="text-base-content/70">
                       {t("perMonth")}
                     </span>
                   </div>
@@ -228,7 +228,7 @@ export function PricingSection({ onCheckout }: PricingSectionProps) {
                     <CardTitle className="text-lg">{faq.q}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-zinc-600 dark:text-zinc-400">{faq.a}</p>
+                    <p className="text-base-content/70">{faq.a}</p>
                   </CardContent>
                 </Card>
               )

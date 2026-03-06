@@ -43,12 +43,12 @@ export function Header() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-base-100/80 backdrop-blur-md border-b border-base-300">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-2xl font-bold bg-gradient-to-r from-zinc-900 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 bg-clip-text text-transparent">
+            <span className="text-2xl font-bold text-base-content">
               🚀 SaaS Kit
             </span>
           </Link>
@@ -59,7 +59,7 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors"
+                className="text-sm font-medium text-base-content/70 hover:text-base-content transition-colors"
               >
                 {item.label}
               </Link>
@@ -112,14 +112,14 @@ export function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white dark:bg-black border-b border-zinc-200 dark:border-zinc-800"
+            className="md:hidden bg-base-100 border-b border-base-300"
           >
             <div className="container mx-auto px-4 py-4 space-y-4">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="block text-lg font-medium text-zinc-600 dark:text-zinc-400"
+                  className="block text-lg font-medium text-base-content/70"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.label}

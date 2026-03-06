@@ -71,7 +71,7 @@ export function PaymentProviderSelector({
 
   return (
     <div className="space-y-4">
-      <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+      <h3 className="text-lg font-semibold text-base-content">
         {t("selectProvider")}
       </h3>
       <div className="grid gap-4 sm:grid-cols-3">

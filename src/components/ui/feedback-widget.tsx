@@ -58,9 +58,9 @@ export function FeedbackWidget() {
           className="w-80 mr-4 mb-2 p-0 overflow-hidden"
           align="end"
         >
-          <div className="bg-zinc-100 dark:bg-zinc-800 p-3 border-b border-zinc-200 dark:border-zinc-700">
+          <div className="bg-base-200 p-3 border-b border-base-300">
             <h3 className="font-medium text-sm">{t("title")}</h3>
-            <p className="text-xs text-zinc-500 dark:text-zinc-400">
+            <p className="text-xs text-base-content/50">
               {t("subtitle")}
             </p>
           </div>

@@ -97,14 +97,14 @@ export function AnimatedHero({
       style={{ perspective: "1000px" }}
     >
       {/* Background Gradients */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(120,119,198,0.1),transparent)] dark:bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(255,255,255,0.05),transparent)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(120,119,198,0.1),transparent)] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div ref={textRef} className="space-y-6 max-w-2xl">
             {badge && (
-              <div className="inline-flex items-center px-3 py-1 rounded-full border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 text-sm font-medium">
+              <div className="inline-flex items-center px-3 py-1 rounded-full border border-base-300 bg-base-100 text-base-content/70 text-sm font-medium">
                 <span className="mr-2">✨</span> {badge}
               </div>
             )}
@@ -160,7 +160,7 @@ export function AnimatedHero({
                 {[1, 2, 3, 4].map((i) => (
                   <div
                     key={i}
-                    className="w-8 h-8 rounded-full border-2 border-background bg-zinc-200 dark:bg-zinc-800"
+                    className="w-8 h-8 rounded-full border-2 border-background bg-base-300"
                   />
                 ))}
               </div>

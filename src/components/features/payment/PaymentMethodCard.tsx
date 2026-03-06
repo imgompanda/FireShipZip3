@@ -44,8 +44,8 @@ export function PaymentMethodCard({
     <Card
       className={`relative cursor-pointer transition-all hover:shadow-md ${
         isSelected
-          ? "border-2 border-zinc-900 dark:border-zinc-100 shadow-md"
-          : "border border-zinc-200 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600"
+          ? "border-2 border-primary bg-primary/10 shadow-md"
+          : "border border-base-300 bg-base-100 hover:border-base-content/30"
       }`}
       onClick={() => onSelect(provider)}
       role="button"
@@ -59,14 +59,14 @@ export function PaymentMethodCard({
       aria-pressed={isSelected}
     >
       {isRecommended && (
-        <Badge className="absolute -top-2.5 right-3 bg-blue-600 hover:bg-blue-700 text-white">
+        <Badge className="absolute -top-2.5 right-3 bg-primary hover:bg-primary/90 text-primary-content">
           {t("recommended")}
         </Badge>
       )}
 
       {isSelected && (
         <div className="absolute top-3 right-3">
-          <CheckCircle2 className="h-6 w-6 text-zinc-900 dark:text-zinc-100" />
+          <CheckCircle2 className="h-6 w-6 text-primary" />
         </div>
       )}
 
@@ -83,7 +83,7 @@ export function PaymentMethodCard({
           {paymentMethods.map((method) => (
             <span
               key={method.label}
-              className="inline-flex items-center gap-1 rounded-full bg-zinc-100 dark:bg-zinc-800 px-2.5 py-1 text-xs font-medium text-zinc-700 dark:text-zinc-300"
+              className="inline-flex items-center gap-1 rounded-full bg-base-200 px-2.5 py-1 text-xs font-medium text-base-content/70"
             >
               <span>{method.icon}</span>
               {method.label}

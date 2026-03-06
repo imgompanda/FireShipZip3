@@ -44,10 +44,10 @@ export function DashboardSidebar({
 
   if (!isMounted) {
     return (
-      <div className="flex min-h-screen bg-zinc-50 dark:bg-black font-sans">
-        <aside className="hidden md:flex flex-col border-r border-zinc-200/50 dark:border-zinc-800/50 bg-white/80 dark:bg-zinc-900/50 backdrop-blur-xl w-64 fixed h-full z-30" />
+      <div className="flex min-h-screen bg-base-100 font-sans">
+        <aside className="hidden md:flex flex-col border-r border-base-300 bg-base-100/80 backdrop-blur-xl w-64 fixed h-full z-30" />
         <div className="flex-1 md:ml-64">
-          <header className="h-16 border-b border-zinc-200/50 dark:border-zinc-800/50 bg-white/50 dark:bg-zinc-900/50 backdrop-blur-md" />
+          <header className="h-16 border-b border-base-300 bg-base-100/50 backdrop-blur-md" />
           <main className="p-8">{children}</main>
         </div>
       </div>
@@ -55,17 +55,17 @@ export function DashboardSidebar({
   }
 
   return (
-    <div className="flex min-h-screen bg-zinc-50/50 dark:bg-black selection:bg-purple-500/30">
+    <div className="flex min-h-screen bg-base-100 selection:bg-primary/30">
       {/* Desktop Sidebar */}
       <aside
         className={cn(
-          "hidden md:flex flex-col border-r border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950/80 backdrop-blur-xl transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] fixed inset-y-0 left-0 z-40",
+          "hidden md:flex flex-col border-r border-base-300 bg-base-100 backdrop-blur-xl transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] fixed inset-y-0 left-0 z-40",
           isCollapsed ? "w-20" : "w-72"
         )}
       >
         <div
           className={cn(
-            "h-20 flex items-center px-6 border-b border-zinc-100 dark:border-zinc-900/50",
+            "h-20 flex items-center px-6 border-b border-base-300",
             isCollapsed ? "justify-center" : "justify-between"
           )}
         >
@@ -74,10 +74,10 @@ export function DashboardSidebar({
               href="/"
               className="hover:opacity-80 transition-opacity flex items-center gap-2"
             >
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-purple-600 to-blue-500 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-purple-500/20">
+              <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-purple-600 to-blue-500 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-primary/20">
                 S
               </div>
-              <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-zinc-900 to-zinc-600 dark:from-white dark:to-zinc-400">
+              <span className="text-xl font-bold text-base-content">
                 SaaS Kit
               </span>
             </Link>
@@ -86,7 +86,7 @@ export function DashboardSidebar({
             variant="ghost"
             size="icon"
             className={cn(
-              "h-8 w-8 text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors",
+              "h-8 w-8 text-base-content/50 hover:text-base-content transition-colors",
               isCollapsed ? "" : "ml-auto"
             )}
             onClick={() => setIsCollapsed(!isCollapsed)}
@@ -103,7 +103,7 @@ export function DashboardSidebar({
           <SidebarNav isCollapsed={isCollapsed} isAdmin={isAdmin} />
         </div>
 
-        <div className="p-4 border-t border-zinc-100 dark:border-zinc-900/50 mt-auto space-y-2 bg-zinc-50/50 dark:bg-zinc-900/20 backdrop-blur-sm mx-2 mb-2 rounded-2xl">
+        <div className="p-4 border-t border-base-300 mt-auto space-y-2 bg-base-200/50 backdrop-blur-sm mx-2 mb-2 rounded-2xl">
           <div
             className={cn(
               "flex items-center",
@@ -112,7 +112,7 @@ export function DashboardSidebar({
           >
             <ThemeToggle />
             {!isCollapsed && (
-              <span className="ml-3 text-sm text-zinc-600 dark:text-zinc-400 font-medium">
+              <span className="ml-3 text-sm text-base-content/70 font-medium">
                 Theme
               </span>
             )}
@@ -121,7 +121,7 @@ export function DashboardSidebar({
             <Button
               variant="ghost"
               className={cn(
-                "w-full justify-start text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950/20 h-10 px-2 rounded-xl transition-all",
+                "w-full justify-start text-error hover:text-error hover:bg-error/10 h-10 px-2 rounded-xl transition-all",
                 isCollapsed && "justify-center px-0"
               )}
               type="submit"
@@ -142,7 +142,7 @@ export function DashboardSidebar({
         )}
       >
         {/* Top Header */}
-        <header className="sticky top-0 z-30 flex h-20 items-center justify-between gap-4 border-b border-zinc-200/80 dark:border-zinc-800/80 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl px-8 shadow-sm transition-all duration-200">
+        <header className="sticky top-0 z-30 flex h-20 items-center justify-between gap-4 border-b border-base-300 bg-base-100/80 backdrop-blur-xl px-8 shadow-sm transition-all duration-200">
           <div className="flex items-center gap-4">
             {/* Mobile Menu Trigger */}
             <Sheet>
@@ -153,9 +153,9 @@ export function DashboardSidebar({
               </SheetTrigger>
               <SheetContent
                 side="left"
-                className="w-72 p-0 border-zinc-200 dark:border-zinc-800"
+                className="w-72 p-0 border-base-300"
               >
-                <div className="p-6 border-b border-zinc-100 dark:border-zinc-900">
+                <div className="p-6 border-b border-base-300">
                   <div className="flex items-center gap-2">
                     <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-purple-600 to-blue-500 flex items-center justify-center text-white font-bold text-lg shadow-lg">
                       S
@@ -166,7 +166,7 @@ export function DashboardSidebar({
                 <nav className="p-4 space-y-2">
                   <SidebarNav isAdmin={isAdmin} />
                 </nav>
-                <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-zinc-100 dark:border-zinc-900 bg-zinc-50 dark:bg-zinc-900/50">
+                <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-base-300 bg-base-200">
                   <div className="flex items-center px-2 py-3">
                     <ThemeToggle />
                     <span className="ml-3 text-sm font-medium">Theme Mode</span>
@@ -174,7 +174,7 @@ export function DashboardSidebar({
                   <form action={logout}>
                     <Button
                       variant="ghost"
-                      className="w-full justify-start text-red-600 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-950/30"
+                      className="w-full justify-start text-error hover:text-error hover:bg-error/10"
                       type="submit"
                     >
                       <LogOut className="mr-3 h-4 w-4" />
@@ -196,13 +196,13 @@ export function DashboardSidebar({
             <Button
               variant="outline"
               size="icon"
-              className="rounded-full w-10 h-10 border-zinc-200 dark:border-zinc-800 bg-transparent hover:bg-zinc-100 dark:hover:bg-zinc-900"
+              className="rounded-full w-10 h-10 border-base-300 bg-transparent hover:bg-base-200"
             >
-              <BellRing className="w-4 h-4 text-zinc-500" />
+              <BellRing className="w-4 h-4 text-base-content/50" />
             </Button>
-            <div className="h-8 w-[1px] bg-zinc-200 dark:bg-zinc-800 mx-1 hidden md:block" />
+            <div className="h-8 w-[1px] bg-base-300 mx-1 hidden md:block" />
             {/* User Profile - Simple Avatar */}
-            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-zinc-200 to-zinc-300 dark:from-zinc-700 dark:to-zinc-800 border-2 border-white dark:border-zinc-950 shadow-sm cursor-pointer hover:scale-105 transition-transform" />
+            <div className="w-9 h-9 rounded-full bg-base-300 border-2 border-base-100 shadow-sm cursor-pointer hover:scale-105 transition-transform" />
           </div>
         </header>
 
@@ -253,8 +253,8 @@ function SidebarNav({
             className={cn(
               "w-full justify-start transition-all duration-200 relative group h-11",
               isActive
-                ? "bg-zinc-100 dark:bg-zinc-800/80 text-zinc-900 dark:text-zinc-50 shadow-sm"
-                : "text-zinc-500 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-900/50 hover:text-zinc-900 dark:hover:text-zinc-200",
+                ? "bg-base-200 text-base-content shadow-sm"
+                : "text-base-content/50 hover:bg-base-200 hover:text-base-content",
               isCollapsed
                 ? "justify-center px-0 w-11 mx-auto"
                 : "px-4 rounded-xl"
@@ -264,15 +264,15 @@ function SidebarNav({
           >
             <Link href={link.href}>
               {isActive && !isCollapsed && (
-                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-purple-600 rounded-r-full" />
+                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-primary rounded-r-full" />
               )}
               <link.icon
                 className={cn(
                   "h-[18px] w-[18px] transition-colors",
                   !isCollapsed && "mr-3",
                   isActive
-                    ? "text-purple-600 dark:text-purple-400"
-                    : "text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-300"
+                    ? "text-primary"
+                    : "text-base-content/50 group-hover:text-base-content/70"
                 )}
               />
               {!isCollapsed && (
@@ -280,7 +280,7 @@ function SidebarNav({
               )}
               {/* Active glow effect */}
               {isActive && (
-                <div className="absolute inset-0 bg-purple-500/5 dark:bg-purple-500/10 rounded-xl pointer-events-none" />
+                <div className="absolute inset-0 bg-primary/5 rounded-xl pointer-events-none" />
               )}
             </Link>
           </Button>

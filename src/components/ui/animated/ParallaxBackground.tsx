@@ -88,7 +88,7 @@ export function ParallaxBackground() {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 pointer-events-none overflow-hidden z-0 bg-zinc-50 dark:bg-[#050510] transition-colors duration-500"
+      className="fixed inset-0 pointer-events-none overflow-hidden z-0 bg-base-100 transition-colors duration-500"
       style={
         { "--star-color": "rgba(100, 100, 100, 0.8)" } as React.CSSProperties
       }
@@ -100,7 +100,7 @@ export function ParallaxBackground() {
       `}</style>
 
       {/* Gradient Overlay for Depth */}
-      <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-blue-500/5 dark:to-blue-900/20 z-10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-primary/5 z-10" />
 
       {/* Small Stars */}
       <div
@@ -124,8 +124,8 @@ export function ParallaxBackground() {
       />
 
       {/* Nebulas/Glows */}
-      <div className="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] bg-purple-500/10 dark:bg-purple-600/20 blur-[150px] rounded-full mix-blend-screen animate-pulse-slow" />
-      <div className="absolute bottom-[-20%] right-[-10%] w-[50vw] h-[50vw] bg-blue-500/10 dark:bg-blue-600/10 blur-[150px] rounded-full mix-blend-screen animate-pulse-slow" />
+      <div className="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] bg-secondary/10 blur-[150px] rounded-full mix-blend-screen animate-pulse-slow" />
+      <div className="absolute bottom-[-20%] right-[-10%] w-[50vw] h-[50vw] bg-primary/10 blur-[150px] rounded-full mix-blend-screen animate-pulse-slow" />
     </div>
   );
 }

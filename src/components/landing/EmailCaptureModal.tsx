@@ -63,12 +63,12 @@ export function EmailCaptureModal({ isOpen, onClose }: EmailCaptureModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="bg-[#1a1a1a] border-zinc-800 text-white sm:max-w-md">
+      <DialogContent className="bg-base-200 border-base-content/20 text-base-content sm:max-w-md">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold flex items-center gap-2">
             🎁 <span className="text-[#FFBE1A]">$100 할인</span> 쿠폰 받기
           </DialogTitle>
-          <DialogDescription className="text-zinc-400">
+          <DialogDescription className="text-base-content/50">
             {isSuccess
               ? "축하합니다! 쿠폰이 발급되었습니다."
               : "이메일을 입력하시면 즉시 $100 할인 코드를 보내드립니다."}
@@ -77,8 +77,8 @@ export function EmailCaptureModal({ isOpen, onClose }: EmailCaptureModalProps) {
 
         {isSuccess ? (
           <div className="space-y-6 py-4">
-            <div className="p-4 bg-zinc-900/50 rounded-xl border border-[#FFBE1A]/30 text-center space-y-2">
-              <p className="text-sm text-zinc-500">할인 코드</p>
+            <div className="p-4 bg-base-300/50 rounded-xl border border-[#FFBE1A]/30 text-center space-y-2">
+              <p className="text-sm text-base-content/50">할인 코드</p>
               <div
                 onClick={copyToClipboard}
                 className="flex items-center justify-center gap-3 text-2xl font-mono font-bold text-[#FFBE1A] cursor-pointer hover:scale-105 transition-transform"
@@ -91,7 +91,7 @@ export function EmailCaptureModal({ isOpen, onClose }: EmailCaptureModalProps) {
                 )}
               </div>
             </div>
-            <p className="text-center text-sm text-zinc-500">
+            <p className="text-center text-sm text-base-content/50">
               이메일로도 코드가 발송되었습니다.
               <br />
               결제 시 위 코드를 입력하세요.
@@ -117,7 +117,7 @@ export function EmailCaptureModal({ isOpen, onClose }: EmailCaptureModalProps) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="bg-zinc-900 border-zinc-700 text-white focus:border-[#FFBE1A] focus:ring-[#FFBE1A] h-12"
+                className="bg-base-300 border-base-content/20 text-base-content focus:border-[#FFBE1A] focus:ring-[#FFBE1A] h-12"
               />
             </div>
             <Button
@@ -134,7 +134,7 @@ export function EmailCaptureModal({ isOpen, onClose }: EmailCaptureModalProps) {
                 "쿠폰 받기 ✨"
               )}
             </Button>
-            <p className="text-xs text-center text-zinc-600">
+            <p className="text-xs text-center text-base-content/70">
               스팸은 절대 보내지 않습니다. 언제든 구독 해제 가능합니다.
             </p>
           </form>
