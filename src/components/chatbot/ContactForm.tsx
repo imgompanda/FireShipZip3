@@ -9,7 +9,7 @@ interface ContactFormProps {
 }
 
 export function ContactForm({
-  brandColor = "oklch(var(--p))",
+  brandColor = "var(--color-primary)",
   language = "ko",
 }: ContactFormProps) {
   const [name, setName] = useState("");
@@ -63,7 +63,7 @@ export function ContactForm({
       />
       <button
         type="submit"
-        className="w-full py-1.5 rounded-lg text-sm font-medium text-black transition-opacity hover:opacity-90"
+        className="w-full py-1.5 rounded-lg text-sm font-medium text-primary-content transition-opacity hover:opacity-90"
         style={{ backgroundColor: brandColor }}
       >
         {language === "ko" ? "보내기" : "Submit"}

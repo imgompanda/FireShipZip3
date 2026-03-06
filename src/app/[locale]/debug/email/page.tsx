@@ -64,7 +64,7 @@ export default function EmailDebugPage() {
       <Card className="border-2">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <MailCheck className="text-blue-500" />
+            <MailCheck className="text-info" />
             Resend 이메일 테스트
           </CardTitle>
           <CardDescription>

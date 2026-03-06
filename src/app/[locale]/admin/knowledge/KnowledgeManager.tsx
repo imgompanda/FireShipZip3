@@ -150,7 +150,7 @@ export function KnowledgeManager() {
               resetForm();
               setShowForm(true);
             }}
-            className="px-4 py-2 text-sm bg-amber-500 text-black rounded-lg hover:bg-amber-400 font-medium"
+            className="px-4 py-2 text-sm bg-warning text-warning-content rounded-lg hover:brightness-110 font-medium"
           >
             + 문서 추가
           </button>
@@ -229,7 +229,7 @@ export function KnowledgeManager() {
             </button>
             <button
               type="submit"
-              className="px-4 py-2 text-sm bg-amber-500 text-black rounded-lg font-medium"
+              className="px-4 py-2 text-sm bg-warning text-warning-content rounded-lg font-medium"
             >
               {editingId ? "수정" : "추가"}
             </button>
@@ -240,7 +240,7 @@ export function KnowledgeManager() {
       {/* Document List */}
       {loading ? (
         <div className="flex justify-center py-12">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-amber-500" />
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-warning" />
         </div>
       ) : documents.length === 0 ? (
         <div className="text-center py-12 text-base-content/50">

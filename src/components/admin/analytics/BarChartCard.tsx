@@ -46,17 +46,17 @@ export function BarChartCard({
           >
             <CartesianGrid
               strokeDasharray="3 3"
-              stroke="#333"
+              stroke="var(--border)"
               vertical={!isVertical}
               horizontal={isVertical}
             />
             {isVertical ? (
               <>
-                <XAxis type="number" stroke="#888" fontSize={12} />
+                <XAxis type="number" stroke="var(--muted-foreground)" fontSize={12} />
                 <YAxis
                   dataKey="name"
                   type="category"
-                  stroke="#888"
+                  stroke="var(--muted-foreground)"
                   fontSize={12}
                   width={120}
                   tickLine={false}
@@ -66,13 +66,13 @@ export function BarChartCard({
               <>
                 <XAxis
                   dataKey="name"
-                  stroke="#888"
+                  stroke="var(--muted-foreground)"
                   fontSize={12}
                   tickLine={false}
                   axisLine={false}
                 />
                 <YAxis
-                  stroke="#888"
+                  stroke="var(--muted-foreground)"
                   fontSize={12}
                   tickLine={false}
                   axisLine={false}
@@ -81,10 +81,10 @@ export function BarChartCard({
             )}
             <Tooltip
               contentStyle={{
-                backgroundColor: "#1C1C1C",
-                border: "1px solid #333",
+                backgroundColor: "var(--card)",
+                border: "1px solid var(--border)",
                 borderRadius: "8px",
-                color: "#fff",
+                color: "var(--card-foreground)",
               }}
             />
             <Legend />

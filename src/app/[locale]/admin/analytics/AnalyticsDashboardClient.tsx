@@ -64,28 +64,28 @@ export function AnalyticsDashboardClient({
             value={overview.pageViews.current.toLocaleString()}
             change={overview.pageViews.changePercent}
             icon={Eye}
-            color="oklch(var(--p))"
+            color="var(--chart-1)"
           />
           <MetricCard
             title="방문자"
             value={overview.uniqueVisitors.current.toLocaleString()}
             change={overview.uniqueVisitors.changePercent}
             icon={Users}
-            color="oklch(var(--in))"
+            color="var(--chart-3)"
           />
           <MetricCard
             title="세션"
             value={overview.sessions.current.toLocaleString()}
             change={overview.sessions.changePercent}
             icon={Activity}
-            color="oklch(var(--wa))"
+            color="var(--chart-4)"
           />
           <MetricCard
             title="이탈률"
             value={`${overview.bounceRate.current}%`}
             change={overview.bounceRate.changePercent}
             icon={TrendingDown}
-            color="oklch(var(--er))"
+            color="var(--chart-5)"
           />
         </div>
       </div>
@@ -99,28 +99,28 @@ export function AnalyticsDashboardClient({
             value={totalCtaClicks.toLocaleString()}
             change={0}
             icon={MousePointerClick}
-            color="oklch(var(--su))"
+            color="var(--chart-2)"
           />
           <MetricCard
             title="평균 체류시간"
             value={`${avgTimeOnPage}초`}
             change={0}
             icon={Timer}
-            color="oklch(var(--in))"
+            color="var(--chart-3)"
           />
           <MetricCard
             title="75% 스크롤 도달"
             value={`${deepScrollRate}%`}
             change={0}
             icon={Layers}
-            color="oklch(var(--wa))"
+            color="var(--chart-4)"
           />
           <MetricCard
             title="UTM 유입"
             value={utmStats.reduce((sum, u) => sum + u.count, 0).toLocaleString()}
             change={0}
             icon={Target}
-            color="oklch(var(--p))"
+            color="var(--chart-1)"
           />
         </div>
       </div>
@@ -129,8 +129,8 @@ export function AnalyticsDashboardClient({
       <TrendChart
         data={trend as unknown as Record<string, string | number>[]}
         lines={[
-          { key: "page_views", label: "페이지뷰", color: "oklch(var(--p))" },
-          { key: "visitors", label: "방문자", color: "oklch(var(--in))" },
+          { key: "page_views", label: "페이지뷰", color: "var(--chart-1)" },
+          { key: "visitors", label: "방문자", color: "var(--chart-3)" },
         ]}
         title="트래픽 추이"
       />
@@ -277,8 +277,8 @@ export function AnalyticsDashboardClient({
               unique: p.unique_visitors,
             }))}
             bars={[
-              { key: "views", label: "조회수", color: "oklch(var(--p))" },
-              { key: "unique", label: "방문자", color: "oklch(var(--in))" },
+              { key: "views", label: "조회수", color: "var(--chart-1)" },
+              { key: "unique", label: "방문자", color: "var(--chart-3)" },
             ]}
             title="인기 페이지"
             layout="vertical"
@@ -291,7 +291,7 @@ export function AnalyticsDashboardClient({
                 : r.referrer,
               count: r.count,
             }))}
-            bars={[{ key: "count", label: "유입", color: "oklch(var(--wa))" }]}
+            bars={[{ key: "count", label: "유입", color: "var(--chart-4)" }]}
             title="유입 경로"
             layout="vertical"
             height={400}

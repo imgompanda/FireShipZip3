@@ -103,6 +103,30 @@ export function DashboardSidebar({
           <SidebarNav isCollapsed={isCollapsed} isAdmin={isAdmin} />
         </div>
 
+        {/* User Profile & Notifications */}
+        <div className={cn(
+          "px-4 py-3 border-t border-base-300",
+          isCollapsed ? "flex flex-col items-center gap-2" : "flex items-center gap-3"
+        )}>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="rounded-full w-9 h-9 hover:bg-base-200 relative"
+            title={isCollapsed ? t("notifications") : undefined}
+          >
+            <BellRing className="w-4 h-4 text-base-content/50" />
+          </Button>
+          {!isCollapsed && (
+            <>
+              <div className="flex-1" />
+              <div className="w-8 h-8 rounded-full bg-base-300 border-2 border-base-100 shadow-sm cursor-pointer hover:scale-105 transition-transform" />
+            </>
+          )}
+          {isCollapsed && (
+            <div className="w-8 h-8 rounded-full bg-base-300 border-2 border-base-100 shadow-sm cursor-pointer hover:scale-105 transition-transform" />
+          )}
+        </div>
+
         <div className="p-4 border-t border-base-300 mt-auto space-y-2 bg-base-200/50 backdrop-blur-sm mx-2 mb-2 rounded-2xl">
           <div
             className={cn(
@@ -141,13 +165,13 @@ export function DashboardSidebar({
           isCollapsed && "md:ml-20"
         )}
       >
-        {/* Top Header */}
-        <header className="sticky top-0 z-30 flex h-20 items-center justify-between gap-4 border-b border-base-300 bg-base-100/80 backdrop-blur-xl px-8 shadow-sm transition-all duration-200">
+        {/* Top Header - Mobile Only */}
+        <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b border-base-300 bg-base-100/80 backdrop-blur-xl px-6 md:hidden">
           <div className="flex items-center gap-4">
             {/* Mobile Menu Trigger */}
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="md:hidden -ml-2">
+                <Button variant="ghost" size="icon" className="-ml-2">
                   <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
@@ -185,29 +209,14 @@ export function DashboardSidebar({
               </SheetContent>
             </Sheet>
 
-            {/* Breadcrumbs or Page Title could go here */}
-            <h1 className="text-lg font-semibold md:hidden">
+            <h1 className="text-lg font-semibold">
               {t("dashboard")}
             </h1>
-          </div>
-
-          {/* Right Side Actions */}
-          <div className="flex items-center gap-3">
-            <Button
-              variant="outline"
-              size="icon"
-              className="rounded-full w-10 h-10 border-base-300 bg-transparent hover:bg-base-200"
-            >
-              <BellRing className="w-4 h-4 text-base-content/50" />
-            </Button>
-            <div className="h-8 w-[1px] bg-base-300 mx-1 hidden md:block" />
-            {/* User Profile - Simple Avatar */}
-            <div className="w-9 h-9 rounded-full bg-base-300 border-2 border-base-100 shadow-sm cursor-pointer hover:scale-105 transition-transform" />
           </div>
         </header>
 
         {/* Page Content with smooth fade in */}
-        <main className="flex-1 p-6 md:p-10 pt-8 animate-fade-in">
+        <main className="flex-1 p-6 md:p-8 animate-fade-in">
           <div className="max-w-7xl mx-auto space-y-8">{children}</div>
         </main>
       </div>

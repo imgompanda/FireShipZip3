@@ -90,14 +90,9 @@ export function ParallaxBackground() {
       ref={containerRef}
       className="fixed inset-0 pointer-events-none overflow-hidden z-0 bg-base-100 transition-colors duration-500"
       style={
-        { "--star-color": "rgba(100, 100, 100, 0.8)" } as React.CSSProperties
+        { "--star-color": "color-mix(in oklch, var(--color-base-content) 30%, transparent)" } as React.CSSProperties
       }
     >
-      <style jsx global>{`
-        .dark {
-          --star-color: #ffffff;
-        }
-      `}</style>
 
       {/* Gradient Overlay for Depth */}
       <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-primary/5 z-10" />

@@ -41,28 +41,28 @@ export function TrendChart({
           >
             <CartesianGrid
               strokeDasharray="3 3"
-              stroke="#333"
+              stroke="var(--border)"
               vertical={false}
             />
             <XAxis
               dataKey="date"
-              stroke="#888"
+              stroke="var(--muted-foreground)"
               fontSize={12}
               tickLine={false}
               axisLine={false}
             />
             <YAxis
-              stroke="#888"
+              stroke="var(--muted-foreground)"
               fontSize={12}
               tickLine={false}
               axisLine={false}
             />
             <Tooltip
               contentStyle={{
-                backgroundColor: "#1C1C1C",
-                border: "1px solid #333",
+                backgroundColor: "var(--card)",
+                border: "1px solid var(--border)",
                 borderRadius: "8px",
-                color: "#fff",
+                color: "var(--card-foreground)",
               }}
             />
             <Legend />

@@ -131,6 +131,63 @@ Create src/app/[locale]/about/page.tsx:
 
 ---
 
+## 🤖 Changing AI Studio Models
+
+### Default Setup (Gemini)
+
+This boilerplate uses **Google Gemini** as the default AI model:
+
+| Feature | Model | File |
+|---------|-------|------|
+| Chat | `gemini-2.5-flash` | `src/lib/ai/config.ts` |
+| Image Generation | `gemini-2.0-flash-exp` | `src/lib/ai/config.ts` |
+| RAG Chat | `gemini-2.5-flash-lite` | `src/lib/ai/config.ts` |
+| Embedding | `gemini-embedding-001` | `src/lib/ai/rag.ts` |
+
+### Environment Variables
+
+```env
+GOOGLE_GENERATIVE_AI_API_KEY=your-gemini-api-key
+```
+
+### Switching to Other Models
+
+To switch to OpenAI:
+
+1. Install the package:
+```bash
+npm install @ai-sdk/openai
+```
+
+2. Modify chat API (`src/app/api/ai/chat/route.ts`):
+```typescript
+// Before
+import { google } from "@ai-sdk/google";
+google("gemini-2.5-flash")
+
+// After
+import { openai } from "@ai-sdk/openai";
+openai("gpt-4o")
+```
+
+3. Modify image API (`src/app/api/ai/image/route.ts`):
+```typescript
+// Before
+import { google } from "@ai-sdk/google";
+google.image("gemini-2.0-flash-exp")
+
+// After
+import { openai } from "@ai-sdk/openai";
+openai.image("dall-e-3")
+```
+
+4. Add environment variable to `.env.local`:
+```env
+OPENAI_API_KEY=your-openai-api-key
+```
+
+---
+
 ## 💡 Prompt Writing Tips
 
 1. **Be specific**: "primary color to #3B82F6" instead of "change color"

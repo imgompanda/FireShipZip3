@@ -24,7 +24,7 @@ export function ChatModal({
   language,
   visitorContext,
   greeting,
-  brandColor = "oklch(var(--p))",
+  brandColor = "var(--color-primary)",
   onClose,
 }: ChatModalProps) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -87,14 +87,14 @@ export function ChatModal({
         style={{ backgroundColor: brandColor }}
       >
         <div className="flex items-center gap-2">
-          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-          <span className="font-semibold text-black text-sm">
+          <div className="w-2 h-2 bg-success rounded-full animate-pulse" />
+          <span className="font-semibold text-primary-content text-sm">
             AI Assistant
           </span>
         </div>
         <button
           onClick={onClose}
-          className="text-black/60 hover:text-black transition-colors"
+          className="text-primary-content/60 hover:text-primary-content transition-colors"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -112,7 +112,7 @@ export function ChatModal({
             <div
               className={`max-w-[80%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed ${
                 msg.role === "user"
-                  ? "rounded-br-sm text-black"
+                  ? "rounded-br-sm text-primary-content"
                   : "bg-base-200 text-base-content rounded-bl-sm"
               }`}
               style={

@@ -101,7 +101,7 @@ export default function PricingPage() {
                   <div className="space-y-3">
                     {planT.features.map((feature, i) => (
                       <div key={i} className="flex items-center gap-2">
-                        <CheckIcon className="h-5 w-5 text-green-600 flex-shrink-0" />
+                        <CheckIcon className="h-5 w-5 text-success flex-shrink-0" />
                         <span>{feature}</span>
                       </div>
                     ))}

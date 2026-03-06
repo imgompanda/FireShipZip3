@@ -255,7 +255,7 @@ export function CouponPopup() {
           </div>
 
           {/* Code Section */}
-          <div className="bg-black/40 rounded-lg p-3 border border-dashed border-neutral mb-4 flex items-center justify-between gap-2 group">
+          <div className="bg-base-300/50 rounded-lg p-3 border border-dashed border-neutral mb-4 flex items-center justify-between gap-2 group">
             <code
               ref={codeRef}
               className="text-lg font-mono font-bold text-base-content tracking-wider"

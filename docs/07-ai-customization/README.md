@@ -131,6 +131,63 @@ src/app/[locale]/about/page.tsx를 만들어줘:
 
 ---
 
+## 🤖 AI Studio 모델 변경하기
+
+### 기본 설정 (Gemini)
+
+이 보일러플레이트는 **Google Gemini**를 기본 AI 모델로 사용합니다:
+
+| 기능 | 모델 | 파일 |
+|------|------|------|
+| 채팅 | `gemini-2.5-flash` | `src/lib/ai/config.ts` |
+| 이미지 생성 | `gemini-2.0-flash-exp` | `src/lib/ai/config.ts` |
+| RAG 채팅 | `gemini-2.5-flash-lite` | `src/lib/ai/config.ts` |
+| 임베딩 | `gemini-embedding-001` | `src/lib/ai/rag.ts` |
+
+### 환경 변수
+
+```env
+GOOGLE_GENERATIVE_AI_API_KEY=your-gemini-api-key
+```
+
+### 다른 모델로 변경하기
+
+OpenAI로 변경하려면:
+
+1. 패키지 설치:
+```bash
+npm install @ai-sdk/openai
+```
+
+2. 채팅 API 수정 (`src/app/api/ai/chat/route.ts`):
+```typescript
+// 변경 전
+import { google } from "@ai-sdk/google";
+google("gemini-2.5-flash")
+
+// 변경 후
+import { openai } from "@ai-sdk/openai";
+openai("gpt-4o")
+```
+
+3. 이미지 API 수정 (`src/app/api/ai/image/route.ts`):
+```typescript
+// 변경 전
+import { google } from "@ai-sdk/google";
+google.image("gemini-2.0-flash-exp")
+
+// 변경 후
+import { openai } from "@ai-sdk/openai";
+openai.image("dall-e-3")
+```
+
+4. `.env.local`에 환경 변수 추가:
+```env
+OPENAI_API_KEY=your-openai-api-key
+```
+
+---
+
 ## 💡 프롬프트 작성 팁
 
 1. **구체적으로**: "색상 변경" 보다 "primary 색상을 #3B82F6으로"

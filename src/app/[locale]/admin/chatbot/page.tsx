@@ -51,7 +51,7 @@ export default async function ChatbotAdminPage() {
         </div>
         <div className="bg-base-100 border border-base-300 rounded-xl p-4">
           <p className="text-sm text-base-content/50">수집된 리드</p>
-          <p className="text-2xl font-bold text-amber-500">
+          <p className="text-2xl font-bold text-warning">
             {allLeads.length}
           </p>
         </div>

@@ -346,10 +346,10 @@
 @keyframes glowPulse {
   0%,
   100% {
-    box-shadow: 0 0 5px oklch(var(--p) / 0.4);
+    box-shadow: 0 0 5px color-mix(in oklch, var(--color-primary) 40%, transparent);
   }
   50% {
-    box-shadow: 0 0 20px oklch(var(--p) / 0.7);
+    box-shadow: 0 0 20px color-mix(in oklch, var(--color-primary) 70%, transparent);
   }
 }
 

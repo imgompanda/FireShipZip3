@@ -1,6 +1,6 @@
 export const AI_MODELS = {
-  chat: "gpt-4o",
-  image: "dall-e-3",
+  chat: "gemini-2.5-flash",
+  image: "gemini-2.0-flash-exp",
 } as const;
 
 export const AI_CONFIG = {

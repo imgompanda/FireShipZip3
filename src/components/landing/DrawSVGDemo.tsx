@@ -74,7 +74,7 @@ export function DrawSVGDemo() {
           strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="text-amber-500"
+          className="text-warning"
         >
           {/* Rocket body */}
           <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
@@ -99,7 +99,7 @@ export function DrawSVGDemo() {
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="text-emerald-500"
+          className="text-success"
         >
           <path d="M20 6L9 17l-5-5" />
         </svg>
@@ -112,7 +112,7 @@ export function DrawSVGDemo() {
           width="120"
           height="120"
           viewBox="0 0 120 120"
-          className="text-purple-500"
+          className="text-secondary"
         >
           {/* Background circle */}
           <circle

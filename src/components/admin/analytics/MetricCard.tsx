@@ -8,7 +8,7 @@ interface MetricCardProps {
   value: string | number;
   change?: number;
   icon: LucideIcon;
-  color: string; // hex color for icon background tint
+  color: string; // CSS color value (CSS variable or hex) for icon tint
 }
 
 export function MetricCard({
@@ -41,7 +41,7 @@ export function MetricCard({
         </div>
         <div
           className="flex h-12 w-12 items-center justify-center rounded-lg"
-          style={{ backgroundColor: `${color}1A` }}
+          style={{ backgroundColor: `color-mix(in oklch, ${color} 10%, transparent)` }}
         >
           <Icon className="h-6 w-6" style={{ color }} />
         </div>

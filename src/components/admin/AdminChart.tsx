@@ -107,17 +107,17 @@ export function AdminChart({ data }: AdminChartProps) {
               <CartesianGrid
                 strokeDasharray="3 3"
                 vertical={false}
-                stroke="oklch(var(--b3))"
+                stroke="var(--border)"
               />
               <XAxis
                 dataKey="name"
-                stroke="oklch(var(--bc) / 0.5)"
+                stroke="var(--muted-foreground)"
                 fontSize={12}
                 tickLine={false}
                 axisLine={false}
               />
               <YAxis
-                stroke="oklch(var(--bc) / 0.5)"
+                stroke="var(--muted-foreground)"
                 fontSize={12}
                 tickLine={false}
                 axisLine={false}
@@ -126,16 +126,16 @@ export function AdminChart({ data }: AdminChartProps) {
               <Tooltip
                 contentStyle={{
                   borderRadius: "8px",
-                  backgroundColor: "oklch(var(--b2))",
-                  border: "1px solid oklch(var(--b3))",
+                  backgroundColor: "var(--card)",
+                  border: "1px solid var(--border)",
                   boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)",
-                  color: "oklch(var(--bc))",
+                  color: "var(--card-foreground)",
                 }}
               />
               <Line
                 type="monotone"
                 dataKey="mrr"
-                stroke="oklch(var(--p))"
+                stroke="var(--primary)"
                 strokeWidth={3}
                 activeDot={{ r: 6 }}
                 dot={{ r: 4, strokeWidth: 2 }}

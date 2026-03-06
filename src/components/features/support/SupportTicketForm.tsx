@@ -76,7 +76,7 @@ export function SupportTicketForm({ initialEmail }: { initialEmail?: string }) {
     return (
       <Card className="w-full max-w-lg mx-auto">
         <CardHeader>
-          <CardTitle className="text-green-600">{t("form.success")}</CardTitle>
+          <CardTitle className="text-success">{t("form.success")}</CardTitle>
           <CardDescription>{t("description")}</CardDescription>
         </CardHeader>
         <CardContent>

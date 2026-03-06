@@ -1,5 +1,5 @@
 import { experimental_generateImage as generateImage } from "ai";
-import { openai } from "@ai-sdk/openai";
+import { google } from "@ai-sdk/google";
 import { NextResponse } from "next/server";
 import { createClient } from "@/utils/supabase/server";
 import { uploadToSupabase } from "@/lib/ai/storage";
@@ -15,7 +15,7 @@ export async function POST(req: Request) {
       return new Response("Unauthorized", { status: 401 });
     }
 
-    const { prompt, size = "1024x1024", quality = "standard" } = await req.json();
+    const { prompt } = await req.json();
 
     if (!prompt) {
       return NextResponse.json(
@@ -25,12 +25,8 @@ export async function POST(req: Request) {
     }
 
     const { image } = await generateImage({
-      model: openai.image("dall-e-3"),
+      model: google.image("gemini-2.0-flash-exp"),
       prompt,
-      size: size as "1024x1024" | "1536x1024" | "1024x1536",
-      providerOptions: {
-        openai: { quality },
-      },
     });
 
     const base64 = image.base64;
@@ -46,8 +42,6 @@ export async function POST(req: Request) {
       base64,
       url,
       prompt,
-      size,
-      quality,
       createdAt: new Date().toISOString(),
     });
   } catch (error) {

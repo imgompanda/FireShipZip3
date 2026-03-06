@@ -54,7 +54,7 @@ export default function HomePage() {
           <Globe className="h-12 w-12 text-primary" />
         </div>
       ),
-      icon: <Globe className="h-4 w-4 text-neutral-500" />,
+      icon: <Globe className="h-4 w-4 text-base-content/50" />,
       className: "md:col-span-2",
     },
     {
@@ -65,7 +65,7 @@ export default function HomePage() {
           <Shield className="h-12 w-12 text-primary/80" />
         </div>
       ),
-      icon: <Lock className="h-4 w-4 text-neutral-500" />,
+      icon: <Lock className="h-4 w-4 text-base-content/50" />,
       className: "md:col-span-1",
     },
     {
@@ -76,7 +76,7 @@ export default function HomePage() {
           <Code2 className="h-12 w-12 text-primary" />
         </div>
       ),
-      icon: <Layers className="h-4 w-4 text-neutral-500" />,
+      icon: <Layers className="h-4 w-4 text-base-content/50" />,
       className: "md:col-span-1",
     },
     {
@@ -87,7 +87,7 @@ export default function HomePage() {
           <Rocket className="h-12 w-12 text-primary/80" />
         </div>
       ),
-      icon: <Gauge className="h-4 w-4 text-neutral-500" />,
+      icon: <Gauge className="h-4 w-4 text-base-content/50" />,
       className: "md:col-span-2",
     },
   ];
@@ -351,7 +351,7 @@ export default function HomePage() {
             {/* Pro Plan */}
             <Card className="border-2 border-primary relative h-full shadow-2xl bg-base-200 overflow-hidden">
               <div className="absolute top-0 right-0 p-4">
-                <Badge className="bg-primary text-white hover:bg-primary/90">
+                <Badge className="bg-primary text-primary-content hover:bg-primary/90">
                   {t("pricing.pro.popular")}
                 </Badge>
               </div>
@@ -380,7 +380,7 @@ export default function HomePage() {
                       <span>{feature}</span>
                     </div>
                   ))}
-                <Button className="w-full mt-6 h-12 text-lg font-bold bg-primary text-white hover:brightness-110" asChild>
+                <Button className="w-full mt-6 h-12 text-lg font-bold bg-primary text-primary-content hover:brightness-110" asChild>
                   <Link href="/login">{t("pricing.getStarted")}</Link>
                 </Button>
               </CardContent>
@@ -419,7 +419,7 @@ export default function HomePage() {
 
       {/* CTA Section */}
       <section className="py-24 bg-base-200 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,oklch(var(--p)/0.1),transparent)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,color-mix(in_oklch,var(--color-primary)_10%,transparent),transparent)]" />
 
         <div className="container mx-auto px-4 text-center max-w-3xl relative z-10">
           <h2 className="text-5xl font-extrabold mb-8 tracking-tight text-base-content">
@@ -430,7 +430,7 @@ export default function HomePage() {
             size="lg"
             variant="default"
             asChild
-            className="text-lg px-12 h-16 shadow-2xl bg-primary text-white hover:brightness-110"
+            className="text-lg px-12 h-16 shadow-2xl bg-primary text-primary-content hover:brightness-110"
           >
             <Link href="/login">{t("cta.button")} →</Link>
           </Button>

@@ -178,7 +178,7 @@ export default async function DashboardPage() {
                       style={{ height: `${height}%` }}
                     >
                       {/* Tooltip on hover (simple) */}
-                      <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] px-1.5 py-0.5 rounded opacity-0 group-hover/bar:opacity-100 transition-opacity whitespace-nowrap hidden sm:block pointer-events-none">
+                      <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-neutral text-neutral-content text-[10px] px-1.5 py-0.5 rounded opacity-0 group-hover/bar:opacity-100 transition-opacity whitespace-nowrap hidden sm:block pointer-events-none">
                         {height * 10} reqs
                       </div>
                     </div>
@@ -253,7 +253,7 @@ export default async function DashboardPage() {
             <Card className="h-full col-span-1 border-dashed bg-base-200/50 border-base-300 shadow-none">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-lg">
-                  <Sparkles className="h-5 w-5 text-yellow-500" />
+                  <Sparkles className="h-5 w-5 text-warning" />
                   {t("cards.customize.title")}
                 </CardTitle>
                 <CardDescription>

@@ -66,7 +66,7 @@ export function AnimatedHero({
       )}
     >
       {/* Subtle top gradient */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_-10%,oklch(var(--p)/0.08),transparent)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_-10%,color-mix(in_oklch,var(--color-primary)_8%,transparent),transparent)] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
         <div
@@ -115,7 +115,7 @@ export function AnimatedHero({
             {secondaryCta && (
               <a
                 href={secondaryCta.href}
-                className="inline-flex items-center justify-center text-lg font-semibold h-12 px-8 rounded-xl border border-neutral text-base-content/60 hover:border-base-content/30 hover:text-base-content bg-transparent transition-all duration-200"
+                className="inline-flex items-center justify-center text-lg font-semibold h-12 px-8 rounded-xl border border-neutral text-base-content/60 hover:border-base-content/30 hover:text-base-content bg-base-100 transition-all duration-200"
               >
                 {secondaryCta.text}
                 <ArrowRight className="ml-2 h-5 w-5" />

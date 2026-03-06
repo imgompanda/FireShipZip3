@@ -30,7 +30,7 @@ export function MobileStickyCTA() {
         <div className="flex gap-3">
           <Button
             onClick={() => setIsModalOpen(true)}
-            className="flex-1 bg-primary hover:bg-primary/90 text-primary-content font-bold h-12 shadow-[0_0_15px_rgba(255,190,26,0.3)]"
+            className="flex-1 bg-primary hover:bg-primary/90 text-primary-content font-bold h-12 shadow-[0_0_15px_color-mix(in_oklch,var(--color-primary)_30%,transparent)]"
           >
             <Tag className="w-4 h-4 mr-2" />
             {t("getDiscount")}

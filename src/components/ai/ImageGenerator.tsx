@@ -10,8 +10,6 @@ import { useTranslations } from "next-intl";
 export function ImageGenerator() {
   const t = useTranslations("AI.image");
   const [prompt, setPrompt] = useState("");
-  const [size, setSize] = useState("1024x1024");
-  const [quality, setQuality] = useState("standard");
   const [isGenerating, setIsGenerating] = useState(false);
   const [results, setResults] = useState<AIImageResult[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -26,7 +24,7 @@ export function ImageGenerator() {
       const res = await fetch("/api/ai/image", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt, size, quality }),
+        body: JSON.stringify({ prompt }),
       });
 
       if (!res.ok) {
@@ -56,35 +54,6 @@ export function ImageGenerator() {
         />
 
         <div className="flex flex-wrap gap-3 items-end">
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text text-base-content/60">{t("size")}</span>
-            </label>
-            <select
-              value={size}
-              onChange={(e) => setSize(e.target.value)}
-              className="select select-bordered select-sm bg-base-200 border-neutral"
-            >
-              <option value="1024x1024">1024 x 1024</option>
-              <option value="1536x1024">1536 x 1024</option>
-              <option value="1024x1536">1024 x 1536</option>
-            </select>
-          </div>
-
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text text-base-content/60">{t("quality")}</span>
-            </label>
-            <select
-              value={quality}
-              onChange={(e) => setQuality(e.target.value)}
-              className="select select-bordered select-sm bg-base-200 border-neutral"
-            >
-              <option value="standard">{t("standard")}</option>
-              <option value="hd">{t("hd")}</option>
-            </select>
-          </div>
-
           <Button
             onClick={handleGenerate}
             disabled={!prompt.trim() || isGenerating}

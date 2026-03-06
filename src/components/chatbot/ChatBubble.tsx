@@ -8,7 +8,7 @@ interface ChatBubbleProps {
 
 export function ChatBubble({
   isOpen,
-  brandColor = "oklch(var(--p))",
+  brandColor = "var(--color-primary)",
   onClick,
 }: ChatBubbleProps) {
   return (
@@ -20,7 +20,7 @@ export function ChatBubble({
     >
       {isOpen ? (
         <svg
-          className="w-6 h-6 text-black"
+          className="w-6 h-6 text-primary-content"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -34,7 +34,7 @@ export function ChatBubble({
         </svg>
       ) : (
         <svg
-          className="w-6 h-6 text-black"
+          className="w-6 h-6 text-primary-content"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"

@@ -103,7 +103,7 @@ export function EmailCaptureModal({ isOpen, onClose }: EmailCaptureModalProps) {
                   .getElementById("pricing")
                   ?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="w-full bg-primary hover:bg-primary/90 text-black font-bold h-12"
+              className="w-full bg-primary hover:bg-primary/90 text-primary-content font-bold h-12"
             >
               {t("useNow")}
             </Button>
@@ -123,7 +123,7 @@ export function EmailCaptureModal({ isOpen, onClose }: EmailCaptureModalProps) {
             <Button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-primary hover:bg-primary/90 text-black font-bold h-12 text-lg"
+              className="w-full bg-primary hover:bg-primary/90 text-primary-content font-bold h-12 text-lg"
             >
               {isLoading ? (
                 <>

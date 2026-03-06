@@ -1,4 +1,4 @@
-import { streamText, tool, type UIMessage } from "ai";
+import { streamText, type UIMessage } from "ai";
 import { z } from "zod";
 import { google } from "@ai-sdk/google";
 import { createAdminClient } from "@/utils/supabase/admin";
@@ -112,17 +112,25 @@ export async function POST(req: Request) {
     system: systemPrompt,
     messages: modelMessages,
     tools: {
-      collect_contact: tool({
+      collect_contact: {
         description:
           "Save visitor contact information as a lead. Call this when the user provides their name, email, or phone number.",
-        inputSchema: z.object({
+        parameters: z.object({
           name: z.string().describe("Visitor name"),
           email: z.string().describe("Visitor email address"),
           phone: z
             .string()
             .describe("Visitor phone number (empty string if not provided)"),
         }),
-        execute: async ({ name, email, phone }) => {
+        execute: async ({
+          name,
+          email,
+          phone,
+        }: {
+          name: string;
+          email: string;
+          phone: string;
+        }) => {
           const { error } = await supabase.from("chatbot_leads").insert({
             conversation_id: conversationId,
             name: name || null,
@@ -141,7 +149,7 @@ export async function POST(req: Request) {
             message: `Contact saved: ${name || ""}${email ? ` (${email})` : ""}`,
           };
         },
-      }),
+      } as any,
     },
     maxOutputTokens: RAG_CONFIG.maxOutputTokens,
     onFinish: async ({ text }) => {

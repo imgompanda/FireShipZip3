@@ -11,6 +11,10 @@
 </p>
 
 <p align="center">
+  <a href="https://fire-ship-zip3.vercel.app"><strong>데모 보기 →</strong></a>
+</p>
+
+<p align="center">
   <a href="#시작하기">시작하기</a> · <a href="#뭐가-들어있나요">기능</a> · <a href="#하나씩-알아볼게요">설정 가이드</a> · <a href="#자주-묻는-질문">FAQ</a>
 </p>
 
@@ -232,20 +236,24 @@ ANTHROPIC_API_KEY=               # Claude (선택)
 
 ## fireauto 플러그인
 
-이 보일러플레이트와 함께 쓸 수 있는 Claude Code 플러그인이에요.
+이 보일러플레이트와 함께 쓸 수 있는 Claude Code 자동화 플러그인이에요. 1년간 AI 서비스 40개를 만들면서 매일 반복한 작업들을 커맨드 하나로 실행할 수 있어요.
 
 ```bash
 # Claude Code에서
 /plugin marketplace add imgompanda/fireauto
-/plugin install fireauto@imgompanda
+/plugin install fireauto@fireauto
 ```
 
 설치하면 이런 걸 할 수 있어요:
-- `/fireauto-seo` — SEO 자동 점검
-- `/fireauto-secure` — 보안 취약점 점검
-- `/fireauto-ui` — DaisyUI로 UI 만들기
-- `/fireauto-prd` — 아이디어로 PRD 만들기
-- `/fireauto-research` — 레딧에서 고객 찾기
+
+| 커맨드 | 설명 |
+|--------|------|
+| `/fireauto-seo` | SEO 자동 점검 (robots.txt, 메타태그, JSON-LD 등) |
+| `/fireauto-secure` | 보안 취약점 점검 (.env 노출, API 인증, rate limit 등) |
+| `/fireauto-ui` | DaisyUI로 UI 만들기 / shadcn 마이그레이션 |
+| `/fireauto-prd` | 아이디어 한 줄로 상세 PRD 만들기 |
+| `/fireauto-team` | 여러 AI가 동시에 작업하고 서로 대화하며 협업 |
+| `/fireauto-research` | 레딧에서 고객 찾기 + 리드 스코어링 |
 
 [fireauto 자세히 보기 →](https://github.com/imgompanda/fireauto)
 

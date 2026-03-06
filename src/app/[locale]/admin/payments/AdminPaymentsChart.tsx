@@ -34,9 +34,9 @@ const monthlyRevenueData = [
 ];
 
 const providerShareData = [
-  { name: "LemonSqueezy", value: 38, color: "#EAB308" },
-  { name: "Paddle", value: 35, color: "#3B82F6" },
-  { name: "TossPayments", value: 27, color: "#6366F1" },
+  { name: "LemonSqueezy", value: 38, color: "var(--chart-1)" },
+  { name: "Paddle", value: 35, color: "var(--chart-3)" },
+  { name: "TossPayments", value: 27, color: "var(--chart-4)" },
 ];
 
 type ChartView = "bar" | "pie";
@@ -75,17 +75,17 @@ export function AdminPaymentsChart() {
                 <CartesianGrid
                   strokeDasharray="3 3"
                   vertical={false}
-                  stroke="#E5E7EB"
+                  stroke="var(--border)"
                 />
                 <XAxis
                   dataKey="name"
-                  stroke="#888888"
+                  stroke="var(--muted-foreground)"
                   fontSize={12}
                   tickLine={false}
                   axisLine={false}
                 />
                 <YAxis
-                  stroke="#888888"
+                  stroke="var(--muted-foreground)"
                   fontSize={12}
                   tickLine={false}
                   axisLine={false}
@@ -94,7 +94,9 @@ export function AdminPaymentsChart() {
                 <Tooltip
                   contentStyle={{
                     borderRadius: "8px",
-                    border: "1px solid #E5E7EB",
+                    backgroundColor: "var(--card)",
+                    border: "1px solid var(--border)",
+                    color: "var(--card-foreground)",
                     boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)",
                   }}
                 />
@@ -102,19 +104,19 @@ export function AdminPaymentsChart() {
                 <Bar
                   dataKey="lemon"
                   name="LemonSqueezy"
-                  fill="#EAB308"
+                  fill="var(--chart-1)"
                   radius={[4, 4, 0, 0]}
                 />
                 <Bar
                   dataKey="paddle"
                   name="Paddle"
-                  fill="#3B82F6"
+                  fill="var(--chart-3)"
                   radius={[4, 4, 0, 0]}
                 />
                 <Bar
                   dataKey="toss"
                   name="TossPayments"
-                  fill="#6366F1"
+                  fill="var(--chart-4)"
                   radius={[4, 4, 0, 0]}
                 />
               </BarChart>
