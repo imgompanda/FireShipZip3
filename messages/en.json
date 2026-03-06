@@ -449,6 +449,26 @@
       "colAmount": "Amount",
       "colStatus": "Status"
     },
+    "payments": {
+      "title": "Payments Dashboard",
+      "description": "View payment status by provider.",
+      "transactionCount": "{count} transactions",
+      "recentPayments": "Recent Payments",
+      "recentPaymentsDescription": "Recent payment records by provider.",
+      "allProviders": "All Providers",
+      "colProvider": "Provider",
+      "colCustomer": "Customer",
+      "colPlan": "Plan",
+      "colAmount": "Amount",
+      "colStatus": "Status",
+      "colDate": "Date",
+      "noPayments": "No payment records found.",
+      "monthlyRevenue": "Monthly Revenue",
+      "monthlyRevenueDescription": "Revenue by provider per month",
+      "barChart": "Bar Chart",
+      "providerShare": "Provider Share",
+      "providerShareDescription": "Revenue share by provider"
+    },
     "tickets": {
       "title": "Support Tickets",
       "description": "Manage customer inquiries and support requests.",
@@ -509,6 +529,26 @@
     "submit": "Send",
     "success": "Thanks for your feedback! ✅",
     "error": "Failed to send feedback. ❌"
+  },
+  "Payment": {
+    "selectProvider": "Select Payment Method",
+    "lemon": {
+      "name": "LemonSqueezy",
+      "description": "Global card payments"
+    },
+    "paddle": {
+      "name": "Paddle",
+      "description": "Global payments (incl. PayPal)"
+    },
+    "toss": {
+      "name": "TossPayments",
+      "description": "Korean payments (cards, easy pay)"
+    },
+    "recommended": "Recommended",
+    "checkout": "Checkout",
+    "processing": "Processing...",
+    "success": "Payment completed successfully",
+    "failed": "Payment failed"
   },
   "Blocked": {
     "title": "Hm, Access Blocked",
