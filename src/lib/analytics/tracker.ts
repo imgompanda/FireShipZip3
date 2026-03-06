@@ -21,6 +21,7 @@ let initialized = false;
  */
 export function initAnalytics() {
   if (typeof window === "undefined" || initialized) return;
+  if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") return;
   initialized = true;
 
   // Flush on interval

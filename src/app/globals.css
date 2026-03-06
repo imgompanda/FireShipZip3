@@ -198,38 +198,6 @@
 
 :root {
   --radius: 0.625rem;
-  /* Default values (fireship dark) for @theme inline resolution */
-  --background: #111111;
-  --foreground: #e8e6ef;
-  --card: #1a1a1a;
-  --card-foreground: #e8e6ef;
-  --popover: #1a1a1a;
-  --popover-foreground: #e8e6ef;
-  --primary: #D4654A;
-  --primary-foreground: #ffffff;
-  --secondary: #222222;
-  --secondary-foreground: #e8e6ef;
-  --muted: #222222;
-  --muted-foreground: #a0a0a0;
-  --accent: #222222;
-  --accent-foreground: #e8e6ef;
-  --destructive: #ef4444;
-  --border: #2a2a2a;
-  --input: #2a2a2a;
-  --ring: #D4654A;
-  --chart-1: #D4654A;
-  --chart-2: #27c93f;
-  --chart-3: #3b82f6;
-  --chart-4: #b8a9c9;
-  --chart-5: #ef4444;
-  --sidebar: #1a1a1a;
-  --sidebar-foreground: #e8e6ef;
-  --sidebar-primary: #D4654A;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #222222;
-  --sidebar-accent-foreground: #e8e6ef;
-  --sidebar-border: #2a2a2a;
-  --sidebar-ring: #D4654A;
 }
 
 @layer base {
