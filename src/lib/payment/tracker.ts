@@ -1,6 +1,5 @@
 import { trackCustom } from "@/lib/analytics/tracker";
-
-export type PaymentProviderType = "lemon" | "paddle" | "toss";
+import type { PaymentProviderType } from "@/lib/payment/types";
 
 /**
  * Payment-specific event tracker.

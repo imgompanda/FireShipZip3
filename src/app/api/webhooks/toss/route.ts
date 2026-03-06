@@ -21,10 +21,14 @@ function mapTossStatus(eventType: TossWebhookEventType): string {
 
 export async function POST(req: NextRequest) {
   const payload = await req.text();
-  const signature = req.headers.get("x-tosspayments-signature") || "";
+  // 공식 문서 기준 헤더: tosspayments-webhook-signature
+  // 참고: 결제 이벤트(DONE, CANCELED 등)에는 시그니처 헤더가 없을 수 있음
+  const signature = req.headers.get("tosspayments-webhook-signature") || "";
+  const transmissionTime =
+    req.headers.get("tosspayments-webhook-transmission-time") || "";
 
-  // 시그니처 검증
-  if (!verifyWebhookSignature(payload, signature)) {
+  // 시그니처 검증 (시그니처가 있는 경우에만)
+  if (signature && !verifyWebhookSignature(payload, signature, transmissionTime)) {
     console.error("Invalid toss webhook signature");
     return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
   }

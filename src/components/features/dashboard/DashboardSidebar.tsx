@@ -10,6 +10,7 @@ import {
   PanelLeftOpen,
   LayoutDashboard,
   BellRing,
+  Sparkles,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -226,6 +227,7 @@ function SidebarNav({
 
   const links = [
     { href: "/dashboard", label: t("dashboard"), icon: Home },
+    { href: "/ai", label: "AI Studio", icon: Sparkles },
     { href: "/settings", label: t("settings"), icon: Settings },
     { href: "/subscription", label: t("subscription"), icon: CreditCard },
     ...(isAdmin

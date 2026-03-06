@@ -40,7 +40,7 @@ export const UNIFIED_PLANS: UnifiedPlanInfo[] = [
     price: "$9/month",
     priceKo: "$9/월",
     priceNumber: 9,
-    priceKrw: 12000,
+    priceKrw: 9900,
     features: [
       "Supabase Auth",
       "Email Support",
@@ -66,7 +66,7 @@ export const UNIFIED_PLANS: UnifiedPlanInfo[] = [
     price: "$29/month",
     priceKo: "$29/월",
     priceNumber: 29,
-    priceKrw: 39000,
+    priceKrw: 29900,
     features: [
       "Everything in Basic",
       "Priority Support",

@@ -10,8 +10,9 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle2 } from "lucide-react";
 import { useTranslations } from "next-intl";
+import type { PaymentProviderType } from "@/lib/payment/types";
 
-export type PaymentProviderType = "lemon" | "paddle" | "toss";
+export type { PaymentProviderType };
 
 export interface PaymentMethod {
   icon: string;

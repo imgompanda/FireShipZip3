@@ -1,5 +1,6 @@
-// 결제 프로바이더 타입
-export type PaymentProviderType = "lemon" | "paddle" | "toss";
+// 결제 프로바이더 타입 (canonical definition in @/lib/payment/types)
+import type { PaymentProviderType } from "@/lib/payment/types";
+export type { PaymentProviderType };
 
 // 구독 상태 타입
 export type SubscriptionStatus =

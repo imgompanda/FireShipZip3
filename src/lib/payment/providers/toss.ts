@@ -264,19 +264,52 @@ export async function chargeBilling(
 
 /**
  * 토스페이먼츠 웹훅 시그니처 검증 (HMAC-SHA256)
+ *
+ * 공식 문서 기준:
+ * - 헤더: tosspayments-webhook-signature
+ * - 포맷: "v1:{base64_sig1}:{base64_sig2}"
+ * - signed payload: "{payload}:{transmission_time}"
+ * - 알고리즘: HMAC-SHA256 → base64
+ * - sig1 또는 sig2 중 하나만 일치하면 유효
+ *
+ * 참고: 시그니처 검증은 payout.changed, seller.changed 이벤트에만 적용됩니다.
+ * 결제 관련 웹훅(DONE, CANCELED 등)에는 시그니처 헤더가 없을 수 있으므로,
+ * 시그니처가 없으면 IP 화이트리스트 등 다른 방식으로 검증해야 합니다.
  */
 export function verifyWebhookSignature(
   payload: string,
-  signature: string
+  signature: string,
+  transmissionTime?: string
 ): boolean {
+  // 시그니처가 없으면 검증을 건너뜀 (결제 이벤트는 시그니처가 없을 수 있음)
+  if (!signature) {
+    console.warn("No webhook signature provided — skipping verification");
+    return true;
+  }
+
   if (!tossConfig.webhookSecret) {
     console.error("TOSS_PAYMENTS_WEBHOOK_SECRET is not configured");
     return false;
   }
 
   try {
+    // signed payload: "{payload}:{transmission_time}"
+    const message = transmissionTime
+      ? `${payload}:${transmissionTime}`
+      : payload;
+
     const hmac = crypto.createHmac("sha256", tossConfig.webhookSecret);
-    const digest = hmac.update(payload).digest("base64");
+    const digest = hmac.update(message).digest("base64");
+
+    // 시그니처 포맷: "v1:{base64_sig1}:{base64_sig2}"
+    const match = signature.match(/^v1:(.+?):(.+)$/);
+    if (match) {
+      const sig1 = Buffer.from(match[1], "base64").toString();
+      const sig2 = Buffer.from(match[2], "base64").toString();
+      return digest === sig1 || digest === sig2;
+    }
+
+    // v1: 포맷이 아닌 경우 직접 비교 (fallback)
     return crypto.timingSafeEqual(
       Buffer.from(signature),
       Buffer.from(digest)
@@ -288,26 +321,26 @@ export function verifyWebhookSignature(
 
 // ─── PaymentProvider 인터페이스 구현 ────────────────────
 
+import type {
+  PaymentProvider,
+  CreateCheckoutParams,
+  CheckoutResult,
+  PortalSessionResult,
+  SubscriptionActionResult,
+  WebhookVerificationResult,
+} from "../types";
+
 /**
- * WS-1이 설계하는 PaymentProvider 인터페이스에 맞춰 구현할 예정.
- * 현재는 예상 인터페이스를 기반으로 구현합니다.
+ * 토스페이먼츠 PaymentProvider 구현.
  *
  * 토스페이먼츠는 서버에서 checkout URL을 생성하는 방식이 아니라
  * 클라이언트 SDK에서 결제를 요청하는 방식이므로,
- * createCheckout은 결제에 필요한 정보(orderId, amount 등)를 반환합니다.
+ * createCheckout은 결제에 필요한 정보(clientToken)를 반환합니다.
  */
-export const tossPaymentProvider = {
-  /**
-   * 결제 요청에 필요한 정보를 생성합니다.
-   * 토스는 클라이언트에서 SDK를 통해 결제를 시작하므로 URL 대신 결제 정보를 반환합니다.
-   */
-  async createCheckout(params: {
-    planId: string;
-    userId: string;
-    email?: string;
-    successUrl: string;
-    failUrl: string;
-  }): Promise<{ url?: string; checkoutData?: Record<string, unknown>; error?: string }> {
+export class TossProvider implements PaymentProvider {
+  readonly type = "toss" as const;
+
+  async createCheckout(params: CreateCheckoutParams): Promise<CheckoutResult> {
     const plan = getTossPlanById(params.planId);
     if (!plan) {
       return { error: "Invalid plan ID" };
@@ -315,8 +348,9 @@ export const tossPaymentProvider = {
 
     const orderId = `order_${params.userId}_${Date.now()}`;
 
+    // 토스는 클라이언트 SDK로 결제를 시작하므로 URL 대신 clientToken에 결제 정보를 담아 반환
     return {
-      checkoutData: {
+      clientToken: JSON.stringify({
         clientKey: tossConfig.clientKey,
         orderId,
         orderName: `${plan.name} Plan`,
@@ -324,49 +358,34 @@ export const tossPaymentProvider = {
         currency: "KRW",
         customerEmail: params.email,
         successUrl: params.successUrl,
-        failUrl: params.failUrl,
-      },
+        failUrl: params.cancelUrl || params.successUrl,
+      }),
     };
-  },
+  }
 
-  /**
-   * 토스페이먼츠는 별도의 고객 포털이 없으므로
-   * 자체 구독 관리 페이지로 리다이렉트합니다.
-   */
   async createPortalSession(
     _customerId: string
-  ): Promise<{ url?: string; error?: string }> {
-    return {
-      url: "/dashboard/billing",
-      error: undefined,
-    };
-  },
+  ): Promise<PortalSessionResult> {
+    // 토스페이먼츠는 별도의 고객 포털이 없으므로 자체 구독 관리 페이지로 안내
+    return { url: "/dashboard/billing" };
+  }
 
-  /**
-   * 정기결제(구독) 취소
-   * 빌링키 기반 자동결제를 중단합니다.
-   */
   async cancelSubscription(
     subscriptionId: string
-  ): Promise<{ success?: boolean; error?: string }> {
+  ): Promise<SubscriptionActionResult> {
     try {
-      // 토스에서는 빌링키를 삭제하거나, 다음 결제를 중단하는 방식으로 해지
-      // 실제로는 DB에서 구독 상태를 변경하고 다음 빌링 스케줄을 중단
-      // 마지막 결제에 대한 취소가 아닌 구독 해지이므로 별도 API 호출 없이 상태만 변경
+      // 토스는 빌링키 기반이므로 DB에서 구독 상태를 변경하고 다음 빌링 스케줄을 중단
       console.log(`Canceling toss subscription: ${subscriptionId}`);
       return { success: true };
     } catch (err) {
       console.error("Cancel subscription error:", err);
       return { error: "Failed to cancel subscription" };
     }
-  },
+  }
 
-  /**
-   * 취소된 구독 재활성화
-   */
   async reactivateSubscription(
     subscriptionId: string
-  ): Promise<{ success?: boolean; error?: string }> {
+  ): Promise<SubscriptionActionResult> {
     try {
       console.log(`Reactivating toss subscription: ${subscriptionId}`);
       return { success: true };
@@ -374,15 +393,12 @@ export const tossPaymentProvider = {
       console.error("Reactivate subscription error:", err);
       return { error: "Failed to reactivate subscription" };
     }
-  },
+  }
 
-  /**
-   * 플랜 변경
-   */
   async changePlan(
     subscriptionId: string,
     newPlanId: string
-  ): Promise<{ success?: boolean; error?: string }> {
+  ): Promise<SubscriptionActionResult> {
     const plan = getTossPlanById(newPlanId);
     if (!plan) {
       return { error: "Invalid plan ID" };
@@ -397,14 +413,12 @@ export const tossPaymentProvider = {
       console.error("Change plan error:", err);
       return { error: "Failed to change plan" };
     }
-  },
+  }
 
-  /**
-   * 웹훅 시그니처 검증
-   */
-  verifyWebhookSignature(payload: string, signature: string): boolean {
-    return verifyWebhookSignature(payload, signature);
-  },
-};
-
-export default tossPaymentProvider;
+  verifyWebhookSignature(
+    payload: string,
+    signature: string
+  ): WebhookVerificationResult {
+    return { valid: verifyWebhookSignature(payload, signature) };
+  }
+}

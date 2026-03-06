@@ -9,6 +9,8 @@ import type { Metadata } from "next";
 import "../globals.css";
 
 import { ClientWidgets } from "@/components/shared/ClientWidgets";
+import { ChatWidgetWrapper } from "@/components/chatbot/ChatWidgetWrapper";
+import { AnalyticsProvider } from "@/components/shared/AnalyticsProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -84,14 +86,19 @@ export default async function LocaleLayout({
       >
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
+            attribute="data-theme"
+            defaultTheme="fireship"
+            enableSystem={false}
             disableTransitionOnChange
           >
-            {children}
+            <AnalyticsProvider>
+              {children}
+            </AnalyticsProvider>
             <Toaster />
             <ClientWidgets />
+            {process.env.GOOGLE_GENERATIVE_AI_API_KEY && (
+              <ChatWidgetWrapper />
+            )}
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

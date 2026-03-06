@@ -7,6 +7,7 @@
 import type { PaymentProvider, PaymentProviderType } from "./types";
 import { LemonSqueezyProvider } from "./providers/lemon";
 import { PaddleProvider } from "./providers/paddle";
+import { TossProvider } from "./providers/toss";
 
 // 프로바이더 인스턴스 캐시 (싱글턴)
 const providerCache: Partial<Record<PaymentProviderType, PaymentProvider>> = {};
@@ -38,10 +39,8 @@ export function getPaymentProvider(type: PaymentProviderType): PaymentProvider {
       provider = new PaddleProvider();
       break;
     case "toss":
-      // WS-2에서 TossProvider를 구현할 예정
-      throw new Error(
-        "Toss payment provider is not yet implemented. See WS-2."
-      );
+      provider = new TossProvider();
+      break;
     default:
       throw new Error(`Unsupported payment provider: ${type}`);
   }
