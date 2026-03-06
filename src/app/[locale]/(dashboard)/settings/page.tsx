@@ -16,6 +16,7 @@ import { Link } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
 import { checkIsAdmin } from "@/services/auth/admin";
 import { cookies } from "next/headers";
+import { DemoSaveButton } from "@/components/features/dashboard/DemoSaveButton";
 
 export default async function SettingsPage() {
   const t = await getTranslations("Settings");
@@ -92,7 +93,11 @@ export default async function SettingsPage() {
               <Label htmlFor="name">{t("profile.nameLabel")}</Label>
               <Input id="name" placeholder={t("profile.namePlaceholder")} />
             </div>
-            <Button disabled={isDemoMode}>{t("profile.saveButton")}</Button>
+            <DemoSaveButton
+              isDemoMode={isDemoMode}
+              label={t("profile.saveButton")}
+              demoMessage={t("demoModeMessage") ?? "Demo mode: Settings cannot be changed."}
+            />
           </CardContent>
         </Card>
 
@@ -117,7 +122,11 @@ export default async function SettingsPage() {
               <Label htmlFor="confirm">{t("password.confirmLabel")}</Label>
               <Input id="confirm" type="password" />
             </div>
-            <Button disabled={isDemoMode}>{t("password.updateButton")}</Button>
+            <DemoSaveButton
+              isDemoMode={isDemoMode}
+              label={t("password.updateButton")}
+              demoMessage={t("demoModeMessage") ?? "Demo mode: Settings cannot be changed."}
+            />
           </CardContent>
         </Card>
 
@@ -137,9 +146,12 @@ export default async function SettingsPage() {
               <p className="text-sm text-base-content/70 mb-4">
                 {t("danger.deleteWarning")}
               </p>
-              <Button variant="destructive" disabled={isDemoMode}>
-                {t("danger.deleteButton")}
-              </Button>
+              <DemoSaveButton
+                isDemoMode={isDemoMode}
+                label={t("danger.deleteButton")}
+                demoMessage={t("demoModeMessage") ?? "Demo mode: Settings cannot be changed."}
+                variant="destructive"
+              />
             </div>
           </CardContent>
         </Card>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { MessageSquare, ImageIcon, Video } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { ChatInterface } from "./ChatInterface";
 import { ImageGenerator } from "./ImageGenerator";
 import { VideoGenerator } from "./VideoGenerator";
@@ -12,14 +13,15 @@ interface AILayoutProps {
 }
 
 export function AILayout({ videoEnabled }: AILayoutProps) {
+  const t = useTranslations("AI");
   const [activeTab, setActiveTab] = useState<AIMode>("chat");
 
   const tabs: { id: AIMode; label: string; icon: React.ReactNode; disabled?: boolean }[] = [
-    { id: "chat", label: "Chat", icon: <MessageSquare className="w-4 h-4" /> },
-    { id: "image", label: "Image", icon: <ImageIcon className="w-4 h-4" /> },
+    { id: "chat", label: t("tabs.chat"), icon: <MessageSquare className="w-4 h-4" /> },
+    { id: "image", label: t("tabs.image"), icon: <ImageIcon className="w-4 h-4" /> },
     {
       id: "video",
-      label: "Video",
+      label: t("tabs.video"),
       icon: <Video className="w-4 h-4" />,
       disabled: !videoEnabled,
     },
@@ -45,7 +47,7 @@ export function AILayout({ videoEnabled }: AILayoutProps) {
             {tab.icon}
             {tab.label}
             {tab.disabled && (
-              <span className="badge badge-xs badge-neutral">Setup needed</span>
+              <span className="badge badge-xs badge-neutral">{t("setupNeeded")}</span>
             )}
           </button>
         ))}

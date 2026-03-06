@@ -59,8 +59,8 @@ export function Footer() {
       </nav>
       <aside>
         <p>
-          Copyright © {new Date().getFullYear()} - All right reserved by ACME
-          Industries Ltd
+          Copyright © {new Date().getFullYear()} - All rights reserved by SaaS
+          Starter Kit
         </p>
       </aside>
     </footer>

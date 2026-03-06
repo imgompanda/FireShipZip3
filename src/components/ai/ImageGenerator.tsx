@@ -3,9 +3,12 @@
 import { useState } from "react";
 import { ImageIcon, Loader2 } from "lucide-react";
 import { MediaGrid } from "./MediaGrid";
+import { Button } from "@/components/ui/button";
 import type { AIImageResult } from "@/types/ai";
+import { useTranslations } from "next-intl";
 
 export function ImageGenerator() {
+  const t = useTranslations("AI.image");
   const [prompt, setPrompt] = useState("");
   const [size, setSize] = useState("1024x1024");
   const [quality, setQuality] = useState("standard");
@@ -42,20 +45,20 @@ export function ImageGenerator() {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-16rem)]">
+    <div className="flex flex-col h-full">
       {/* Controls */}
       <div className="p-4 border-b border-neutral space-y-4">
         <textarea
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
-          placeholder="Describe the image you want to generate..."
+          placeholder={t("placeholder")}
           className="textarea textarea-bordered w-full min-h-[80px] bg-base-200 text-base-content border-neutral focus:border-primary"
         />
 
         <div className="flex flex-wrap gap-3 items-end">
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-base-content/60">Size</span>
+              <span className="label-text text-base-content/60">{t("size")}</span>
             </label>
             <select
               value={size}
@@ -70,30 +73,30 @@ export function ImageGenerator() {
 
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-base-content/60">Quality</span>
+              <span className="label-text text-base-content/60">{t("quality")}</span>
             </label>
             <select
               value={quality}
               onChange={(e) => setQuality(e.target.value)}
               className="select select-bordered select-sm bg-base-200 border-neutral"
             >
-              <option value="standard">Standard</option>
-              <option value="hd">HD</option>
+              <option value="standard">{t("standard")}</option>
+              <option value="hd">{t("hd")}</option>
             </select>
           </div>
 
-          <button
+          <Button
             onClick={handleGenerate}
             disabled={!prompt.trim() || isGenerating}
-            className="btn btn-primary btn-sm"
+            size="sm"
           >
             {isGenerating ? (
-              <Loader2 className="w-4 h-4 animate-spin" />
+              <Loader2 className="w-4 h-4 animate-spin mr-2" />
             ) : (
-              <ImageIcon className="w-4 h-4" />
+              <ImageIcon className="w-4 h-4 mr-2" />
             )}
-            Generate
-          </button>
+            {t("generate")}
+          </Button>
         </div>
 
         {error && (
@@ -108,7 +111,7 @@ export function ImageGenerator() {
         {isGenerating && (
           <div className="flex flex-col items-center justify-center py-12 text-base-content/40">
             <div className="w-full max-w-sm aspect-square bg-base-200 rounded-lg animate-pulse" />
-            <p className="mt-4 text-sm">Generating image...</p>
+            <p className="mt-4 text-sm">{t("generating")}</p>
           </div>
         )}
 
@@ -124,8 +127,8 @@ export function ImageGenerator() {
           !isGenerating && (
             <div className="flex flex-col items-center justify-center h-full text-base-content/40">
               <ImageIcon className="w-12 h-12 mb-4" />
-              <p className="text-lg font-medium">No images yet</p>
-              <p className="text-sm mt-1">Generate your first image above</p>
+              <p className="text-lg font-medium">{t("noImages")}</p>
+              <p className="text-sm mt-1">{t("generateFirst")}</p>
             </div>
           )
         )}

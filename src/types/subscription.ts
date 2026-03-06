@@ -86,15 +86,15 @@ export function canAccess(
 // 상태별 배지 색상
 export function getStatusBadgeColor(status: SubscriptionStatus): string {
   const colors: Record<SubscriptionStatus, string> = {
-    active: "bg-green-500",
-    trialing: "bg-blue-500",
-    past_due: "bg-yellow-500",
-    grace_period: "bg-orange-500",
-    unpaid: "bg-red-500",
-    canceled: "bg-gray-500",
-    paused: "bg-purple-500",
+    active: "bg-success",
+    trialing: "bg-info",
+    past_due: "bg-warning",
+    grace_period: "bg-warning",
+    unpaid: "bg-error",
+    canceled: "bg-neutral",
+    paused: "bg-primary",
   };
-  return colors[status] || "bg-gray-500";
+  return colors[status] || "bg-neutral";
 }
 
 // 상태 한글 표시

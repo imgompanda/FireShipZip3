@@ -88,6 +88,7 @@ export default async function LocaleLayout({
           <ThemeProvider
             attribute="data-theme"
             defaultTheme="fireship"
+            themes={["fireship", "fireship-light"]}
             enableSystem={false}
             disableTransitionOnChange
           >

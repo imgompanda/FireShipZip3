@@ -18,7 +18,7 @@ export function ChatModal({
   language,
   visitorContext,
   greeting,
-  brandColor = "#FFBE1A",
+  brandColor = "oklch(var(--p))",
   onClose,
 }: ChatModalProps) {
   const messagesEndRef = useRef<HTMLDivElement>(null);

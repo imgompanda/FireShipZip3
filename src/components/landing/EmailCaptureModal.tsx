@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { Loader2, Copy, Check } from "lucide-react";
 import { sendBetaLaunchEmail } from "@/services/email/actions";
+import { useTranslations } from "next-intl";
 
 interface EmailCaptureModalProps {
   isOpen: boolean;
@@ -20,6 +21,7 @@ interface EmailCaptureModalProps {
 }
 
 export function EmailCaptureModal({ isOpen, onClose }: EmailCaptureModalProps) {
+  const t = useTranslations("Landing.emailCapture");
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -41,14 +43,14 @@ export function EmailCaptureModal({ isOpen, onClose }: EmailCaptureModalProps) {
       });
 
       if (result.error) {
-        toast.error("이메일 발송에 실패했습니다. 다시 시도해주세요.");
+        toast.error(t("sendFailed"));
         return;
       }
 
       setIsSuccess(true);
-      toast.success("쿠폰이 발송되었습니다!");
+      toast.success(t("couponSent"));
     } catch (error) {
-      toast.error("알 수 없는 오류가 발생했습니다.");
+      toast.error(t("unknownError"));
     } finally {
       setIsLoading(false);
     }
@@ -57,7 +59,7 @@ export function EmailCaptureModal({ isOpen, onClose }: EmailCaptureModalProps) {
   const copyToClipboard = () => {
     navigator.clipboard.writeText(COUPON_CODE);
     setHasCopied(true);
-    toast.success("쿠폰 코드가 복사되었습니다!");
+    toast.success(t("codeCopied"));
     setTimeout(() => setHasCopied(false), 2000);
   };
 
@@ -66,22 +68,22 @@ export function EmailCaptureModal({ isOpen, onClose }: EmailCaptureModalProps) {
       <DialogContent className="bg-base-200 border-base-content/20 text-base-content sm:max-w-md">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold flex items-center gap-2">
-            🎁 <span className="text-[#FFBE1A]">$100 할인</span> 쿠폰 받기
+            {t("title")}
           </DialogTitle>
           <DialogDescription className="text-base-content/50">
             {isSuccess
-              ? "축하합니다! 쿠폰이 발급되었습니다."
-              : "이메일을 입력하시면 즉시 $100 할인 코드를 보내드립니다."}
+              ? t("congratulations")
+              : t("description")}
           </DialogDescription>
         </DialogHeader>
 
         {isSuccess ? (
           <div className="space-y-6 py-4">
-            <div className="p-4 bg-base-300/50 rounded-xl border border-[#FFBE1A]/30 text-center space-y-2">
-              <p className="text-sm text-base-content/50">할인 코드</p>
+            <div className="p-4 bg-base-300/50 rounded-xl border border-primary/30 text-center space-y-2">
+              <p className="text-sm text-base-content/50">{t("discountCode")}</p>
               <div
                 onClick={copyToClipboard}
-                className="flex items-center justify-center gap-3 text-2xl font-mono font-bold text-[#FFBE1A] cursor-pointer hover:scale-105 transition-transform"
+                className="flex items-center justify-center gap-3 text-2xl font-mono font-bold text-primary cursor-pointer hover:scale-105 transition-transform"
               >
                 {COUPON_CODE}
                 {hasCopied ? (
@@ -92,9 +94,7 @@ export function EmailCaptureModal({ isOpen, onClose }: EmailCaptureModalProps) {
               </div>
             </div>
             <p className="text-center text-sm text-base-content/50">
-              이메일로도 코드가 발송되었습니다.
-              <br />
-              결제 시 위 코드를 입력하세요.
+              {t("enterCodeAtCheckout")}
             </p>
             <Button
               onClick={() => {
@@ -103,9 +103,9 @@ export function EmailCaptureModal({ isOpen, onClose }: EmailCaptureModalProps) {
                   .getElementById("pricing")
                   ?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="w-full bg-[#FFBE1A] hover:bg-[#e6ab17] text-black font-bold h-12"
+              className="w-full bg-primary hover:bg-primary/90 text-black font-bold h-12"
             >
-              지금 사용하러 가기 ⚡️
+              {t("useNow")}
             </Button>
           </div>
         ) : (
@@ -117,25 +117,25 @@ export function EmailCaptureModal({ isOpen, onClose }: EmailCaptureModalProps) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="bg-base-300 border-base-content/20 text-base-content focus:border-[#FFBE1A] focus:ring-[#FFBE1A] h-12"
+                className="bg-base-300 border-base-content/20 text-base-content focus:border-primary focus:ring-primary h-12"
               />
             </div>
             <Button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-[#FFBE1A] hover:bg-[#e6ab17] text-black font-bold h-12 text-lg"
+              className="w-full bg-primary hover:bg-primary/90 text-black font-bold h-12 text-lg"
             >
               {isLoading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  발급 중...
+                  {t("processing")}
                 </>
               ) : (
-                "쿠폰 받기 ✨"
+                t("getCoupon")
               )}
             </Button>
             <p className="text-xs text-center text-base-content/70">
-              스팸은 절대 보내지 않습니다. 언제든 구독 해제 가능합니다.
+              {t("noSpam")}
             </p>
           </form>
         )}

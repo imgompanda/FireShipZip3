@@ -1,6 +1,7 @@
 "use client";
 
 import { Download } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface MediaItem {
   type: "image" | "video";
@@ -45,13 +46,15 @@ export function MediaGrid({ items }: MediaGridProps) {
             <div className="flex-1 min-w-0">
               <p className="text-white text-xs truncate">{item.prompt}</p>
             </div>
-            <button
+            <Button
               onClick={() => handleDownload(item)}
-              className="btn btn-circle btn-sm btn-ghost text-white ml-2"
+              variant="ghost"
+              size="icon"
+              className="rounded-full w-8 h-8 text-white hover:text-white hover:bg-white/20 ml-2"
               title="Download"
             >
               <Download className="w-4 h-4" />
-            </button>
+            </Button>
           </div>
         </div>
       ))}

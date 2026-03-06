@@ -3,13 +3,16 @@
 import { useState } from "react";
 import { Video, Loader2, AlertCircle } from "lucide-react";
 import { MediaGrid } from "./MediaGrid";
+import { Button } from "@/components/ui/button";
 import type { AIVideoResult } from "@/types/ai";
+import { useTranslations } from "next-intl";
 
 interface VideoGeneratorProps {
   videoEnabled: boolean;
 }
 
 export function VideoGenerator({ videoEnabled }: VideoGeneratorProps) {
+  const t = useTranslations("AI.video");
   const [prompt, setPrompt] = useState("");
   const [aspectRatio, setAspectRatio] = useState("16:9");
   const [duration, setDuration] = useState(5);
@@ -19,12 +22,11 @@ export function VideoGenerator({ videoEnabled }: VideoGeneratorProps) {
 
   if (!videoEnabled) {
     return (
-      <div className="flex flex-col items-center justify-center h-[calc(100vh-16rem)] text-base-content/40">
+      <div className="flex flex-col items-center justify-center h-full text-base-content/40">
         <AlertCircle className="w-12 h-12 mb-4" />
-        <p className="text-lg font-medium">Video generation unavailable</p>
+        <p className="text-lg font-medium">{t("unavailable")}</p>
         <p className="text-sm mt-2 text-center max-w-md">
-          FAL_API_KEY is not configured. Please add it to your environment
-          variables to enable video generation.
+          {t("unavailableDescription")}
         </p>
       </div>
     );
@@ -59,13 +61,13 @@ export function VideoGenerator({ videoEnabled }: VideoGeneratorProps) {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-16rem)]">
+    <div className="flex flex-col h-full">
       {/* Controls */}
       <div className="p-4 border-b border-neutral space-y-4">
         <textarea
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
-          placeholder="Describe the video you want to generate..."
+          placeholder={t("placeholder")}
           className="textarea textarea-bordered w-full min-h-[80px] bg-base-200 text-base-content border-neutral focus:border-primary"
         />
 
@@ -73,7 +75,7 @@ export function VideoGenerator({ videoEnabled }: VideoGeneratorProps) {
           <div className="form-control">
             <label className="label">
               <span className="label-text text-base-content/60">
-                Aspect Ratio
+                {t("aspectRatio")}
               </span>
             </label>
             <select
@@ -90,7 +92,7 @@ export function VideoGenerator({ videoEnabled }: VideoGeneratorProps) {
           <div className="form-control">
             <label className="label">
               <span className="label-text text-base-content/60">
-                Duration (sec)
+                {t("duration")}
               </span>
             </label>
             <select
@@ -104,18 +106,18 @@ export function VideoGenerator({ videoEnabled }: VideoGeneratorProps) {
             </select>
           </div>
 
-          <button
+          <Button
             onClick={handleGenerate}
             disabled={!prompt.trim() || isGenerating}
-            className="btn btn-primary btn-sm"
+            size="sm"
           >
             {isGenerating ? (
-              <Loader2 className="w-4 h-4 animate-spin" />
+              <Loader2 className="w-4 h-4 animate-spin mr-2" />
             ) : (
-              <Video className="w-4 h-4" />
+              <Video className="w-4 h-4 mr-2" />
             )}
-            Generate
-          </button>
+            {t("generate")}
+          </Button>
         </div>
 
         {error && (
@@ -130,9 +132,9 @@ export function VideoGenerator({ videoEnabled }: VideoGeneratorProps) {
         {isGenerating && (
           <div className="flex flex-col items-center justify-center py-12 text-base-content/40">
             <Loader2 className="w-12 h-12 animate-spin mb-4" />
-            <p className="text-lg font-medium">Generating video...</p>
+            <p className="text-lg font-medium">{t("generating")}</p>
             <p className="text-sm mt-1">
-              This may take 2-5 minutes. Please wait.
+              {t("generatingWait")}
             </p>
           </div>
         )}
@@ -149,8 +151,8 @@ export function VideoGenerator({ videoEnabled }: VideoGeneratorProps) {
           !isGenerating && (
             <div className="flex flex-col items-center justify-center h-full text-base-content/40">
               <Video className="w-12 h-12 mb-4" />
-              <p className="text-lg font-medium">No videos yet</p>
-              <p className="text-sm mt-1">Generate your first video above</p>
+              <p className="text-lg font-medium">{t("noVideos")}</p>
+              <p className="text-sm mt-1">{t("generateFirst")}</p>
             </div>
           )
         )}

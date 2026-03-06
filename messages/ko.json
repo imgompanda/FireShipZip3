@@ -63,7 +63,8 @@
           "API 액세스"
         ]
       },
-      "getStarted": "시작하기"
+      "getStarted": "시작하기",
+      "perMonth": "/월"
     },
     "faq": {
       "title": "자주 묻는 질문",
@@ -572,5 +573,65 @@
     "description": "너무 많은 요청을 보내셨어요. 1분 후에 다시 시도해 주세요.",
     "login": "로그인",
     "home": "홈으로"
+  },
+  "Landing": {
+    "emailCapture": {
+      "sendFailed": "이메일 발송에 실패했습니다. 다시 시도해주세요.",
+      "couponSent": "쿠폰이 발송되었습니다!",
+      "unknownError": "알 수 없는 오류가 발생했습니다.",
+      "codeCopied": "쿠폰 코드가 복사되었습니다!",
+      "title": "$100 할인 쿠폰 받기",
+      "description": "이메일을 입력하면 $100 할인 코드를 보내드립니다",
+      "congratulations": "축하합니다! 쿠폰이 발급되었습니다.",
+      "discountCode": "할인 코드",
+      "enterCodeAtCheckout": "결제 시 위 코드를 입력하세요",
+      "useNow": "지금 사용하러 가기",
+      "processing": "발급 중...",
+      "getCoupon": "쿠폰 받기",
+      "noSpam": "스팸은 절대 보내지 않습니다. 언제든 구독 해제 가능합니다."
+    },
+    "mobileCTA": {
+      "getDiscount": "$100 할인 받기",
+      "purchase": "구매하기"
+    }
+  },
+  "AI": {
+    "title": "AI 스튜디오",
+    "subtitle": "AI로 채팅하고, 이미지를 생성하고, 비디오를 만들어보세요",
+    "setupNeeded": "설정 필요",
+    "tabs": {
+      "chat": "채팅",
+      "image": "이미지",
+      "video": "비디오"
+    },
+    "chat": {
+      "startConversation": "대화를 시작하세요",
+      "typeToBegin": "아래에 메시지를 입력하세요",
+      "placeholder": "메시지를 입력하세요... (Shift+Enter로 줄바꿈)",
+      "stopGenerating": "생성 중지"
+    },
+    "image": {
+      "placeholder": "생성하고 싶은 이미지를 설명하세요...",
+      "size": "크기",
+      "quality": "품질",
+      "standard": "표준",
+      "hd": "HD",
+      "generate": "생성",
+      "generating": "이미지 생성 중...",
+      "noImages": "아직 이미지가 없습니다",
+      "generateFirst": "위에서 첫 번째 이미지를 생성하세요"
+    },
+    "video": {
+      "placeholder": "생성하고 싶은 비디오를 설명하세요...",
+      "aspectRatio": "화면 비율",
+      "duration": "길이 (초)",
+      "generate": "생성",
+      "generating": "비디오 생성 중...",
+      "generatingWait": "2-5분 정도 소요될 수 있습니다. 잠시만 기다려주세요.",
+      "noVideos": "아직 비디오가 없습니다",
+      "generateFirst": "위에서 첫 번째 비디오를 생성하세요",
+      "unavailable": "비디오 생성 불가",
+      "unavailableDescription": "FAL_API_KEY가 설정되지 않았습니다. 비디오 생성을 활성화하려면 환경 변수에 추가해주세요."
+    }
   }
 }

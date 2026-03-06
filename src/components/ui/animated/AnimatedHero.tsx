@@ -91,7 +91,7 @@ export function AnimatedHero({
     <section
       ref={containerRef}
       className={cn(
-        "relative min-h-[90vh] flex items-center pt-20 pb-20 overflow-hidden bg-background",
+        "relative min-h-[90vh] flex items-center pt-20 pb-20 overflow-hidden bg-base-100",
         className
       )}
       style={{ perspective: "1000px" }}
@@ -110,14 +110,14 @@ export function AnimatedHero({
             )}
 
             <div className="space-y-2">
-              <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground leading-[1.1]">
+              <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-base-content leading-[1.1]">
                 {title1}
               </h1>
               {(title2Prefix || title2Highlight) && (
-                <div className="text-3xl md:text-5xl font-bold text-muted-foreground flex flex-wrap items-center gap-2">
+                <div className="text-3xl md:text-5xl font-bold text-base-content/60 flex flex-wrap items-center gap-2">
                   <span>{title2Prefix}</span>
                   {title2Highlight && (
-                    <span className="text-foreground bg-primary/10 px-2 rounded-lg text-primary">
+                    <span className="text-base-content bg-primary/10 px-2 rounded-lg text-primary">
                       {title2Highlight}
                     </span>
                   )}
@@ -125,7 +125,7 @@ export function AnimatedHero({
               )}
             </div>
 
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-lg">
+            <p className="text-lg md:text-xl text-base-content/60 leading-relaxed max-w-lg">
               {description}
             </p>
 
@@ -144,7 +144,7 @@ export function AnimatedHero({
                 <Button
                   variant="outline"
                   size="lg"
-                  className="text-lg h-12 px-8 rounded-xl bg-background/50 backdrop-blur-sm"
+                  className="text-lg h-12 px-8 rounded-xl bg-base-100/50 backdrop-blur-sm"
                   asChild
                 >
                   <a href={secondaryCta.href}>
@@ -155,12 +155,12 @@ export function AnimatedHero({
             </div>
 
             {/* Simple Social Proof */}
-            <div className="pt-6 flex items-center gap-4 text-sm text-muted-foreground">
+            <div className="pt-6 flex items-center gap-4 text-sm text-base-content/60">
               <div className="flex -space-x-3">
                 {[1, 2, 3, 4].map((i) => (
                   <div
                     key={i}
-                    className="w-8 h-8 rounded-full border-2 border-background bg-base-300"
+                    className="w-8 h-8 rounded-full border-2 border-base-100 bg-base-300"
                   />
                 ))}
               </div>
@@ -188,12 +188,12 @@ export function AnimatedHero({
                 <div className="w-32 h-32 bg-primary/30 rounded-full blur-3xl absolute top-10 right-10 animate-pulse" />
                 <div className="w-48 h-48 bg-purple-500/20 rounded-full blur-3xl absolute bottom-10 left-10" />
 
-                <div className="relative z-10 text-center space-y-4 p-6 bg-background/40 backdrop-blur-md rounded-2xl border border-white/10 shadow-xl transform transition-transform group-hover:scale-105 duration-500">
+                <div className="relative z-10 text-center space-y-4 p-6 bg-base-100/40 backdrop-blur-md rounded-2xl border border-white/10 shadow-xl transform transition-transform group-hover:scale-105 duration-500">
                   <div className="w-16 h-16 bg-primary rounded-2xl mx-auto flex items-center justify-center shadow-lg mb-4">
                     <Zap className="w-8 h-8 text-primary-foreground" />
                   </div>
                   <h3 className="text-2xl font-bold">State of the Art</h3>
-                  <p className="text-muted-foreground">
+                  <p className="text-base-content/60">
                     Your SaaS deserves a<br />
                     stunning landing page.
                   </p>

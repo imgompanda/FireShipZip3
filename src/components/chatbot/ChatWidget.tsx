@@ -13,7 +13,7 @@ interface ChatWidgetProps {
 export function ChatWidget({
   greeting,
   language = "ko",
-  brandColor = "#FFBE1A",
+  brandColor = "oklch(var(--p))",
 }: ChatWidgetProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [showBubble, setShowBubble] = useState(false);

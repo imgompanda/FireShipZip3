@@ -63,7 +63,8 @@
           "API Access"
         ]
       },
-      "getStarted": "Get Started"
+      "getStarted": "Get Started",
+      "perMonth": "/month"
     },
     "faq": {
       "title": "Frequently Asked Questions",
@@ -576,5 +577,65 @@
     "description": "You've sent too many requests. Please try again in 1 minute.",
     "login": "Login",
     "home": "Home"
+  },
+  "Landing": {
+    "emailCapture": {
+      "sendFailed": "Failed to send email. Please try again.",
+      "couponSent": "Coupon sent!",
+      "unknownError": "An unknown error occurred.",
+      "codeCopied": "Coupon code copied!",
+      "title": "Get $100 Discount Coupon",
+      "description": "Enter your email to get a $100 discount code",
+      "congratulations": "Congratulations! Your coupon has been issued.",
+      "discountCode": "Discount Code",
+      "enterCodeAtCheckout": "Enter the code above at checkout",
+      "useNow": "Use Now",
+      "processing": "Processing...",
+      "getCoupon": "Get Coupon",
+      "noSpam": "We never send spam. Unsubscribe anytime."
+    },
+    "mobileCTA": {
+      "getDiscount": "Get $100 Off",
+      "purchase": "Buy Now"
+    }
+  },
+  "AI": {
+    "title": "AI Studio",
+    "subtitle": "Chat, generate images, and create videos with AI",
+    "setupNeeded": "Setup needed",
+    "tabs": {
+      "chat": "Chat",
+      "image": "Image",
+      "video": "Video"
+    },
+    "chat": {
+      "startConversation": "Start a conversation",
+      "typeToBegin": "Type a message below to begin",
+      "placeholder": "Type your message... (Shift+Enter for new line)",
+      "stopGenerating": "Stop generating"
+    },
+    "image": {
+      "placeholder": "Describe the image you want to generate...",
+      "size": "Size",
+      "quality": "Quality",
+      "standard": "Standard",
+      "hd": "HD",
+      "generate": "Generate",
+      "generating": "Generating image...",
+      "noImages": "No images yet",
+      "generateFirst": "Generate your first image above"
+    },
+    "video": {
+      "placeholder": "Describe the video you want to generate...",
+      "aspectRatio": "Aspect Ratio",
+      "duration": "Duration (sec)",
+      "generate": "Generate",
+      "generating": "Generating video...",
+      "generatingWait": "This may take 2-5 minutes. Please wait.",
+      "noVideos": "No videos yet",
+      "generateFirst": "Generate your first video above",
+      "unavailable": "Video generation unavailable",
+      "unavailableDescription": "FAL_API_KEY is not configured. Please add it to your environment variables to enable video generation."
+    }
   }
 }

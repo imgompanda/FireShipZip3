@@ -4,8 +4,10 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Zap, Tag } from "lucide-react";
 import { EmailCaptureModal } from "./EmailCaptureModal";
+import { useTranslations } from "next-intl";
 
 export function MobileStickyCTA() {
+  const t = useTranslations("Landing.mobileCTA");
   const [isVisible, setIsVisible] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -28,10 +30,10 @@ export function MobileStickyCTA() {
         <div className="flex gap-3">
           <Button
             onClick={() => setIsModalOpen(true)}
-            className="flex-1 bg-[#FFBE1A] hover:bg-[#e6ab17] text-black font-bold h-12 shadow-[0_0_15px_rgba(255,190,26,0.3)] animate-pulse"
+            className="flex-1 bg-primary hover:bg-primary/90 text-primary-content font-bold h-12 shadow-[0_0_15px_rgba(255,190,26,0.3)]"
           >
             <Tag className="w-4 h-4 mr-2" />
-            $100 할인 받기
+            {t("getDiscount")}
           </Button>
           <Button
             onClick={() => {
@@ -43,7 +45,7 @@ export function MobileStickyCTA() {
             className="flex-1 border-base-content/20 bg-base-200/50 text-base-content hover:bg-base-300 h-12 font-bold"
           >
             <Zap className="w-4 h-4 mr-2" />
-            구매하기
+            {t("purchase")}
           </Button>
         </div>
       </div>

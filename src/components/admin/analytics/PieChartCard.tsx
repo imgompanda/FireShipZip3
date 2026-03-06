@@ -10,11 +10,11 @@ import {
 } from "recharts";
 
 const DEFAULT_COLORS = [
-  "#FFBE1A",
-  "#4A7EC4",
-  "#FFD666",
-  "#ef4444",
-  "#a1a1aa",
+  "oklch(var(--p))",
+  "oklch(var(--in))",
+  "oklch(var(--wa))",
+  "oklch(var(--er))",
+  "oklch(var(--n))",
 ];
 
 interface PieChartCardProps {
@@ -55,10 +55,10 @@ export function PieChartCard({
             </Pie>
             <Tooltip
               contentStyle={{
-                backgroundColor: "#1C1C1C",
-                border: "1px solid #333",
+                backgroundColor: "oklch(var(--b2))",
+                border: "1px solid oklch(var(--b3))",
                 borderRadius: "8px",
-                color: "#fff",
+                color: "oklch(var(--bc))",
               }}
             />
             <Legend

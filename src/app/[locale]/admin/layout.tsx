@@ -1,8 +1,7 @@
 import { createClient } from "@/utils/supabase/server";
-import { Link } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
-import { ThemeToggle } from "@/components/shared/ThemeToggle";
 import { cookies } from "next/headers";
+import { AdminNav } from "@/components/admin/AdminNav";
 
 export default async function AdminLayout({
   children,
@@ -40,66 +39,19 @@ export default async function AdminLayout({
     <div className="w-full min-h-screen bg-base-100 pb-12">
       <div className="container mx-auto p-6 md:p-8 max-w-7xl space-y-6">
         {/* Admin Navigation Tabs */}
-        <nav className="flex flex-wrap gap-2 border-b border-base-300 pb-4 items-center">
-          <Link
-            href="/admin/analytics"
-            className="text-sm font-medium px-3 py-2 rounded-lg hover:bg-base-200 text-base-content/70 hover:text-base-content transition-colors whitespace-nowrap"
-          >
-            {t("analytics.title")}
-          </Link>
-          <Link
-            href="/admin/overview"
-            className="text-sm font-medium px-3 py-2 rounded-lg hover:bg-base-200 text-base-content/70 hover:text-base-content transition-colors whitespace-nowrap"
-          >
-            {t("overview.title")}
-          </Link>
-          <Link
-            href="/admin/customers"
-            className="text-sm font-medium px-3 py-2 rounded-lg hover:bg-base-200 text-base-content/70 hover:text-base-content transition-colors whitespace-nowrap"
-          >
-            {t("customers.title")}
-          </Link>
-          <Link
-            href="/admin/sales"
-            className="text-sm font-medium px-3 py-2 rounded-lg hover:bg-base-200 text-base-content/70 hover:text-base-content transition-colors whitespace-nowrap"
-          >
-            {t("sales.title")}
-          </Link>
-          <Link
-            href="/admin/tickets"
-            className="text-sm font-medium px-3 py-2 rounded-lg hover:bg-base-200 text-base-content/70 hover:text-base-content transition-colors whitespace-nowrap"
-          >
-            {t("tickets.title")}
-          </Link>
-          <Link
-            href="/admin/chatbot"
-            className="text-sm font-medium px-3 py-2 rounded-lg hover:bg-base-200 text-base-content/70 hover:text-base-content transition-colors whitespace-nowrap"
-          >
-            {t("chatbot.title")}
-          </Link>
-          <Link
-            href="/admin/knowledge"
-            className="text-sm font-medium px-3 py-2 rounded-lg hover:bg-base-200 text-base-content/70 hover:text-base-content transition-colors whitespace-nowrap"
-          >
-            {t("knowledge.title")}
-          </Link>
-          <Link
-            href="/admin/webhooks"
-            className="text-sm font-medium px-3 py-2 rounded-lg hover:bg-base-200 text-base-content/70 hover:text-base-content transition-colors whitespace-nowrap"
-          >
-            {t("webhooks.title")}
-          </Link>
-
-          <div className="ml-auto flex items-center gap-3">
-            <Link
-              href="/dashboard"
-              className="text-sm font-medium px-3 py-2 rounded-lg hover:bg-base-200 text-base-content/40 hover:text-base-content transition-colors whitespace-nowrap"
-            >
-              {t("backToDashboard")}
-            </Link>
-            <ThemeToggle />
-          </div>
-        </nav>
+        <AdminNav
+          links={[
+            { href: "/admin/analytics", label: t("analytics.title") },
+            { href: "/admin/overview", label: t("overview.title") },
+            { href: "/admin/customers", label: t("customers.title") },
+            { href: "/admin/sales", label: t("sales.title") },
+            { href: "/admin/tickets", label: t("tickets.title") },
+            { href: "/admin/chatbot", label: t("chatbot.title") },
+            { href: "/admin/knowledge", label: t("knowledge.title") },
+            { href: "/admin/webhooks", label: t("webhooks.title") },
+          ]}
+          backLabel={t("backToDashboard")}
+        />
 
         {isDemoMode && (
           <div className="bg-warning/10 text-warning px-4 py-2 rounded-md text-sm mb-4">

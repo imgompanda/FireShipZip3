@@ -46,8 +46,11 @@ export function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-2xl font-bold text-base-content">
-              🚀 SaaS Kit
+            <div className="w-7 h-7 rounded-lg bg-gradient-to-tr from-purple-600 to-blue-500 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-primary/20">
+              S
+            </div>
+            <span className="text-xl font-bold text-base-content">
+              SaaS Kit
             </span>
           </Link>
 
@@ -92,6 +95,8 @@ export function Header() {
             <button
               className="md:hidden p-2"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMobileMenuOpen}
             >
               {isMobileMenuOpen ? (
                 <X className="h-6 w-6" />
@@ -117,7 +122,7 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="block text-lg font-medium text-base-content/70"
+                  className="block py-3 text-lg font-medium text-base-content/70"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.label}

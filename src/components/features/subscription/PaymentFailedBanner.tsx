@@ -23,18 +23,18 @@ export function PaymentFailedBanner({
   // 긴급도에 따른 색상
   const isUrgent = daysRemaining <= 3;
   const bgColor = isUrgent
-    ? "bg-red-50 border-red-200"
-    : "bg-yellow-50 border-yellow-200";
-  const iconColor = isUrgent ? "text-red-600" : "text-yellow-600";
+    ? "bg-error/10 border-error/30"
+    : "bg-warning/10 border-warning/30";
+  const iconColor = isUrgent ? "text-error" : "text-warning";
 
   return (
     <Alert className={`${bgColor} relative mb-4`}>
       <AlertTriangle className={`h-4 w-4 ${iconColor}`} />
-      <AlertTitle className={isUrgent ? "text-red-800" : "text-yellow-800"}>
+      <AlertTitle className={isUrgent ? "text-error" : "text-warning"}>
         {t("paymentFailedTitle")}
       </AlertTitle>
       <AlertDescription
-        className={isUrgent ? "text-red-700" : "text-yellow-700"}
+        className={isUrgent ? "text-error/80" : "text-warning/80"}
       >
         {t("paymentFailedDescription", { days: daysRemaining })}
       </AlertDescription>
@@ -50,7 +50,7 @@ export function PaymentFailedBanner({
       </div>
       <button
         onClick={() => setDismissed(true)}
-        className="absolute right-2 top-2 text-gray-400 hover:text-gray-600"
+        className="absolute right-2 top-2 text-base-content/40 hover:text-base-content/60"
       >
         <X className="h-4 w-4" />
       </button>

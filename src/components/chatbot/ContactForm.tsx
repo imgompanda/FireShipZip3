@@ -9,7 +9,7 @@ interface ContactFormProps {
 }
 
 export function ContactForm({
-  brandColor = "#FFBE1A",
+  brandColor = "oklch(var(--p))",
   language = "ko",
 }: ContactFormProps) {
   const [name, setName] = useState("");

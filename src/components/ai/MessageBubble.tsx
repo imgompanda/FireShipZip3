@@ -51,7 +51,7 @@ export function MessageBubble({ message }: MessageBubbleProps) {
           </p>
         ) : (
           <div
-            className="prose prose-invert prose-sm max-w-none"
+            className="prose prose-sm max-w-none text-inherit"
             dangerouslySetInnerHTML={{ __html: htmlContent ?? "" }}
           />
         )}

@@ -133,7 +133,7 @@ export async function POST(req: Request) {
 
           if (error) {
             console.error("[chatbot] Lead creation failed:", error);
-            return { success: false };
+            return { success: false, message: "Failed to save contact" };
           }
 
           return {

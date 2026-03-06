@@ -150,7 +150,7 @@ export default async function AdminPaymentsPage({
     <div className="space-y-6">
       <div>
         <h1 className="text-3xl font-bold tracking-tight">{t("title")}</h1>
-        <p className="text-muted-foreground">{t("description")}</p>
+        <p className="text-base-content/60">{t("description")}</p>
       </div>
 
       {/* Provider Summary Cards */}
@@ -165,7 +165,7 @@ export default async function AdminPaymentsPage({
             <div className="text-2xl font-bold">
               ${(stats.lemon.revenue / 100).toFixed(0)}
             </div>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs text-base-content/60">
               {t("transactionCount", { count: stats.lemon.count })}
             </p>
           </CardContent>
@@ -180,7 +180,7 @@ export default async function AdminPaymentsPage({
             <div className="text-2xl font-bold">
               ${(stats.paddle.revenue / 100).toFixed(0)}
             </div>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs text-base-content/60">
               {t("transactionCount", { count: stats.paddle.count })}
             </p>
           </CardContent>
@@ -198,7 +198,7 @@ export default async function AdminPaymentsPage({
                 {stats.toss.revenue > 0 ? "KRW" : ""}
               </span>
             </div>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs text-base-content/60">
               {t("transactionCount", { count: stats.toss.count })}
             </p>
           </CardContent>
@@ -259,7 +259,7 @@ export default async function AdminPaymentsPage({
                       {payment.status}
                     </Badge>
                   </TableCell>
-                  <TableCell className="text-sm text-muted-foreground">
+                  <TableCell className="text-sm text-base-content/60">
                     {new Date(payment.created_at).toLocaleDateString()}
                   </TableCell>
                 </TableRow>

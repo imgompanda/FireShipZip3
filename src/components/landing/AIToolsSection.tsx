@@ -72,7 +72,7 @@ export function AIToolsSection() {
           {/* Result headline */}
           <h2 className="text-3xl md:text-5xl font-extrabold text-base-content mb-4">
             {t("headline")}
-            <span className="ml-3 px-4 py-1 bg-[#d4c5a9] text-base-100 rounded-lg">
+            <span className="ml-3 px-4 py-1 bg-secondary text-secondary-content rounded-lg">
               {t("highlight")}
             </span>
           </h2>

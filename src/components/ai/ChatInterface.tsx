@@ -4,8 +4,11 @@ import { useChat } from "@ai-sdk/react";
 import { useRef, useEffect } from "react";
 import { Send, Square, MessageSquare } from "lucide-react";
 import { MessageBubble } from "./MessageBubble";
+import { Button } from "@/components/ui/button";
+import { useTranslations } from "next-intl";
 
 export function ChatInterface() {
+  const t = useTranslations("AI.chat");
   const { messages, input, handleInputChange, handleSubmit, status, stop } =
     useChat({
       api: "/api/ai/chat",
@@ -32,14 +35,14 @@ export function ChatInterface() {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-16rem)]">
+    <div className="flex flex-col h-full">
       {/* Messages Area */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div className="flex-1 overflow-y-auto min-h-0 p-4 space-y-4">
         {messages.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full text-base-content/40">
             <MessageSquare className="w-12 h-12 mb-4" />
-            <p className="text-lg font-medium">Start a conversation</p>
-            <p className="text-sm mt-1">Type a message below to begin</p>
+            <p className="text-lg font-medium">{t("startConversation")}</p>
+            <p className="text-sm mt-1">{t("typeToBegin")}</p>
           </div>
         ) : (
           messages.map((message) => (
@@ -63,27 +66,30 @@ export function ChatInterface() {
             value={input}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
-            placeholder="Type your message... (Shift+Enter for new line)"
+            placeholder={t("placeholder")}
             className="textarea textarea-bordered flex-1 min-h-[44px] max-h-[120px] resize-none bg-base-200 text-base-content border-neutral focus:border-primary"
             rows={1}
           />
           {isStreaming ? (
-            <button
+            <Button
               type="button"
               onClick={stop}
-              className="btn btn-error btn-square"
-              title="Stop generating"
+              variant="destructive"
+              size="icon"
+              className="h-11 w-11"
+              title={t("stopGenerating")}
             >
               <Square className="w-4 h-4" />
-            </button>
+            </Button>
           ) : (
-            <button
+            <Button
               type="submit"
               disabled={!input?.trim() || isLoading}
-              className="btn btn-primary btn-square"
+              size="icon"
+              className="h-11 w-11"
             >
               <Send className="w-4 h-4" />
-            </button>
+            </Button>
           )}
         </form>
       </div>

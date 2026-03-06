@@ -8,7 +8,7 @@ interface ChatBubbleProps {
 
 export function ChatBubble({
   isOpen,
-  brandColor = "#FFBE1A",
+  brandColor = "oklch(var(--p))",
   onClick,
 }: ChatBubbleProps) {
   return (

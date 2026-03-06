@@ -78,7 +78,7 @@ export default async function AdminTicketsPage({
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">{t("title")}</h1>
-          <p className="text-muted-foreground">{t("description")}</p>
+          <p className="text-base-content/60">{t("description")}</p>
         </div>
       </div>
 
@@ -142,7 +142,7 @@ export default async function AdminTicketsPage({
                   </TableCell>
                   <TableCell>
                     <span
-                      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-800`}
+                      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-info/10 text-info`}
                     >
                       {ticket.category
                         ? ct(

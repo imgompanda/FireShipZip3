@@ -131,7 +131,7 @@ export default async function AdminCustomersPage({
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">{t("title")}</h1>
-          <p className="text-muted-foreground">{t("description")}</p>
+          <p className="text-base-content/60">{t("description")}</p>
         </div>
       </div>
 
@@ -168,7 +168,7 @@ export default async function AdminCustomersPage({
               <TableRow key={customer.id}>
                 <TableCell>
                   <div className="font-medium">{customer.user?.email}</div>
-                  <div className="text-xs text-muted-foreground">
+                  <div className="text-xs text-base-content/60">
                     {customer.user?.full_name || customer.user?.id?.slice(0, 8)}
                   </div>
                 </TableCell>
@@ -223,7 +223,7 @@ export default async function AdminCustomersPage({
                         </DropdownMenuItem>
                       )}
                       <DropdownMenuSeparator />
-                      <DropdownMenuItem className="text-red-600">
+                      <DropdownMenuItem className="text-error">
                         {t("cancelSubscription")}
                       </DropdownMenuItem>
                     </DropdownMenuContent>

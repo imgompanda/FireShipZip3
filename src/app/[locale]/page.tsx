@@ -51,7 +51,7 @@ export default function HomePage() {
       description: t("deepDives.one.description"),
       header: (
         <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-info/20 to-info/5 items-center justify-center">
-          <Globe className="h-12 w-12 text-blue-500" />
+          <Globe className="h-12 w-12 text-info" />
         </div>
       ),
       icon: <Globe className="h-4 w-4 text-neutral-500" />,
@@ -62,7 +62,7 @@ export default function HomePage() {
       description: t("features.secure.description"),
       header: (
         <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-success/20 to-success/5 items-center justify-center">
-          <Shield className="h-12 w-12 text-emerald-500" />
+          <Shield className="h-12 w-12 text-success" />
         </div>
       ),
       icon: <Lock className="h-4 w-4 text-neutral-500" />,
@@ -73,7 +73,7 @@ export default function HomePage() {
       description: t("deepDives.two.description"),
       header: (
         <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 items-center justify-center">
-          <Code2 className="h-12 w-12 text-purple-500" />
+          <Code2 className="h-12 w-12 text-primary" />
         </div>
       ),
       icon: <Layers className="h-4 w-4 text-neutral-500" />,
@@ -84,7 +84,7 @@ export default function HomePage() {
       description: t("features.deploy.description"),
       header: (
         <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-warning/20 to-warning/5 items-center justify-center">
-          <Rocket className="h-12 w-12 text-orange-500" />
+          <Rocket className="h-12 w-12 text-warning" />
         </div>
       ),
       icon: <Gauge className="h-4 w-4 text-neutral-500" />,
@@ -210,42 +210,42 @@ export default function HomePage() {
               <FeatureCard
                 title={t("features.fast.title")}
                 description={t("features.fast.description")}
-                icon={<Zap className="h-6 w-6 text-amber-500" />}
+                icon={<Zap className="h-6 w-6 text-warning" />}
               />
             </ScrollAnimation>
             <ScrollAnimation animation="slide-up" delay={0.2}>
               <FeatureCard
                 title={t("holographic.database.title")}
                 description={t("holographic.database.description")}
-                icon={<Database className="h-6 w-6 text-green-500" />}
+                icon={<Database className="h-6 w-6 text-success" />}
               />
             </ScrollAnimation>
             <ScrollAnimation animation="slide-up" delay={0.3}>
               <FeatureCard
                 title={t("holographic.payments.title")}
                 description={t("holographic.payments.description")}
-                icon={<CreditCard className="h-6 w-6 text-purple-500" />}
+                icon={<CreditCard className="h-6 w-6 text-primary" />}
               />
             </ScrollAnimation>
             <ScrollAnimation animation="slide-up" delay={0.4}>
               <FeatureCard
                 title={t("holographic.mobile.title")}
                 description={t("holographic.mobile.description")}
-                icon={<Smartphone className="h-6 w-6 text-blue-500" />}
+                icon={<Smartphone className="h-6 w-6 text-info" />}
               />
             </ScrollAnimation>
             <ScrollAnimation animation="slide-up" delay={0.5}>
               <FeatureCard
                 title={t("holographic.seo.title")}
                 description={t("holographic.seo.description")}
-                icon={<Globe className="h-6 w-6 text-pink-500" />}
+                icon={<Globe className="h-6 w-6 text-secondary" />}
               />
             </ScrollAnimation>
             <ScrollAnimation animation="slide-up" delay={0.6}>
               <FeatureCard
                 title={t("holographic.auth.title")}
                 description={t("holographic.auth.description")}
-                icon={<Lock className="h-6 w-6 text-red-500" />}
+                icon={<Lock className="h-6 w-6 text-error" />}
               />
             </ScrollAnimation>
           </div>
@@ -325,7 +325,7 @@ export default function HomePage() {
                     {t("pricing.basic.price")}
                   </span>
                   <span className="text-base-content/70">
-                    /month
+                    {t("pricing.perMonth")}
                   </span>
                 </div>
               </CardHeader>
@@ -334,7 +334,7 @@ export default function HomePage() {
                   .raw("pricing.basic.features")
                   .map((feature: string, i: number) => (
                     <div key={i} className="flex items-center gap-2">
-                      <CheckIcon className="h-5 w-5 text-green-600 flex-shrink-0" />
+                      <CheckIcon className="h-5 w-5 text-success flex-shrink-0" />
                       <span>{feature}</span>
                     </div>
                   ))}
@@ -367,7 +367,7 @@ export default function HomePage() {
                     {t("pricing.pro.price")}
                   </span>
                   <span className="text-base-content/70">
-                    /month
+                    {t("pricing.perMonth")}
                   </span>
                 </div>
               </CardHeader>
@@ -418,7 +418,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-black text-white relative overflow-hidden">
+      <section className="py-24 bg-neutral text-neutral-content relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(120,119,198,0.3),transparent)]" />
 
         <div className="container mx-auto px-4 text-center max-w-3xl relative z-10">
@@ -544,12 +544,24 @@ export default function HomePage() {
           </div>
           <div className="pt-8 border-t border-base-300 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm">
-              © 2025 SaaS Starter Kit. All rights reserved.
+              © {new Date().getFullYear()} SaaS Starter Kit. All rights reserved.
             </p>
             <div className="flex gap-4">
-              <div className="w-5 h-5 bg-base-300 rounded-full" />
-              <div className="w-5 h-5 bg-base-300 rounded-full" />
-              <div className="w-5 h-5 bg-base-300 rounded-full" />
+              <a href="https://twitter.com" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" className="fill-current" aria-hidden="true">
+                  <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
+                </svg>
+              </a>
+              <a href="https://youtube.com" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" className="fill-current" aria-hidden="true">
+                  <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
+                </svg>
+              </a>
+              <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" className="fill-current" aria-hidden="true">
+                  <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
+                </svg>
+              </a>
             </div>
           </div>
         </div>

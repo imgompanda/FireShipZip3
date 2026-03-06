@@ -64,12 +64,12 @@ function getStatusVariant(
 }
 
 function getEventBadgeColor(eventType: string): string {
-  if (eventType.includes("created")) return "bg-green-100 text-green-800";
-  if (eventType.includes("updated")) return "bg-blue-100 text-blue-800";
+  if (eventType.includes("created")) return "bg-success/10 text-success";
+  if (eventType.includes("updated")) return "bg-info/10 text-info";
   if (eventType.includes("cancelled") || eventType.includes("failed"))
-    return "bg-red-100 text-red-800";
-  if (eventType.includes("success")) return "bg-emerald-100 text-emerald-800";
-  return "bg-base-200 text-base-content";
+    return "bg-error/10 text-error";
+  if (eventType.includes("success")) return "bg-success/10 text-success";
+  return "bg-neutral text-neutral-content";
 }
 
 export default async function AdminWebhooksPage() {
@@ -87,7 +87,7 @@ export default async function AdminWebhooksPage() {
     <div className="space-y-6">
       <div>
         <h1 className="text-3xl font-bold tracking-tight">{t("title")}</h1>
-        <p className="text-muted-foreground">{t("description")}</p>
+        <p className="text-base-content/60">{t("description")}</p>
       </div>
 
       {/* Stats Cards */}
@@ -107,7 +107,7 @@ export default async function AdminWebhooksPage() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-green-600">
+            <div className="text-2xl font-bold text-success">
               {stats.processed}
             </div>
           </CardContent>
@@ -117,7 +117,7 @@ export default async function AdminWebhooksPage() {
             <CardTitle className="text-sm font-medium">{t("failed")}</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-red-600">
+            <div className="text-2xl font-bold text-error">
               {stats.failed}
             </div>
           </CardContent>
@@ -129,7 +129,7 @@ export default async function AdminWebhooksPage() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-yellow-600">
+            <div className="text-2xl font-bold text-warning">
               {stats.pending}
             </div>
           </CardContent>
@@ -169,13 +169,13 @@ export default async function AdminWebhooksPage() {
                       {event.status}
                     </Badge>
                   </TableCell>
-                  <TableCell className="font-mono text-xs text-muted-foreground">
+                  <TableCell className="font-mono text-xs text-base-content/60">
                     {event.event_id.substring(0, 20)}...
                   </TableCell>
-                  <TableCell className="text-sm text-muted-foreground">
+                  <TableCell className="text-sm text-base-content/60">
                     {new Date(event.created_at).toLocaleString()}
                   </TableCell>
-                  <TableCell className="max-w-[200px] truncate text-sm text-red-600">
+                  <TableCell className="max-w-[200px] truncate text-sm text-error">
                     {event.error_message || "-"}
                   </TableCell>
                 </TableRow>
