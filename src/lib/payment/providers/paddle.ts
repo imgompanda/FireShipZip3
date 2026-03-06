@@ -100,33 +100,31 @@ export class PaddleProvider implements PaymentProvider {
       // Paddle에서는 Transaction을 생성하여 체크아웃 URL을 얻거나,
       // 클라이언트 사이드에서 Paddle.js를 사용하여 overlay checkout을 수행합니다.
       // 여기서는 Transaction 생성 방식을 사용합니다.
+      // Paddle API는 Transaction 생성 시 inline customer 객체를 지원하지 않음.
+      // customer_id가 있으면 포함하고, 없으면 draft 트랜잭션으로 생성하여
+      // Paddle.js overlay checkout에서 고객 정보를 수집합니다.
+      const transactionBody: Record<string, unknown> = {
+        items: [
+          {
+            price_id: params.planId,
+            quantity: 1,
+          },
+        ],
+        custom_data: {
+          user_id: params.userId,
+          ...(params.metadata || {}),
+        },
+      };
+
+      if (params.metadata?.paddle_customer_id) {
+        transactionBody.customer_id = params.metadata.paddle_customer_id;
+      }
+
       const result = await paddleApiRequest<PaddleTransaction>(
         "/transactions",
         {
           method: "POST",
-          body: {
-            items: [
-              {
-                price_id: params.planId,
-                quantity: 1,
-              },
-            ],
-            customer_id: params.metadata?.paddle_customer_id || undefined,
-            ...(params.metadata?.paddle_customer_id
-              ? {}
-              : {
-                  customer: {
-                    email: params.email,
-                  },
-                }),
-            custom_data: {
-              user_id: params.userId,
-              ...(params.metadata || {}),
-            },
-            checkout: {
-              url: params.successUrl,
-            },
-          },
+          body: transactionBody,
         }
       );
 

@@ -1,6 +1,6 @@
 -- =========================================
 -- Supabase Database Schema for SaaS Starter Kit
--- LemonSqueezy 버전
+-- Multi-Payment Provider (LemonSqueezy / Paddle / Toss)
 -- =========================================
 
 -- 1. Users 테이블 (Supabase Auth와 연동)
@@ -66,11 +66,23 @@ ON CONFLICT (id) DO NOTHING;
 CREATE TABLE IF NOT EXISTS public.subscriptions (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   user_id UUID REFERENCES public.users(id) ON DELETE CASCADE NOT NULL,
-  
+
+  -- 결제 프로바이더 (lemon / paddle / toss)
+  payment_provider TEXT NOT NULL DEFAULT 'lemon'
+    CHECK (payment_provider IN ('lemon', 'paddle', 'toss')),
+
   -- LemonSqueezy 식별자
   lemon_customer_id TEXT,
   lemon_subscription_id TEXT UNIQUE,
-  
+
+  -- Paddle 식별자
+  paddle_customer_id TEXT,
+  paddle_subscription_id TEXT,
+
+  -- Toss Payments 식별자
+  toss_customer_key TEXT,
+  toss_billing_key TEXT,
+
   -- 구독 상태 (7가지)
   status TEXT CHECK (status IN (
     'active',      -- 정상 결제 중
@@ -81,22 +93,28 @@ CREATE TABLE IF NOT EXISTS public.subscriptions (
     'canceled',    -- 해지됨
     'paused'       -- 일시정지
   )) DEFAULT 'active',
-  
+
   -- 플랜 정보
   plan_id TEXT,
   plan_name TEXT,
-  
+
   -- 결제 주기
   current_period_start TIMESTAMPTZ,
   current_period_end TIMESTAMPTZ,
-  
+
   -- 해지 예약
   cancel_at_period_end BOOLEAN DEFAULT FALSE,
-  
+
   -- 타임스탬프
   created_at TIMESTAMPTZ DEFAULT NOW(),
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
+
+-- Paddle/Toss 유니크 인덱스 (NULL 제외)
+CREATE UNIQUE INDEX IF NOT EXISTS idx_subscriptions_paddle_sub_id
+  ON public.subscriptions(paddle_subscription_id) WHERE paddle_subscription_id IS NOT NULL;
+CREATE UNIQUE INDEX IF NOT EXISTS idx_subscriptions_toss_billing_key
+  ON public.subscriptions(toss_billing_key) WHERE toss_billing_key IS NOT NULL;
 
 -- RLS 활성화
 ALTER TABLE public.subscriptions ENABLE ROW LEVEL SECURITY;
@@ -133,6 +151,44 @@ CREATE POLICY "No public access to webhook events" ON public.lemon_webhook_event
 -- 인덱스
 CREATE INDEX IF NOT EXISTS idx_lemon_webhook_events_event_type ON public.lemon_webhook_events(event_type);
 CREATE INDEX IF NOT EXISTS idx_lemon_webhook_events_status ON public.lemon_webhook_events(status);
+
+-- 3-2. Paddle Webhook Events 테이블
+-- =========================================
+CREATE TABLE IF NOT EXISTS public.paddle_webhook_events (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  event_id TEXT UNIQUE NOT NULL,
+  event_type TEXT NOT NULL,
+  payload JSONB NOT NULL,
+  status TEXT CHECK (status IN ('pending', 'processed', 'failed')) DEFAULT 'pending',
+  error_message TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  processed_at TIMESTAMPTZ
+);
+
+ALTER TABLE public.paddle_webhook_events ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "No public access to paddle webhook events" ON public.paddle_webhook_events
+  FOR ALL USING (false);
+CREATE INDEX IF NOT EXISTS idx_paddle_webhook_events_event_type ON public.paddle_webhook_events(event_type);
+CREATE INDEX IF NOT EXISTS idx_paddle_webhook_events_status ON public.paddle_webhook_events(status);
+
+-- 3-3. Toss Webhook Events 테이블
+-- =========================================
+CREATE TABLE IF NOT EXISTS public.toss_webhook_events (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  event_id TEXT UNIQUE NOT NULL,
+  event_type TEXT NOT NULL,
+  payload JSONB NOT NULL,
+  status TEXT CHECK (status IN ('pending', 'processed', 'failed')) DEFAULT 'pending',
+  error_message TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  processed_at TIMESTAMPTZ
+);
+
+ALTER TABLE public.toss_webhook_events ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "No public access to toss webhook events" ON public.toss_webhook_events
+  FOR ALL USING (false);
+CREATE INDEX IF NOT EXISTS idx_toss_webhook_events_event_type ON public.toss_webhook_events(event_type);
+CREATE INDEX IF NOT EXISTS idx_toss_webhook_events_status ON public.toss_webhook_events(status);
 
 -- 4. 트리거: updated_at 자동 갱신
 -- =========================================

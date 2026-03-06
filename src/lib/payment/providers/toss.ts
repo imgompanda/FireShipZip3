@@ -304,9 +304,19 @@ export function verifyWebhookSignature(
     // 시그니처 포맷: "v1:{base64_sig1}:{base64_sig2}"
     const match = signature.match(/^v1:(.+?):(.+)$/);
     if (match) {
-      const sig1 = Buffer.from(match[1], "base64").toString();
-      const sig2 = Buffer.from(match[2], "base64").toString();
-      return digest === sig1 || digest === sig2;
+      const sig1 = match[1];
+      const sig2 = match[2];
+      // 타이밍 공격 방지를 위해 timingSafeEqual 사용
+      const digestBuf = Buffer.from(digest);
+      const sig1Buf = Buffer.from(sig1);
+      const sig2Buf = Buffer.from(sig2);
+      const sig1Match =
+        sig1Buf.length === digestBuf.length &&
+        crypto.timingSafeEqual(sig1Buf, digestBuf);
+      const sig2Match =
+        sig2Buf.length === digestBuf.length &&
+        crypto.timingSafeEqual(sig2Buf, digestBuf);
+      return sig1Match || sig2Match;
     }
 
     // v1: 포맷이 아닌 경우 직접 비교 (fallback)

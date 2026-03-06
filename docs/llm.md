@@ -56,7 +56,7 @@ Use this map to find the right manual for each task:
 | **1. Run**        | `docs/01-quick-start` | No        | `npm install`, `.env.local`, ADMIN_EMAILS 설정, `npm run test:env` |
 | **2. Deploy**     | `docs/02-deployment`  | No        | **Vercel 배포 (URL 확정!)** ← 먼저!              |
 | **3. Auth**       | `docs/03-supabase`    | No        | Google Login (localhost + 배포 URL 동시에)       |
-| **4. Pay**        | `docs/04-lemon`       | **YES**   | Products, Webhooks (배포 URL 사용)               |
+| **4. Pay**        | `docs/04-lemon`       | **YES**   | LemonSqueezy / Paddle / Toss 중 선택             |
 | **5. Email**      | `docs/05-resend`      | **YES**   | API Keys, Domain Verification                    |
 | **6. Test**       | -                     | No        | 최종 테스트 (로그인, 결제, 이메일)               |
 | **7+. Polish**    | `docs/07~11`          | **YES**   | AI Customization, Admin, SEO, UI, Support        |
@@ -124,6 +124,57 @@ NEXT_PUBLIC_APP_URL=https://{USER_URL}
   - `src/lib/ai/storage.ts` - Supabase Storage 업로드
 - **대시보드**: `/ai` 경로에서 3탭 (Chat/Image/Video)
 - **참고**: Vercel AI Gateway 첫 가입 시 $5 무료 크레딧 제공
+
+### Multi-Payment Provider (Step 4)
+- **지원 프로바이더**: LemonSqueezy (기본), Paddle, Toss Payments
+- **환경변수**: `NEXT_PUBLIC_PAYMENT_PROVIDER` (lemon / paddle / toss)
+- **구조**: Strategy 패턴 — `PaymentProvider` 인터페이스 + 프로바이더별 구현체
+- **파일 구조**:
+  - `src/lib/payment/types.ts` - PaymentProvider 인터페이스, PaymentProviderType
+  - `src/lib/payment/index.ts` - Provider 팩토리 (getPaymentProvider)
+  - `src/lib/payment/plans.ts` - 통합 플랜 정보 (USD/KRW 가격, 프로바이더별 ID)
+  - `src/lib/payment/providers/lemon.ts` - LemonSqueezy 프로바이더
+  - `src/lib/payment/providers/paddle.ts` - Paddle Billing v2 프로바이더
+  - `src/lib/payment/providers/toss.ts` - Toss Payments 프로바이더
+- **웹훅 라우트**:
+  - `/api/webhooks/lemon` - LemonSqueezy 웹훅
+  - `/api/webhooks/paddle` - Paddle 웹훅 (Paddle-Signature HMAC-SHA256)
+  - `/api/webhooks/toss` - Toss 웹훅 (tosspayments-webhook-signature)
+- **DB**: `subscriptions` 테이블에 `payment_provider`, `paddle_*`, `toss_*` 컬럼 포함
+- **UI**: `PaymentProviderSelector` 컴포넌트 — 로케일 기반 추천 (ko→Toss, 기타→Paddle)
+
+#### Paddle 설정
+- 환경변수: `PADDLE_API_KEY`, `PADDLE_WEBHOOK_SECRET`, `PADDLE_ENVIRONMENT` (sandbox/production)
+- Sandbox 대시보드: https://sandbox-vendors.paddle.com
+- 테스트 카드: `4242 4242 4242 4242`
+
+#### Toss Payments 설정
+- 환경변수: `TOSS_SECRET_KEY`, `TOSS_CLIENT_KEY`, `TOSS_WEBHOOK_SECRET`
+- 개발자센터: https://developers.tosspayments.com
+- 테스트 키: `test_sk_*` / `test_ck_*`
+- KRW 전용 (Basic 9,900원, Pro 29,900원)
+
+#### MCP 서버 (AI 코딩 도구 연동)
+- `.mcp.json`은 `.gitignore`에 포함 (API 키 보호)
+- 사용자가 직접 `.mcp.json` 생성 필요:
+```json
+{
+  "mcpServers": {
+    "supabase": {
+      "type": "http",
+      "url": "https://mcp.supabase.com/mcp?project_ref=YOUR_PROJECT_REF"
+    },
+    "paddle": {
+      "command": "npx",
+      "args": ["-y", "@paddle/paddle-mcp", "--api-key=YOUR_PADDLE_API_KEY", "--environment=sandbox"]
+    },
+    "tosspayments": {
+      "command": "npx",
+      "args": ["-y", "@tosspayments/integration-guide-mcp"]
+    }
+  }
+}
+```
 
 ### Analytics (Step 9)
 - **DB**: `analytics_events` 테이블 (Supabase)
@@ -219,9 +270,9 @@ User chose **NO** for Step 13.
 온보딩 중 사용자에게 반드시 안내할 보안 사항:
 
 ### 데모 모드
-- 데모 모드는 `NEXT_PUBLIC_ENABLE_DEMO=true` 환경변수가 설정된 경우에만 작동합니다.
-- **프로덕션 배포 시 반드시 이 환경변수를 제거하거나 false로 설정하세요.**
+- 로그인 페이지에서 "데모 모드로 체험하기" 버튼으로 활성화 가능합니다.
 - 데모 모드가 활성화되면 어드민 콘솔에 인증 없이 접근 가능합니다.
+- **프로덕션 배포 시 데모 모드 접근을 제한하고 싶다면** 서버 액션에서 조건 분기를 추가하세요.
 
 ### 환경변수 필수/선택 구분
 - `scripts/check-env.js`가 필수/선택을 구분합니다.
