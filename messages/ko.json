@@ -445,6 +445,26 @@
       "colAmount": "금액",
       "colStatus": "상태"
     },
+    "payments": {
+      "title": "결제 대시보드",
+      "description": "프로바이더별 결제 현황을 확인하세요.",
+      "transactionCount": "{count}건 거래",
+      "recentPayments": "최근 결제 내역",
+      "recentPaymentsDescription": "프로바이더별 최근 결제 기록입니다.",
+      "allProviders": "모든 프로바이더",
+      "colProvider": "프로바이더",
+      "colCustomer": "고객",
+      "colPlan": "플랜",
+      "colAmount": "금액",
+      "colStatus": "상태",
+      "colDate": "날짜",
+      "noPayments": "결제 내역이 없습니다.",
+      "monthlyRevenue": "월별 매출",
+      "monthlyRevenueDescription": "프로바이더별 월간 매출 현황",
+      "barChart": "막대 차트",
+      "providerShare": "프로바이더 비율",
+      "providerShareDescription": "매출 기준 비율"
+    },
     "tickets": {
       "title": "지원 티켓",
       "description": "고객 문의 및 지원 요청을 관리합니다.",
@@ -505,6 +525,26 @@
     "submit": "보내기",
     "success": "소중한 의견 감사합니다! ✅",
     "error": "전송 중 오류가 발생했습니다. ❌"
+  },
+  "Payment": {
+    "selectProvider": "결제 수단 선택",
+    "lemon": {
+      "name": "LemonSqueezy",
+      "description": "글로벌 카드 결제"
+    },
+    "paddle": {
+      "name": "Paddle",
+      "description": "글로벌 결제 (PayPal 포함)"
+    },
+    "toss": {
+      "name": "토스페이먼츠",
+      "description": "한국 결제 (카드, 간편결제)"
+    },
+    "recommended": "추천",
+    "checkout": "결제하기",
+    "processing": "처리 중...",
+    "success": "결제가 완료되었습니다",
+    "failed": "결제에 실패했습니다"
   },
   "Blocked": {
     "title": "Hm, 접속이 제한되었습니다",
