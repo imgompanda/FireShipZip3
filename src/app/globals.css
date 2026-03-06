@@ -1,9 +1,92 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
-@plugin "daisyui";
+@plugin "daisyui" {
+  themes: fireship --default, fireship-light;
+}
 
 @custom-variant dark (&:is(.dark *));
+
+/* ========================================
+   FireShip DaisyUI Custom Themes
+   ======================================== */
+
+/* Dark Theme (기본) */
+[data-theme="fireship"] {
+  --color-base-100: #0d0d0d;
+  --color-base-200: #141414;
+  --color-base-300: #1a1a1a;
+  --color-base-content: #e4e4e7;
+
+  --color-primary: #FFBE1A;
+  --color-primary-content: #0d0d0d;
+
+  --color-secondary: #d4c5a9;
+  --color-secondary-content: #0d0d0d;
+
+  --color-accent: #27c93f;
+  --color-accent-content: #0d0d0d;
+
+  --color-neutral: #2a2a2a;
+  --color-neutral-content: #a1a1aa;
+
+  --color-info: #3b82f6;
+  --color-info-content: #ffffff;
+  --color-success: #27c93f;
+  --color-success-content: #0d0d0d;
+  --color-warning: #FFBE1A;
+  --color-warning-content: #0d0d0d;
+  --color-error: #ef4444;
+  --color-error-content: #ffffff;
+
+  --rounded-box: 1rem;
+  --rounded-btn: 0.75rem;
+  --rounded-badge: 9999px;
+  --animation-btn: 0.2s;
+  --animation-input: 0.2s;
+  --btn-focus-scale: 0.97;
+  --border-btn: 1px;
+  --tab-border: 1px;
+  --tab-radius: 0.5rem;
+}
+
+/* Light Theme */
+[data-theme="fireship-light"] {
+  --color-base-100: #ffffff;
+  --color-base-200: #f4f4f5;
+  --color-base-300: #e4e4e7;
+  --color-base-content: #18181b;
+
+  --color-primary: #FFBE1A;
+  --color-primary-content: #0d0d0d;
+
+  --color-secondary: #d4c5a9;
+  --color-secondary-content: #0d0d0d;
+
+  --color-accent: #27c93f;
+  --color-accent-content: #ffffff;
+
+  --color-neutral: #d4d4d8;
+  --color-neutral-content: #3f3f46;
+
+  --color-info: #3b82f6;
+  --color-info-content: #ffffff;
+  --color-success: #27c93f;
+  --color-success-content: #ffffff;
+  --color-warning: #FFBE1A;
+  --color-warning-content: #0d0d0d;
+  --color-error: #ef4444;
+  --color-error-content: #ffffff;
+
+  --rounded-box: 1rem;
+  --rounded-btn: 0.75rem;
+  --rounded-badge: 9999px;
+}
+
+/* ========================================
+   shadcn/ui Compatibility Layer
+   기존 shadcn 컴포넌트가 DaisyUI와 공존하도록 매핑
+   ======================================== */
 
 @theme inline {
   --color-background: var(--background);
@@ -126,7 +209,9 @@
   }
 }
 
-/* Custom Animation Utilities */
+/* ========================================
+   Custom Animation Utilities
+   ======================================== */
 @layer utilities {
   /* Button hover effects */
   .btn-hover-lift {
@@ -229,9 +314,31 @@
 @keyframes glowPulse {
   0%,
   100% {
-    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+    box-shadow: 0 0 5px rgba(255, 190, 26, 0.4);
   }
   50% {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+    box-shadow: 0 0 20px rgba(255, 190, 26, 0.7);
   }
+}
+
+/* Portfolio marquee */
+@keyframes marquee-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes marquee-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-marquee-left {
+  animation: marquee-left 30s linear infinite;
+}
+.animate-marquee-right {
+  animation: marquee-right 30s linear infinite;
+}
+
+.animate-marquee-left:hover,
+.animate-marquee-right:hover {
+  animation-play-state: paused;
 }

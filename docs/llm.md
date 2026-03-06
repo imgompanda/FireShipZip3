@@ -50,16 +50,22 @@ Follow this loop for every milestone:
 
 Use this map to find the right manual for each task:
 
-| Milestone      | Doc Path              | Optional? | Key Objectives                                   |
-| :------------- | :-------------------- | :-------- | :----------------------------------------------- |
-| **0. Prep**    | `docs/00-overview`    | No        | Create accounts (Supabase, LemonSqueezy, Resend) |
-| **1. Run**     | `docs/01-quick-start` | No        | `npm install`, `.env.local`, ADMIN_EMAILS 설정   |
-| **2. Deploy**  | `docs/02-deployment`  | No        | **Vercel 배포 (URL 확정!)** ← 먼저!              |
-| **3. Auth**    | `docs/03-supabase`    | No        | Google Login (localhost + 배포 URL 동시에)       |
-| **4. Pay**     | `docs/04-lemon`       | **YES**   | Products, Webhooks (배포 URL 사용)               |
-| **5. Email**   | `docs/05-resend`      | **YES**   | API Keys, Domain Verification                    |
-| **6. Test**    | -                     | No        | 최종 테스트 (로그인, 결제, 이메일)               |
-| **7+. Polish** | `docs/07~11`          | **YES**   | AI, Admin, SEO, UI, Support                      |
+| Milestone         | Doc Path              | Optional? | Key Objectives                                   |
+| :---------------- | :-------------------- | :-------- | :----------------------------------------------- |
+| **0. Prep**       | `docs/00-overview`    | No        | Create accounts (Supabase, LemonSqueezy, Resend) |
+| **1. Run**        | `docs/01-quick-start` | No        | `npm install`, `.env.local`, ADMIN_EMAILS 설정   |
+| **2. Deploy**     | `docs/02-deployment`  | No        | **Vercel 배포 (URL 확정!)** ← 먼저!              |
+| **3. Auth**       | `docs/03-supabase`    | No        | Google Login (localhost + 배포 URL 동시에)       |
+| **4. Pay**        | `docs/04-lemon`       | **YES**   | Products, Webhooks (배포 URL 사용)               |
+| **5. Email**      | `docs/05-resend`      | **YES**   | API Keys, Domain Verification                    |
+| **6. Test**       | -                     | No        | 최종 테스트 (로그인, 결제, 이메일)               |
+| **7+. Polish**    | `docs/07~11`          | **YES**   | AI Customization, Admin, SEO, UI, Support        |
+| **8. Claude Code**| `docs/13-claude-code` | **YES**   | Claude Code 설치, 팀/에이전트, MCP 연동          |
+| **9. Analytics**  | `docs/14-analytics`   | **YES**   | 내장 아날리틱스 (Supabase 테이블 + 대시보드)     |
+| **10. Storage**   | `docs/15-storage`     | **YES**   | Supabase Storage (AI 이미지/영상 저장)           |
+| **11. AI SDK**    | `docs/16-ai-sdk`      | **YES**   | AI 채팅/이미지/영상 생성 (OPENAI_API_KEY)        |
+| **12. Video**     | `docs/17-video-guide` | No        | 영상 촬영 마스터 가이드                          |
+| **13. RAG Chatbot** | `docs/18-rag-chatbot` | **YES** | RAG AI 챗봇 (Gemini + pgvector)                |
 
 > 🎯 **핵심 변경**: 배포(URL 확정)를 먼저 하고, Supabase/LemonSqueezy 설정 시 localhost + 배포 URL을 **한 번에 설정**!
 
@@ -102,6 +108,50 @@ NEXT_PUBLIC_APP_URL=https://{USER_URL}
 
 ---
 
+## 🤖 New Feature Modules
+
+### AI SDK (Step 11)
+- **환경변수**: `OPENAI_API_KEY` (필수), `FAL_API_KEY` (영상 생성용, 선택)
+- **기능**: 채팅 (GPT-4o 스트리밍), 이미지 생성 (DALL-E 3), 영상 생성 (FAL)
+- **파일 구조**:
+  - `src/app/api/ai/chat/route.ts` - 채팅 API
+  - `src/app/api/ai/image/route.ts` - 이미지 생성 API
+  - `src/app/api/ai/video/route.ts` - 영상 생성 API
+  - `src/components/ai/` - UI 컴포넌트 (ChatInterface, ImageGenerator, VideoGenerator, AILayout)
+  - `src/lib/ai/config.ts` - 모델 설정
+  - `src/lib/ai/storage.ts` - Supabase Storage 업로드
+- **대시보드**: `/ai` 경로에서 3탭 (Chat/Image/Video)
+
+### Analytics (Step 9)
+- **DB**: `analytics_events` 테이블 (Supabase)
+- **파일 구조**:
+  - `src/lib/analytics/` - 클라이언트 트래커 (배치 전송)
+  - `src/app/api/analytics/track/route.ts` - 이벤트 수집 API
+  - `src/app/api/analytics/query/route.ts` - 관리자 조회 API
+  - `src/services/analytics/queries.ts` - 서버 쿼리
+  - `src/components/admin/analytics/` - 차트 컴포넌트
+  - `src/components/shared/AnalyticsProvider.tsx` - 자동 페이지뷰 추적
+- **대시보드**: `/admin/analytics` 관리자 전용
+
+### Claude Code Guide (Step 8)
+- 설치부터 고급 팁까지 5개 문서
+- 팀/에이전트, MCP, 플러그인, 훅 등
+- 바이브코딩 초보자 대상 한국어 가이드
+
+### RAG Chatbot (Step 13)
+- **환경변수**: `GOOGLE_GENERATIVE_AI_API_KEY` (필수)
+- **모델**: Gemini 2.5 Flash Lite (채팅), Gemini embedding-001 768차원 (임베딩)
+- **기능**: RAG 기반 AI 고객 응대 챗봇, 리드 자동 수집
+- **파일 구조**:
+  - `src/lib/ai/rag.ts` - 임베딩 생성 + 유사도 검색
+  - `src/lib/ai/chunker.ts` - 문서 청킹
+  - `src/app/api/chatbot/route.ts` - 챗봇 API (RAG + 스트리밍)
+  - `src/app/api/admin/knowledge/` - 지식 베이스 관리 API
+  - `src/components/chatbot/` - 챗봇 위젯 컴포넌트
+- **대시보드**: `/admin/knowledge` (지식 베이스), `/admin/chatbot` (대화/리드)
+
+---
+
 ## 🛑 Disabling Guide (If User Skips)
 
 If the user chooses to SKIP a module, you MUST guide them to disable the UI components to prevent errors.
@@ -129,6 +179,32 @@ User chose **NO** for Step 4.
 User chose **NO** for Step 10.
 
 - **Action**: Remove "Support" link from Footer/Header.
+
+### 🚫 Skipping AI SDK
+
+User chose **NO** for Step 11.
+
+- **Action**: Remove AI menu from Dashboard Sidebar.
+  - _Target_: `src/components/features/dashboard/DashboardSidebar.tsx`
+  - _Edit_: Remove `{ href: "/ai", icon: Sparkles, label: "AI Studio" }` entry.
+- **Action**: No env vars needed (`OPENAI_API_KEY`, `FAL_API_KEY` not required).
+- **Note**: API routes will return errors gracefully if keys are not set.
+
+### 🚫 Skipping Analytics
+
+User chose **NO** for Step 9.
+
+- **Action**: Remove AnalyticsProvider from root layout (if added).
+- **Action**: Analytics tab in admin layout can remain (will show empty data).
+- **Note**: No DB schema setup needed — the table simply won't exist.
+
+### 🚫 Skipping RAG Chatbot
+
+User chose **NO** for Step 13.
+
+- **Action**: No env vars needed (`GOOGLE_GENERATIVE_AI_API_KEY` not required).
+- **Note**: ChatWidget only renders when `GOOGLE_GENERATIVE_AI_API_KEY` is set.
+- **Action**: If user wants to remove the widget completely, remove `ChatWidgetWrapper` from root layout.
 
 ---
 
@@ -169,25 +245,35 @@ Current Status: **Initializing...**
   - [ ] SEO Config
   - [ ] Admin Console Check
   - [ ] Support System Check
+
+- [ ] **Step 8: Claude Code** (Optional)
+  - [ ] Claude Code 설치
+  - [ ] 프로젝트 세팅
+  - [ ] 팀/에이전트 활용
+
+- [ ] **Step 9: Analytics** (Optional)
+  - [ ] analytics_events 테이블 생성
+  - [ ] AnalyticsProvider 활성화
+  - [ ] 대시보드 확인 (/admin/analytics)
+
+- [ ] **Step 10: Storage** (Optional)
+  - [ ] ai-generated 버킷 생성
+  - [ ] RLS 설정
+
+- [ ] **Step 11: AI SDK** (Optional)
+  - [ ] OPENAI_API_KEY 설정
+  - [ ] 채팅 테스트
+  - [ ] 이미지 생성 테스트
+  - [ ] (선택) FAL_API_KEY 설정
+
+- [ ] **Step 13: RAG Chatbot** (Optional)
+  - [ ] GOOGLE_GENERATIVE_AI_API_KEY 설정
+  - [ ] Supabase pgvector 확장 활성화
+  - [ ] rag-schema.sql 실행
+  - [ ] 지식 베이스 문서 등록 (/admin/knowledge)
+  - [ ] 임베딩 생성
+  - [ ] 챗봇 테스트
 ```
-
----
-
----
-
-## 🧪 Development & Demo Guidelines
-
-This project includes a **Demo Mode** for preview purposes (activated via `demo_mode=true` cookie).
-When detecting this mode, the app uses **Mock Clients/Data** (in `client.ts`, `admin/overview/page.tsx`, etc.) to prevent crashes when Supabase/LemonSqueezy env vars are missing.
-
-### ⚠️ Production Warning (IMPORTANT)
-
-**Use this guideline when the user prepares for Production Launch:**
-
-1.  **Notify User**: Explicitly tell the user about the existence of Test/Mock data.
-    > "현재 프로젝트에는 데모 모드일 때 보여지는 가짜 데이터(Mock Data) 코드가 포함되어 있습니다. 실제 서비스 출시 전에는 이 코드를 정리하거나, `demo_mode` 로직이 실행되지 않도록 확인해주세요."
-2.  **Environment Variables**: Ensure `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` are strictly set in production to avoid falling back to the Mock Client (if logic permits).
-3.  **Cleanup Suggestion**: If the user wants a clean codebase, guide them to remove the `isDemoMode` checks in `src/app/[locale]/admin/**/*.tsx` and `src/utils/supabase/client.ts`.
 
 ---
 
