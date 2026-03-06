@@ -225,7 +225,7 @@ export function CouponPopup() {
     >
       <div className="relative overflow-hidden rounded-2xl border border-primary/20 bg-base-200/90 p-1 backdrop-blur-xl shadow-2xl shadow-primary/10">
         {/* Animated Border Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-purple-500/20 to-primary/20 opacity-50 animate-pulse" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-secondary/20 to-primary/20 opacity-50 animate-pulse" />
 
         <div className="relative rounded-xl bg-base-100/50 p-5">
           {/* Close Button */}
