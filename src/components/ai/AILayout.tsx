@@ -28,9 +28,9 @@ export function AILayout({ videoEnabled }: AILayoutProps) {
   ];
 
   return (
-    <div className="bg-base-100 rounded-xl border border-neutral">
+    <div className="bg-base-100 rounded-xl border border-neutral overflow-hidden">
       {/* Tab Header */}
-      <div className="flex border-b border-neutral">
+      <div className="flex border-b border-neutral bg-base-200/50">
         {tabs.map((tab) => (
           <button
             key={tab.id}

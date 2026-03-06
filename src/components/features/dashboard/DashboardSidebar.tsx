@@ -74,7 +74,7 @@ export function DashboardSidebar({
               href="/"
               className="hover:opacity-80 transition-opacity flex items-center gap-2"
             >
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-purple-600 to-blue-500 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-primary/20">
+              <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-primary to-primary/70 flex items-center justify-center text-primary-content font-bold text-lg shadow-lg shadow-primary/20">
                 S
               </div>
               <span className="text-xl font-bold text-base-content">
@@ -157,7 +157,7 @@ export function DashboardSidebar({
               >
                 <div className="p-6 border-b border-base-300">
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-purple-600 to-blue-500 flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                    <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-primary to-primary/70 flex items-center justify-center text-primary-content font-bold text-lg shadow-lg">
                       S
                     </div>
                     <span className="text-xl font-bold">SaaS Kit</span>

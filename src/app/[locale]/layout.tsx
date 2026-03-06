@@ -1,5 +1,5 @@
 import { Toaster } from "@/components/ui/sonner";
-import { Geist, Geist_Mono } from "next/font/google";
+import { DM_Sans, Geist_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -12,9 +12,10 @@ import { ClientWidgets } from "@/components/shared/ClientWidgets";
 import { ChatWidgetWrapper } from "@/components/chatbot/ChatWidgetWrapper";
 import { AnalyticsProvider } from "@/components/shared/AnalyticsProvider";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const geistMono = Geist_Mono({
@@ -82,7 +83,7 @@ export default async function LocaleLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${dmSans.variable} ${geistMono.variable} font-sans antialiased`}
       >
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider

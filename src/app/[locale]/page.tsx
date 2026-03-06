@@ -50,8 +50,8 @@ export default function HomePage() {
       title: t("deepDives.one.title"), // Global Ready
       description: t("deepDives.one.description"),
       header: (
-        <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-info/20 to-info/5 items-center justify-center">
-          <Globe className="h-12 w-12 text-info" />
+        <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 items-center justify-center">
+          <Globe className="h-12 w-12 text-primary" />
         </div>
       ),
       icon: <Globe className="h-4 w-4 text-neutral-500" />,
@@ -61,8 +61,8 @@ export default function HomePage() {
       title: t("features.secure.title"), // Secure
       description: t("features.secure.description"),
       header: (
-        <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-success/20 to-success/5 items-center justify-center">
-          <Shield className="h-12 w-12 text-success" />
+        <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 items-center justify-center">
+          <Shield className="h-12 w-12 text-primary/80" />
         </div>
       ),
       icon: <Lock className="h-4 w-4 text-neutral-500" />,
@@ -83,8 +83,8 @@ export default function HomePage() {
       title: t("features.deploy.title"), // Fast Deploy
       description: t("features.deploy.description"),
       header: (
-        <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-warning/20 to-warning/5 items-center justify-center">
-          <Rocket className="h-12 w-12 text-warning" />
+        <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 items-center justify-center">
+          <Rocket className="h-12 w-12 text-primary/80" />
         </div>
       ),
       icon: <Gauge className="h-4 w-4 text-neutral-500" />,
@@ -117,7 +117,7 @@ export default function HomePage() {
   ];
 
   return (
-    <div className="flex min-h-screen flex-col bg-transparent selection:bg-primary/20 relative z-10">
+    <div className="flex min-h-screen flex-col bg-base-100 selection:bg-primary/20 relative z-10">
       {/* Header */}
       <Header />
 
@@ -146,13 +146,13 @@ export default function HomePage() {
           text: t("pricing.title"),
           href: "#pricing",
         }}
-        className="bg-transparent" // Transparent to show Parallax
+        className="bg-base-100"
       />
 
       {/* Logo Cloud Section */}
-      <section className="py-12 border-y border-base-300 bg-base-100/50 backdrop-blur-sm">
+      <section className="py-12 border-y border-neutral bg-base-200 backdrop-blur-sm">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-sm font-semibold text-base-content/50 uppercase tracking-widest mb-8">
+          <p className="text-sm font-semibold text-base-content/60 uppercase tracking-widest mb-8">
             {t("logos.title")}
           </p>
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale transition-all hover:grayscale-0 hover:opacity-100">
@@ -176,13 +176,13 @@ export default function HomePage() {
       </section>
 
       {/* BentoGrid Section - Replacing Deep Dives */}
-      <section id="features" className="py-24 bg-transparent">
+      <section id="features" className="py-24 bg-base-100">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-base-content">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-base-content tracking-tight">
               {t("bento.title")}
             </h2>
-            <p className="text-xl text-base-content/70">
+            <p className="text-xl text-base-content/60">
               {t("bento.description")}
             </p>
           </div>
@@ -195,7 +195,7 @@ export default function HomePage() {
                 description={item.description}
                 header={item.header}
                 icon={item.icon}
-                className={item.className + " bg-base-100"}
+                className={item.className + " bg-base-200"}
               />
             ))}
           </BentoGrid>
@@ -203,7 +203,7 @@ export default function HomePage() {
       </section>
 
       {/* Holographic Feature Cards Grid */}
-      <section className="py-24 bg-transparent">
+      <section className="py-24 bg-base-100">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <ScrollAnimation animation="slide-up" delay={0.1}>
@@ -253,13 +253,13 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-24 bg-transparent">
+      <section className="py-24 bg-base-200">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">
+            <h2 className="text-4xl font-bold mb-4 text-base-content">
               {t("testimonial.title")}
             </h2>
-            <p className="text-xl text-base-content/70">
+            <p className="text-xl text-base-content/60">
               {t("testimonial.subtitle")}
             </p>
           </div>
@@ -267,13 +267,13 @@ export default function HomePage() {
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, i) => (
               <ScrollAnimation key={i} animation="slide-up" delay={i * 0.2}>
-                <Card className="h-full bg-base-100 border border-base-300">
+                <Card className="h-full bg-base-100 border border-neutral hover:border-base-content/20 transition-colors">
                   <CardContent className="pt-6">
                     <div className="flex gap-1 mb-4">
                       {[...Array(testimonial.rating)].map((_, i) => (
                         <Star
                           key={i}
-                          className="h-5 w-5 fill-yellow-400 text-yellow-400"
+                          className="h-5 w-5 fill-primary text-primary"
                         />
                       ))}
                     </div>
@@ -283,8 +283,8 @@ export default function HomePage() {
                     <div className="flex items-center gap-3">
                       <span className="text-3xl">{testimonial.avatar}</span>
                       <div>
-                        <p className="font-semibold">{testimonial.name}</p>
-                        <p className="text-sm text-base-content/50">
+                        <p className="text-base-content font-semibold">{testimonial.name}</p>
+                        <p className="text-sm text-base-content/60">
                           {testimonial.role}
                         </p>
                       </div>
@@ -300,19 +300,19 @@ export default function HomePage() {
       {/* Pricing Section */}
       <section
         id="pricing"
-        className="py-24 bg-base-100 border-t border-base-300"
+        className="py-24 bg-base-100 border-t border-neutral"
       >
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">{t("pricing.title")}</h2>
-            <p className="text-xl text-base-content/70">
+            <p className="text-xl text-base-content/60">
               {t("pricing.subtitle")}
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {/* Basic Plan */}
-            <Card className="border border-base-300 shadow-sm hover:shadow-lg transition-all h-full bg-base-100">
+            <Card className="border border-neutral shadow-sm hover:shadow-lg transition-all h-full bg-base-200">
               <CardHeader>
                 <CardTitle className="text-2xl">
                   {t("pricing.basic.name")}
@@ -324,7 +324,7 @@ export default function HomePage() {
                   <span className="text-5xl font-bold">
                     {t("pricing.basic.price")}
                   </span>
-                  <span className="text-base-content/70">
+                  <span className="text-base-content/60">
                     {t("pricing.perMonth")}
                   </span>
                 </div>
@@ -349,9 +349,9 @@ export default function HomePage() {
             </Card>
 
             {/* Pro Plan */}
-            <Card className="border-2 border-primary relative h-full shadow-2xl bg-base-100 overflow-hidden">
+            <Card className="border-2 border-primary relative h-full shadow-2xl bg-base-200 overflow-hidden">
               <div className="absolute top-0 right-0 p-4">
-                <Badge className="bg-primary text-primary-foreground hover:bg-primary/90">
+                <Badge className="bg-primary text-white hover:bg-primary/90">
                   {t("pricing.pro.popular")}
                 </Badge>
               </div>
@@ -366,7 +366,7 @@ export default function HomePage() {
                   <span className="text-5xl font-bold">
                     {t("pricing.pro.price")}
                   </span>
-                  <span className="text-base-content/70">
+                  <span className="text-base-content/60">
                     {t("pricing.perMonth")}
                   </span>
                 </div>
@@ -380,7 +380,7 @@ export default function HomePage() {
                       <span>{feature}</span>
                     </div>
                   ))}
-                <Button className="w-full mt-6 h-12 text-lg font-bold" asChild>
+                <Button className="w-full mt-6 h-12 text-lg font-bold bg-primary text-white hover:brightness-110" asChild>
                   <Link href="/login">{t("pricing.getStarted")}</Link>
                 </Button>
               </CardContent>
@@ -403,12 +403,12 @@ export default function HomePage() {
                 <AccordionItem
                   key={i}
                   value={`item-${i}`}
-                  className="border-b border-base-300"
+                  className="border-b border-neutral"
                 >
                   <AccordionTrigger className="text-left text-lg font-medium hover:no-underline hover:text-primary transition-colors text-base-content">
                     {faq.q}
                   </AccordionTrigger>
-                  <AccordionContent className="text-base text-base-content/70 leading-relaxed">
+                  <AccordionContent className="text-base text-base-content/60 leading-relaxed">
                     {faq.a}
                   </AccordionContent>
                 </AccordionItem>
@@ -418,19 +418,19 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-neutral text-neutral-content relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(120,119,198,0.3),transparent)]" />
+      <section className="py-24 bg-base-200 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,oklch(var(--p)/0.1),transparent)]" />
 
         <div className="container mx-auto px-4 text-center max-w-3xl relative z-10">
-          <h2 className="text-5xl font-extrabold mb-8 tracking-tight">
+          <h2 className="text-5xl font-extrabold mb-8 tracking-tight text-base-content">
             {t("cta.title")}
           </h2>
-          <p className="text-xl mb-12 text-neutral-content/70">{t("cta.description")}</p>
+          <p className="text-xl mb-12 text-base-content/60">{t("cta.description")}</p>
           <Button
             size="lg"
             variant="default"
             asChild
-            className="text-lg px-12 h-16 shadow-2xl bg-base-100 text-base-content hover:bg-base-200"
+            className="text-lg px-12 h-16 shadow-2xl bg-primary text-white hover:brightness-110"
           >
             <Link href="/login">{t("cta.button")} →</Link>
           </Button>
@@ -438,7 +438,7 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="py-16 bg-base-200 border-t border-base-300 text-base-content/70">
+      <footer className="py-16 bg-base-100 border-t border-neutral text-base-content/60">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
             <div>
@@ -542,8 +542,8 @@ export default function HomePage() {
               </ul>
             </div>
           </div>
-          <div className="pt-8 border-t border-base-300 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm">
+          <div className="pt-8 border-t border-neutral flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-sm text-base-content/40">
               © {new Date().getFullYear()} SaaS Starter Kit. All rights reserved.
             </p>
             <div className="flex gap-4">

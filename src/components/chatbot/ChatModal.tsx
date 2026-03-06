@@ -1,8 +1,14 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import { useChat } from "@ai-sdk/react";
+import { DefaultChatTransport } from "ai";
 import { ContactForm } from "./ContactForm";
+
+function getTextContent(msg: { parts?: Array<{ type: string; text?: string }>; content?: string }): string {
+  if (msg.content) return msg.content;
+  return msg.parts?.filter((p) => p.type === "text").map((p) => p.text ?? "").join("") ?? "";
+}
 
 interface ChatModalProps {
   sessionId: string;
@@ -22,19 +28,28 @@ export function ChatModal({
   onClose,
 }: ChatModalProps) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const [input, setInput] = useState("");
 
-  const { messages, input, setInput, handleSubmit, status } = useChat({
-    api: "/api/chatbot",
-    body: { sessionId, language, visitorContext },
-    initialMessages: [
-      {
-        id: "greeting",
-        role: "assistant" as const,
-        content: greeting,
-        parts: [{ type: "text" as const, text: greeting }],
-      },
-    ],
+  const [transport] = useState(
+    () =>
+      new DefaultChatTransport({
+        api: "/api/chatbot",
+        body: { sessionId, language, visitorContext },
+      })
+  );
+
+  const { messages: chatMessages, sendMessage, status } = useChat({
+    transport,
   });
+
+  const greetingMessage = {
+    id: "greeting",
+    role: "assistant" as const,
+    content: greeting,
+    parts: [{ type: "text" as const, text: greeting }],
+  };
+
+  const messages = [greetingMessage, ...chatMessages];
 
   // 자동 스크롤
   useEffect(() => {
@@ -61,7 +76,7 @@ export function ChatModal({
     lastBotMsg &&
     messages.length >= 4 &&
     CONTACT_TRIGGERS.some((kw) =>
-      lastBotMsg.content.toLowerCase().includes(kw)
+      getTextContent(lastBotMsg).toLowerCase().includes(kw)
     );
 
   return (
@@ -106,7 +121,7 @@ export function ChatModal({
                   : undefined
               }
             >
-              {msg.content}
+              {getTextContent(msg)}
             </div>
           </div>
         ))}
@@ -137,7 +152,13 @@ export function ChatModal({
 
       {/* Input */}
       <form
-        onSubmit={handleSubmit}
+        onSubmit={(e) => {
+          e.preventDefault();
+          if (input.trim()) {
+            sendMessage({ text: input });
+            setInput("");
+          }
+        }}
         className="border-t border-neutral px-3 py-2 flex gap-2"
       >
         <input

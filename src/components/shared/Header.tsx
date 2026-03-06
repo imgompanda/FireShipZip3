@@ -41,12 +41,12 @@ export function Header() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-base-100/80 backdrop-blur-md border-b border-base-300">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-base-100/80 backdrop-blur-md border-b border-neutral">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-lg bg-gradient-to-tr from-purple-600 to-blue-500 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-primary/20">
+            <div className="w-7 h-7 rounded-lg bg-gradient-to-tr from-primary to-primary/70 flex items-center justify-center text-primary-content font-bold text-sm shadow-lg shadow-primary/20">
               S
             </div>
             <span className="text-xl font-bold text-base-content">
@@ -60,7 +60,7 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm font-medium text-base-content/70 hover:text-base-content transition-colors"
+                className="text-sm font-medium text-base-content/60 hover:text-base-content transition-colors"
               >
                 {item.label}
               </Link>
@@ -115,14 +115,14 @@ export function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-base-100 border-b border-base-300"
+            className="md:hidden bg-base-100 border-b border-neutral"
           >
             <div className="container mx-auto px-4 py-4 space-y-4">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="block py-3 text-lg font-medium text-base-content/70"
+                  className="block py-3 text-lg font-medium text-base-content/60"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.label}

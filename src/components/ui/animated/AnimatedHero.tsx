@@ -2,10 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ArrowRight, Zap } from "lucide-react";
-import Image from "next/image";
 
 interface AnimatedHeroProps {
   badge?: string;
@@ -21,7 +19,7 @@ interface AnimatedHeroProps {
     text: string;
     href: string;
   };
-  imageSrc?: string; // Optional right-side tech stack image or whatever
+  imageSrc?: string;
   className?: string;
 }
 
@@ -33,54 +31,26 @@ export function AnimatedHero({
   description,
   primaryCta,
   secondaryCta,
-  imageSrc,
   className,
 }: AnimatedHeroProps) {
   const containerRef = useRef<HTMLElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // 1. Fade in text elements stagger
-      if (textRef.current) {
+      if (contentRef.current) {
         gsap.fromTo(
-          textRef.current.children,
+          contentRef.current.children,
           { opacity: 0, y: 30 },
           {
             opacity: 1,
             y: 0,
             duration: 0.8,
-            stagger: 0.1,
+            stagger: 0.12,
             ease: "power3.out",
             delay: 0.1,
           }
         );
-      }
-
-      // 2. Floating image animation
-      if (imageRef.current) {
-        gsap.fromTo(
-          imageRef.current,
-          { opacity: 0, x: 50, rotateY: -10 },
-          {
-            opacity: 1,
-            x: 0,
-            rotateY: 0,
-            duration: 1,
-            ease: "power3.out",
-            delay: 0.4,
-          }
-        );
-
-        // Continuous float
-        gsap.to(imageRef.current, {
-          y: -15,
-          duration: 3,
-          repeat: -1,
-          yoyo: true,
-          ease: "power1.inOut",
-        });
       }
     }, containerRef);
 
@@ -94,112 +64,76 @@ export function AnimatedHero({
         "relative min-h-[90vh] flex items-center pt-20 pb-20 overflow-hidden bg-base-100",
         className
       )}
-      style={{ perspective: "1000px" }}
     >
-      {/* Background Gradients */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(120,119,198,0.1),transparent)] pointer-events-none" />
+      {/* Subtle top gradient */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_-10%,oklch(var(--p)/0.08),transparent)] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div ref={textRef} className="space-y-6 max-w-2xl">
-            {badge && (
-              <div className="inline-flex items-center px-3 py-1 rounded-full border border-base-300 bg-base-100 text-base-content/70 text-sm font-medium">
-                <span className="mr-2">✨</span> {badge}
+        <div
+          ref={contentRef}
+          className="flex flex-col items-center text-center max-w-4xl mx-auto space-y-6"
+        >
+          {/* Badge */}
+          {badge && (
+            <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-neutral bg-base-200 text-base-content/60 text-sm font-medium">
+              <Zap className="mr-2 h-3.5 w-3.5 text-primary" />
+              {badge}
+            </div>
+          )}
+
+          {/* Headline */}
+          <div className="space-y-3">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-base-content leading-[1.1]">
+              {title1}
+            </h1>
+            {(title2Prefix || title2Highlight) && (
+              <div className="text-3xl md:text-5xl lg:text-6xl font-bold text-base-content/60 flex flex-wrap items-center justify-center gap-3">
+                {title2Prefix && <span>{title2Prefix}</span>}
+                {title2Highlight && (
+                  <span className="text-primary">
+                    {title2Highlight}
+                  </span>
+                )}
               </div>
             )}
-
-            <div className="space-y-2">
-              <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-base-content leading-[1.1]">
-                {title1}
-              </h1>
-              {(title2Prefix || title2Highlight) && (
-                <div className="text-3xl md:text-5xl font-bold text-base-content/60 flex flex-wrap items-center gap-2">
-                  <span>{title2Prefix}</span>
-                  {title2Highlight && (
-                    <span className="text-base-content bg-primary/10 px-2 rounded-lg text-primary">
-                      {title2Highlight}
-                    </span>
-                  )}
-                </div>
-              )}
-            </div>
-
-            <p className="text-lg md:text-xl text-base-content/60 leading-relaxed max-w-lg">
-              {description}
-            </p>
-
-            <div className="flex flex-wrap gap-4 pt-2">
-              <Button
-                size="lg"
-                className="text-lg h-12 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all"
-                asChild
-              >
-                <a href={primaryCta.href}>
-                  <Zap className="mr-2 h-5 w-5 fill-current" />
-                  {primaryCta.text}
-                </a>
-              </Button>
-              {secondaryCta && (
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="text-lg h-12 px-8 rounded-xl bg-base-100/50 backdrop-blur-sm"
-                  asChild
-                >
-                  <a href={secondaryCta.href}>
-                    {secondaryCta.text} <ArrowRight className="ml-2 h-5 w-5" />
-                  </a>
-                </Button>
-              )}
-            </div>
-
-            {/* Simple Social Proof */}
-            <div className="pt-6 flex items-center gap-4 text-sm text-base-content/60">
-              <div className="flex -space-x-3">
-                {[1, 2, 3, 4].map((i) => (
-                  <div
-                    key={i}
-                    className="w-8 h-8 rounded-full border-2 border-base-100 bg-base-300"
-                  />
-                ))}
-              </div>
-              <p>Trusted by 100+ creative developers</p>
-            </div>
           </div>
 
-          {/* Right Image / Visual */}
-          <div
-            ref={imageRef}
-            className="hidden lg:block relative perspective-1000"
-          >
-            {imageSrc ? (
-              <Image
-                src={imageSrc}
-                alt="Hero Visual"
-                width={600}
-                height={600}
-                className="object-contain drop-shadow-2xl"
-              />
-            ) : (
-              /* Default abstract visual if no image provided */
-              <div className="w-full h-[500px] bg-gradient-to-tr from-primary/20 via-primary/5 to-transparent rounded-3xl border border-white/10 backdrop-blur-3xl shadow-2xl flex items-center justify-center p-8 relative overflow-hidden group">
-                <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:32px_32px]" />
-                <div className="w-32 h-32 bg-primary/30 rounded-full blur-3xl absolute top-10 right-10 animate-pulse" />
-                <div className="w-48 h-48 bg-purple-500/20 rounded-full blur-3xl absolute bottom-10 left-10" />
+          {/* Description */}
+          <p className="text-lg md:text-xl text-base-content/60 leading-relaxed max-w-2xl">
+            {description}
+          </p>
 
-                <div className="relative z-10 text-center space-y-4 p-6 bg-base-100/40 backdrop-blur-md rounded-2xl border border-white/10 shadow-xl transform transition-transform group-hover:scale-105 duration-500">
-                  <div className="w-16 h-16 bg-primary rounded-2xl mx-auto flex items-center justify-center shadow-lg mb-4">
-                    <Zap className="w-8 h-8 text-primary-foreground" />
-                  </div>
-                  <h3 className="text-2xl font-bold">State of the Art</h3>
-                  <p className="text-base-content/60">
-                    Your SaaS deserves a<br />
-                    stunning landing page.
-                  </p>
-                </div>
-              </div>
+          {/* CTA Buttons */}
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+            <a
+              href={primaryCta.href}
+              className="inline-flex items-center justify-center text-lg font-semibold h-12 px-8 rounded-xl bg-primary text-primary-content hover:brightness-110 transition-all duration-200 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30"
+            >
+              <Zap className="mr-2 h-5 w-5 fill-current" />
+              {primaryCta.text}
+            </a>
+            {secondaryCta && (
+              <a
+                href={secondaryCta.href}
+                className="inline-flex items-center justify-center text-lg font-semibold h-12 px-8 rounded-xl border border-neutral text-base-content/60 hover:border-base-content/30 hover:text-base-content bg-transparent transition-all duration-200"
+              >
+                {secondaryCta.text}
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </a>
             )}
+          </div>
+
+          {/* Social Proof */}
+          <div className="pt-6 flex items-center gap-4 text-sm text-base-content/60">
+            <div className="flex -space-x-3">
+              {[1, 2, 3, 4].map((i) => (
+                <div
+                  key={i}
+                  className="w-8 h-8 rounded-full border-2 border-base-100 bg-neutral"
+                />
+              ))}
+            </div>
+            <p>Trusted by 100+ creative developers</p>
           </div>
         </div>
       </div>

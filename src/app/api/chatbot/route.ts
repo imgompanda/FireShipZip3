@@ -115,7 +115,7 @@ export async function POST(req: Request) {
       collect_contact: tool({
         description:
           "Save visitor contact information as a lead. Call this when the user provides their name, email, or phone number.",
-        parameters: z.object({
+        inputSchema: z.object({
           name: z.string().describe("Visitor name"),
           email: z.string().describe("Visitor email address"),
           phone: z
@@ -143,7 +143,7 @@ export async function POST(req: Request) {
         },
       }),
     },
-    maxTokens: RAG_CONFIG.maxOutputTokens,
+    maxOutputTokens: RAG_CONFIG.maxOutputTokens,
     onFinish: async ({ text }) => {
       if (text) {
         await appendMessage(supabase, conversationId, {
