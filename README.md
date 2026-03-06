@@ -299,7 +299,7 @@ B2B SaaS, AI 도구, 구독형 서비스, 마켓플레이스 등 뭐든 가능�
 - 기수별 단톡방 + **수료생 전용 커뮤니티**
 - S전자 강의 만족도 **4.8점** · **10명 한정** 소수 정예
 
-**[부트캠프 자세히 보기 →](https://fireship.me/ko/bootcamp)**
+**[부트캠프 자세히 보기 →](https://fireship.me/ko/bootcamp?utm_source=github&utm_medium=readme&utm_campaign=fireshipzip3)**
 
 ---
 
@@ -315,17 +315,17 @@ B2B SaaS, AI 도구, 구독형 서비스, 마켓플레이스 등 뭐든 가능�
 
 S전자 MX·VD 사업부 교육 · B2B SaaS $8K MRR 달성
 
-**[기업 문의하기 →](https://fireship.me/ko/enterprise)**
+**[기업 문의하기 →](https://fireship.me/ko/enterprise?utm_source=github&utm_medium=readme&utm_campaign=fireshipzip3)**
 
 ---
 
 ## About
 
-Made by [FreAiner](https://fireship.me)
+Made by [FreAiner](https://fireship.me?utm_source=github&utm_medium=readme&utm_campaign=fireshipzip3)
 
 1년간 Claude Code로 AI 서비스 40개를 만들고, 그 중 3개를 수익화한 1인 개발자예요.
 
-- Web: [fireship.me](https://fireship.me)
+- Web: [fireship.me](https://fireship.me?utm_source=github&utm_medium=readme&utm_campaign=fireshipzip3)
 - Threads: [@freainer](https://www.threads.net/@freainer)
 - Plugin: [fireauto](https://github.com/imgompanda/fireauto)
 
