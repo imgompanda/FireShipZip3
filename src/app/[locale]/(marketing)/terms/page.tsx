@@ -16,11 +16,11 @@ export default async function TermsPage() {
   const t = await getTranslations("Legal");
 
   return (
-    <div className="flex min-h-screen flex-col bg-white dark:bg-black">
+    <div className="flex min-h-screen flex-col bg-base-100">
       <Header />
       <main className="flex-1 container mx-auto px-4 py-16 max-w-3xl">
         <h1 className="text-4xl font-bold mb-8">{t("termsTitle")}</h1>
-        <div className="prose dark:prose-invert max-w-none prose-headings:text-black dark:prose-headings:text-white prose-p:text-black dark:prose-p:text-white prose-li:text-black dark:prose-li:text-white prose-strong:text-black dark:prose-strong:text-white">
+        <div className="prose dark:prose-invert max-w-none prose-headings:text-base-content prose-p:text-base-content prose-li:text-base-content prose-strong:text-base-content">
           <p className="lead">{t("lastUpdated")}: 2025-01-01</p>
 
           <h2>1. {t("terms.introduction")}</h2>

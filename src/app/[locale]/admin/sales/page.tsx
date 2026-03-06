@@ -83,7 +83,7 @@ export default async function AdminSalesPage({
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold">{t("title")}</h1>
-          <p className="text-zinc-500 dark:text-zinc-400 mt-2">
+          <p className="text-base-content/50 mt-2">
             {t("description")}
           </p>
         </div>
@@ -98,7 +98,7 @@ export default async function AdminSalesPage({
         <CardContent>
           <div className="relative overflow-x-auto">
             <table className="w-full text-sm text-left">
-              <thead className="text-xs text-zinc-500 uppercase bg-zinc-50 dark:bg-zinc-800">
+              <thead className="text-xs text-base-content/50 uppercase bg-base-200">
                 <tr>
                   <th className="px-4 py-3 rounded-l-lg">{t("colDate")}</th>
                   <th className="px-4 py-3">{t("colCustomer")}</th>
@@ -112,7 +112,7 @@ export default async function AdminSalesPage({
                   (purchases as unknown as AdminPurchase[]).map((purchase) => (
                     <tr
                       key={purchase.id}
-                      className="bg-white dark:bg-zinc-900 border-b dark:border-zinc-800"
+                      className="bg-base-100 border-b border-base-300"
                     >
                       <td className="px-4 py-3">
                         {new Date(purchase.created_at).toLocaleDateString()}
@@ -123,7 +123,7 @@ export default async function AdminSalesPage({
                       <td className="px-4 py-3 font-medium">
                         {purchase.product_name}
                         {purchase.variant_name && (
-                          <span className="block text-xs text-zinc-500">
+                          <span className="block text-xs text-base-content/50">
                             {purchase.variant_name}
                           </span>
                         )}
@@ -145,7 +145,7 @@ export default async function AdminSalesPage({
                   <tr>
                     <td
                       colSpan={5}
-                      className="px-4 py-8 text-center text-zinc-500"
+                      className="px-4 py-8 text-center text-base-content/50"
                     >
                       No sales found.
                     </td>

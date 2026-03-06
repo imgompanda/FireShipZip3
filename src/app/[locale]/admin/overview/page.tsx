@@ -124,7 +124,7 @@ export default async function AdminOverviewPage() {
   return (
     <div className="space-y-6 max-w-[1600px] mx-auto">
       <ScrollAnimation animation="fade-in">
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+        <h1 className="text-3xl font-bold tracking-tight text-base-content">
           {t("title")}
         </h1>
       </ScrollAnimation>
@@ -161,18 +161,18 @@ export default async function AdminOverviewPage() {
           },
         ].map((item, idx) => (
           <ScrollAnimation key={idx} animation="slide-up" delay={item.delay}>
-            <Card className="hover:shadow-lg transition-shadow duration-300 border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40">
+            <Card className="hover:shadow-lg transition-shadow duration-300 border-base-300 bg-base-100">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
+                <CardTitle className="text-sm font-medium text-base-content/70">
                   {item.title}
                 </CardTitle>
-                <item.icon className="h-4 w-4 text-zinc-400" />
+                <item.icon className="h-4 w-4 text-base-content/50" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+                <div className="text-2xl font-bold tracking-tight text-base-content">
                   {item.value}
                 </div>
-                <p className="text-xs text-zinc-500">{item.desc}</p>
+                <p className="text-xs text-base-content/50">{item.desc}</p>
               </CardContent>
             </Card>
           </ScrollAnimation>
@@ -183,15 +183,15 @@ export default async function AdminOverviewPage() {
         <div className="col-span-4">
           <ScrollAnimation animation="slide-up" delay={0.5}>
             {/* 래퍼나 추가 스타일링을 위해 div로 감쌈 */}
-            <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40 p-1 shadow-sm hover:shadow-md transition-shadow">
+            <div className="rounded-xl border border-base-300 bg-base-100 p-1 shadow-sm hover:shadow-md transition-shadow">
               <AdminChart data={chartData} />
             </div>
           </ScrollAnimation>
         </div>
-        <Card className="col-span-3 border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40 shadow-sm">
+        <Card className="col-span-3 border-base-300 bg-base-100 shadow-sm">
           <ScrollAnimation animation="slide-up" delay={0.6}>
             <CardHeader>
-              <CardTitle className="text-zinc-900 dark:text-zinc-50">
+              <CardTitle className="text-base-content">
                 {t("recentSubscriptions")}
               </CardTitle>
             </CardHeader>
@@ -199,29 +199,29 @@ export default async function AdminOverviewPage() {
               <div className="space-y-5">
                 {recentSubs?.map((sub: Subscription) => (
                   <div key={sub.id} className="flex items-center group">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700">
-                      <Users className="h-4 w-4 text-zinc-500" />
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-base-200 border border-base-300">
+                      <Users className="h-4 w-4 text-base-content/50" />
                     </div>
                     <div className="ml-4 space-y-1">
-                      <p className="text-sm font-medium leading-none text-zinc-900 dark:text-zinc-100 group-hover:text-purple-600 transition-colors">
+                      <p className="text-sm font-medium leading-none text-base-content group-hover:text-primary transition-colors">
                         {sub.user_id.substring(0, 8)}...
                       </p>
-                      <p className="text-xs text-zinc-500">
+                      <p className="text-xs text-base-content/50">
                         {sub.plan_name} • {sub.status}
                       </p>
                     </div>
                     <div className="ml-auto flex flex-col items-end">
-                      <span className="font-medium text-sm text-zinc-900 dark:text-zinc-100">
+                      <span className="font-medium text-sm text-base-content">
                         {sub.status === "active" ? "+$19.00" : "$0.00"}
                       </span>
-                      <span className="text-[10px] text-zinc-400">
+                      <span className="text-[10px] text-base-content/50">
                         {new Date(sub.updated_at).toLocaleDateString()}
                       </span>
                     </div>
                   </div>
                 ))}
                 {!recentSubs?.length && (
-                  <p className="text-sm text-zinc-500 py-4 text-center">
+                  <p className="text-sm text-base-content/50 py-4 text-center">
                     {t("noSubscriptions")}
                   </p>
                 )}

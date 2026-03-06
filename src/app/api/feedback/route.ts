@@ -4,11 +4,16 @@ import { createClient } from "@/utils/supabase/server";
 
 export async function POST(request: Request) {
   try {
-    const { message } = await request.json();
     const supabase = await createClient();
     const {
       data: { user },
     } = await supabase.auth.getUser();
+
+    if (!user) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const { message } = await request.json();
 
     // Send email to admin
     const { error } = await resend.emails.send({

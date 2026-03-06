@@ -160,7 +160,7 @@ export default async function SubscriptionPage() {
       <div className="space-y-6 max-w-5xl mx-auto">
         <div>
           <h1 className="text-3xl font-bold">{t("title")}</h1>
-          <p className="text-zinc-600 dark:text-zinc-400 mt-1">
+          <p className="text-base-content/70 mt-1">
             {t("description")}
           </p>
         </div>
@@ -227,10 +227,10 @@ export default async function SubscriptionPage() {
                         </span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-sm font-medium text-zinc-500">
+                        <span className="text-sm font-medium text-base-content/50">
                           {t("startDateOnly")}
                         </span>
-                        <span className="text-sm text-zinc-500">
+                        <span className="text-sm text-base-content/50">
                           {currentPlan.createdAt}
                         </span>
                       </div>
@@ -269,7 +269,7 @@ export default async function SubscriptionPage() {
                   )}
                 </div>
                 {isDemoMode && (
-                  <p className="text-xs text-zinc-500 mt-2">
+                  <p className="text-xs text-base-content/50 mt-2">
                     * Billing actions are disabled in Demo Mode.
                   </p>
                 )}
@@ -288,7 +288,7 @@ export default async function SubscriptionPage() {
                 {allPayments.length > 0 ? (
                   <div className="relative overflow-x-auto">
                     <table className="w-full text-sm text-left">
-                      <thead className="text-xs text-zinc-500 uppercase bg-zinc-50 dark:bg-zinc-800">
+                      <thead className="text-xs text-base-content/50 uppercase bg-base-200">
                         <tr>
                           <th className="px-4 py-3 rounded-l-lg">
                             {t("colDate")}
@@ -305,7 +305,7 @@ export default async function SubscriptionPage() {
                         {allPayments.map((purchase: Purchase, i: number) => (
                           <tr
                             key={i}
-                            className="bg-white dark:bg-zinc-900 border-b dark:border-zinc-800"
+                            className="bg-base-100 border-b border-base-300"
                           >
                             <td className="px-4 py-3">
                               {new Date(
@@ -315,7 +315,7 @@ export default async function SubscriptionPage() {
                             <td className="px-4 py-3 font-medium">
                               {purchase.product_name}
                               {purchase.variant_name && (
-                                <span className="block text-xs text-zinc-500">
+                                <span className="block text-xs text-base-content/50">
                                   {purchase.variant_name}
                                 </span>
                               )}
@@ -355,7 +355,7 @@ export default async function SubscriptionPage() {
                     </table>
                   </div>
                 ) : (
-                  <p className="text-sm text-zinc-500 text-center py-4">
+                  <p className="text-sm text-base-content/50 text-center py-4">
                     {t("noPurchases")}
                   </p>
                 )}

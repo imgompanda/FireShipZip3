@@ -31,14 +31,14 @@ import {
 } from "@/services/auth/actions";
 import { Loader2 } from "lucide-react";
 
-// 1. Zod Schema Definition
-const formSchema = z.object({
-  email: z.string().email({ message: "Invalid email address" }),
-});
-
 export function AuthForm() {
   const t = useTranslations("Auth");
   const [message, setMessage] = useState<string | null>(null);
+
+  // 1. Zod Schema Definition (i18n 메시지 사용을 위해 컴포넌트 내부에 정의)
+  const formSchema = z.object({
+    email: z.string().email({ message: t("invalidEmail") }),
+  });
 
   // 2. Form Hook Initialization
   const form = useForm<z.infer<typeof formSchema>>({
@@ -111,7 +111,7 @@ export function AuthForm() {
           className="w-full"
           type="button"
         >
-          🚀 Try Demo Mode
+          {t("tryDemoMode")}
         </Button>
 
         {/* Soft Agreement Notice */}

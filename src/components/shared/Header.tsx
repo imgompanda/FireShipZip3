@@ -19,12 +19,10 @@ export function Header() {
   useEffect(() => {
     const checkUser = async () => {
       try {
-        console.log("Header: Checking user session...");
         const supabase = createClient();
         const {
           data: { user },
         } = await supabase.auth.getUser();
-        console.log("Header: User found:", user?.email);
         setUser(user);
       } catch (error) {
         console.error("Auth check failed", error);
@@ -75,7 +73,7 @@ export function Header() {
               <div className="hidden md:flex items-center gap-3">
                 {user ? (
                   <Button size="sm" asChild>
-                    <Link href="/dashboard">Dashboard</Link>
+                    <Link href="/dashboard">{t("dashboard")}</Link>
                   </Button>
                 ) : (
                   <>
@@ -128,7 +126,7 @@ export function Header() {
               <div className="pt-4 space-y-2">
                 {user ? (
                   <Button className="w-full" asChild>
-                    <Link href="/dashboard">Dashboard</Link>
+                    <Link href="/dashboard">{t("dashboard")}</Link>
                   </Button>
                 ) : (
                   <Button className="w-full" asChild>

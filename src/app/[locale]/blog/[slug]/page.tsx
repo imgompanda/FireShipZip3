@@ -64,14 +64,14 @@ export default async function BlogPostPage({
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black">
+    <div className="min-h-screen bg-base-100">
       <Header />
 
       <main className="container mx-auto py-24 px-4 max-w-3xl">
         {/* Back Link */}
         <Link
           href="/blog"
-          className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 mb-8 transition-colors"
+          className="inline-flex items-center gap-2 text-sm text-base-content/50 hover:text-base-content mb-8 transition-colors"
         >
           <ArrowLeft className="h-4 w-4" />
           {locale === "ko" ? "블로그로 돌아가기" : "Back to Blog"}
@@ -85,10 +85,10 @@ export default async function BlogPostPage({
           <h1 className="text-4xl sm:text-5xl font-bold mb-4 leading-tight">
             {post.title}
           </h1>
-          <p className="text-xl text-zinc-600 dark:text-zinc-400 mb-6">
+          <p className="text-xl text-base-content/70 mb-6">
             {post.description}
           </p>
-          <div className="flex items-center gap-4 text-sm text-zinc-500 dark:text-zinc-400">
+          <div className="flex items-center gap-4 text-sm text-base-content/50">
             <span className="flex items-center gap-1">
               <Calendar className="h-4 w-4" />
               {formatDate(post.date)}
@@ -102,15 +102,15 @@ export default async function BlogPostPage({
         </header>
 
         {/* Post Content */}
-        <article className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:text-black dark:prose-headings:text-white prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-p:leading-relaxed prose-p:text-black dark:prose-p:text-white prose-li:text-black dark:prose-li:text-white prose-strong:text-black dark:prose-strong:text-white prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-code:bg-zinc-200 dark:prose-code:bg-zinc-800 prose-code:text-pink-600 dark:prose-code:text-pink-400 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:font-mono prose-pre:bg-zinc-950 prose-pre:text-zinc-50">
+        <article className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:text-base-content prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-p:leading-relaxed prose-p:text-base-content prose-li:text-base-content prose-strong:text-base-content prose-a:text-info prose-a:no-underline hover:prose-a:underline prose-code:bg-base-200 prose-code:text-error prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:font-mono prose-pre:bg-neutral prose-pre:text-neutral-content">
           <MDXRemote source={post.content} />
         </article>
 
         {/* Footer */}
-        <div className="border-t border-zinc-200 dark:border-zinc-800 mt-16 pt-8">
+        <div className="border-t border-base-300 mt-16 pt-8">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-sm font-medium text-zinc-900 dark:text-zinc-100 hover:gap-3 transition-all"
+            className="inline-flex items-center gap-2 text-sm font-medium text-base-content hover:gap-3 transition-all"
           >
             <ArrowLeft className="h-4 w-4" />
             {locale === "ko" ? "다른 글 보기" : "See all posts"}
@@ -119,8 +119,8 @@ export default async function BlogPostPage({
       </main>
 
       {/* Footer */}
-      <footer className="py-12 border-t border-zinc-200 dark:border-zinc-800">
-        <div className="container mx-auto px-4 text-center text-zinc-600 dark:text-zinc-400">
+      <footer className="py-12 border-t border-base-300">
+        <div className="container mx-auto px-4 text-center text-base-content/70">
           <p>© 2025 SaaS Kit. Built with ❤️ for indie hackers.</p>
         </div>
       </footer>

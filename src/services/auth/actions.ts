@@ -71,6 +71,9 @@ export async function logout() {
  * Enables Demo Mode for previewing the dashboard without login.
  */
 export async function enableDemoMode() {
+  if (process.env.NEXT_PUBLIC_ENABLE_DEMO !== "true") {
+    return { error: "Demo mode is disabled" };
+  }
   const cookieStore = await cookies();
   cookieStore.set("demo_mode", "true", { path: "/" });
   redirect("/dashboard");

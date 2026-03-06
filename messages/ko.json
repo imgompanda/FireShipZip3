@@ -5,7 +5,8 @@
     "faq": "FAQ",
     "blog": "블로그",
     "login": "로그인",
-    "getStarted": "시작하기"
+    "getStarted": "시작하기",
+    "dashboard": "대시보드"
   },
   "Metadata": {
     "title": "SaaS 스타터 키트",
@@ -229,7 +230,9 @@
     "email": "이메일",
     "sendMagicLink": "로그인 링크 받기",
     "magicLinkSent": "이메일을 확인해주세요!",
-    "softAgreement": "로그인 시 <terms>이용약관</terms> 및 <privacy>개인정보처리방침</privacy>에 동의하는 것으로 간주됩니다."
+    "softAgreement": "로그인 시 <terms>이용약관</terms> 및 <privacy>개인정보처리방침</privacy>에 동의하는 것으로 간주됩니다.",
+    "tryDemoMode": "데모 모드 체험하기",
+    "invalidEmail": "올바른 이메일 주소를 입력해주세요"
   },
   "Subscription": {
     "paymentFailedTitle": "결제 실패",
@@ -323,7 +326,11 @@
       "settings": "설정",
       "subscription": "구독 관리",
       "logout": "로그아웃",
-      "menu": "메뉴"
+      "menu": "메뉴",
+      "aiStudio": "AI 스튜디오",
+      "adminConsole": "관리자 콘솔",
+      "theme": "테마",
+      "themeMode": "테마 모드"
     },
     "demo": {
       "banner": "👋 현재 <strong>데모 대시보드</strong>를 보고 계십니다. 데이터는 가상입니다.",
@@ -355,6 +362,11 @@
         "time": "2시간 전",
         "noData": "최근 활동 내역이 없습니다."
       },
+      "quickAction": "빠른 실행",
+      "reqs": "요청",
+      "active": "활성",
+      "connectDatabase": "데이터베이스를 연결하여 실제 사용량을 추적하세요.",
+      "noProjects": "활성 프로젝트가 없습니다.",
       "customize": {
         "title": "대시보드 커스터마이징",
         "description": "이것은 SaaS 템플릿입니다.",
@@ -386,6 +398,15 @@
     "agreement": "<terms>이용약관</terms> 및 <privacy>개인정보처리방침</privacy>에 동의합니다."
   },
   "Admin": {
+    "analytics": {
+      "title": "분석"
+    },
+    "chatbot": {
+      "title": "챗봇"
+    },
+    "knowledge": {
+      "title": "지식 베이스"
+    },
     "overview": {
       "title": "관리자 대시보드",
       "mrr": "총 MRR",

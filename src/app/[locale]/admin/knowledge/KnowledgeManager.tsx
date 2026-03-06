@@ -130,10 +130,10 @@ export function KnowledgeManager() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+          <h1 className="text-2xl font-bold text-base-content">
             Knowledge Base
           </h1>
-          <p className="text-sm text-zinc-500 mt-1">
+          <p className="text-sm text-base-content/50 mt-1">
             RAG 챗봇이 참고할 지식 베이스를 관리하세요
           </p>
         </div>
@@ -141,7 +141,7 @@ export function KnowledgeManager() {
           <button
             onClick={() => handleEmbed()}
             disabled={embedding}
-            className="px-4 py-2 text-sm bg-zinc-800 text-white rounded-lg hover:bg-zinc-700 disabled:opacity-50"
+            className="px-4 py-2 text-sm bg-base-300 text-base-content rounded-lg hover:bg-base-content/20 disabled:opacity-50"
           >
             {embedding ? "임베딩 중..." : "전체 임베딩 생성"}
           </button>
@@ -163,8 +163,8 @@ export function KnowledgeManager() {
           onClick={() => setFilter("")}
           className={`px-3 py-1 text-xs rounded-full ${
             !filter
-              ? "bg-amber-500/20 text-amber-600 dark:text-amber-400"
-              : "bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400"
+              ? "bg-warning/20 text-warning"
+              : "bg-base-200 text-base-content/70"
           }`}
         >
           전체
@@ -175,8 +175,8 @@ export function KnowledgeManager() {
             onClick={() => setFilter(cat)}
             className={`px-3 py-1 text-xs rounded-full capitalize ${
               filter === cat
-                ? "bg-amber-500/20 text-amber-600 dark:text-amber-400"
-                : "bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400"
+                ? "bg-warning/20 text-warning"
+                : "bg-base-200 text-base-content/70"
             }`}
           >
             {cat}
@@ -188,7 +188,7 @@ export function KnowledgeManager() {
       {showForm && (
         <form
           onSubmit={handleSubmit}
-          className="bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 space-y-3"
+          className="bg-base-200 border border-base-300 rounded-xl p-4 space-y-3"
         >
           <div className="flex gap-3">
             <input
@@ -197,12 +197,12 @@ export function KnowledgeManager() {
               onChange={(e) => setTitle(e.target.value)}
               placeholder="문서 제목"
               required
-              className="flex-1 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg px-3 py-2 text-sm"
+              className="flex-1 bg-base-100 border border-base-300 rounded-lg px-3 py-2 text-sm"
             />
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg px-3 py-2 text-sm"
+              className="bg-base-100 border border-base-300 rounded-lg px-3 py-2 text-sm"
             >
               {CATEGORIES.map((cat) => (
                 <option key={cat} value={cat}>
@@ -217,13 +217,13 @@ export function KnowledgeManager() {
             placeholder="문서 내용 (FAQ 답변, 서비스 설명, 가격 정보 등)"
             required
             rows={6}
-            className="w-full bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg px-3 py-2 text-sm resize-y"
+            className="w-full bg-base-100 border border-base-300 rounded-lg px-3 py-2 text-sm resize-y"
           />
           <div className="flex gap-2 justify-end">
             <button
               type="button"
               onClick={resetForm}
-              className="px-4 py-2 text-sm bg-zinc-200 dark:bg-zinc-700 rounded-lg"
+              className="px-4 py-2 text-sm bg-base-300 rounded-lg"
             >
               취소
             </button>
@@ -243,7 +243,7 @@ export function KnowledgeManager() {
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-amber-500" />
         </div>
       ) : documents.length === 0 ? (
-        <div className="text-center py-12 text-zinc-500">
+        <div className="text-center py-12 text-base-content/50">
           <p>아직 등록된 문서가 없습니다</p>
           <p className="text-sm mt-1">
             서비스 소개, FAQ, 가격 정보 등을 추가해보세요
@@ -254,28 +254,28 @@ export function KnowledgeManager() {
           {documents.map((doc) => (
             <div
               key={doc.id}
-              className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg p-4"
+              className="bg-base-100 border border-base-300 rounded-lg p-4"
             >
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
-                    <h3 className="font-medium text-zinc-900 dark:text-zinc-100">
+                    <h3 className="font-medium text-base-content">
                       {doc.title}
                     </h3>
-                    <span className="px-2 py-0.5 text-xs rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 capitalize">
+                    <span className="px-2 py-0.5 text-xs rounded-full bg-base-200 text-base-content/70 capitalize">
                       {doc.category}
                     </span>
                     {hasEmbedding(doc) ? (
-                      <span className="px-2 py-0.5 text-xs rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400">
+                      <span className="px-2 py-0.5 text-xs rounded-full bg-success/10 text-success">
                         Embedded
                       </span>
                     ) : (
-                      <span className="px-2 py-0.5 text-xs rounded-full bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400">
+                      <span className="px-2 py-0.5 text-xs rounded-full bg-warning/10 text-warning">
                         Not embedded
                       </span>
                     )}
                   </div>
-                  <p className="text-sm text-zinc-500 mt-1 line-clamp-2">
+                  <p className="text-sm text-base-content/50 mt-1 line-clamp-2">
                     {doc.content}
                   </p>
                 </div>
@@ -284,7 +284,7 @@ export function KnowledgeManager() {
                     <button
                       onClick={() => handleEmbed(doc.id)}
                       disabled={embedding}
-                      className="p-1.5 text-zinc-400 hover:text-amber-500"
+                      className="p-1.5 text-base-content/50 hover:text-warning"
                       title="임베딩 생성"
                     >
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -294,7 +294,7 @@ export function KnowledgeManager() {
                   )}
                   <button
                     onClick={() => startEdit(doc)}
-                    className="p-1.5 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200"
+                    className="p-1.5 text-base-content/50 hover:text-base-content"
                     title="수정"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -303,7 +303,7 @@ export function KnowledgeManager() {
                   </button>
                   <button
                     onClick={() => handleDelete(doc.id)}
-                    className="p-1.5 text-zinc-400 hover:text-red-500"
+                    className="p-1.5 text-base-content/50 hover:text-error"
                     title="삭제"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

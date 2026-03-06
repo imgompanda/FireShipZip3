@@ -11,7 +11,7 @@ async function checkAdmin() {
 
   if (!user?.email) return null;
 
-  const adminEmails = process.env.ADMIN_EMAILS?.split(",") || [];
+  const adminEmails = process.env.ADMIN_EMAILS?.split(",").map(e => e.trim()) || [];
   if (!adminEmails.includes(user.email)) return null;
 
   return user;

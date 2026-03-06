@@ -1,4 +1,3 @@
-// @ts-nocheck
 "use client";
 
 import { useRef, useEffect } from "react";
@@ -30,8 +29,9 @@ export function ChatModal({
     initialMessages: [
       {
         id: "greeting",
-        role: "assistant",
+        role: "assistant" as const,
         content: greeting,
+        parts: [{ type: "text" as const, text: greeting }],
       },
     ],
   });

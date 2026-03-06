@@ -8,6 +8,13 @@ export const maxDuration = 120;
 
 export async function POST(req: Request) {
   try {
+    // 인증 체크
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+      return new Response("Unauthorized", { status: 401 });
+    }
+
     const { prompt, size = "1024x1024", quality = "standard" } = await req.json();
 
     if (!prompt) {
@@ -29,13 +36,8 @@ export async function POST(req: Request) {
     const base64 = image.base64;
     let url: string | null = null;
 
-    // 로그인 사용자면 Supabase Storage에 저장
-    const supabase = await createClient();
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-
-    if (user && base64) {
+    // 인증된 사용자이므로 Supabase Storage에 저장
+    if (base64) {
       const buffer = Buffer.from(base64, "base64");
       url = await uploadToSupabase(buffer, user.id, "image");
     }

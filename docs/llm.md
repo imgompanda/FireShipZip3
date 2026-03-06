@@ -53,7 +53,7 @@ Use this map to find the right manual for each task:
 | Milestone         | Doc Path              | Optional? | Key Objectives                                   |
 | :---------------- | :-------------------- | :-------- | :----------------------------------------------- |
 | **0. Prep**       | `docs/00-overview`    | No        | Create accounts (Supabase, LemonSqueezy, Resend) |
-| **1. Run**        | `docs/01-quick-start` | No        | `npm install`, `.env.local`, ADMIN_EMAILS 설정   |
+| **1. Run**        | `docs/01-quick-start` | No        | `npm install`, `.env.local`, ADMIN_EMAILS 설정, `npm run test:env` |
 | **2. Deploy**     | `docs/02-deployment`  | No        | **Vercel 배포 (URL 확정!)** ← 먼저!              |
 | **3. Auth**       | `docs/03-supabase`    | No        | Google Login (localhost + 배포 URL 동시에)       |
 | **4. Pay**        | `docs/04-lemon`       | **YES**   | Products, Webhooks (배포 URL 사용)               |
@@ -112,18 +112,22 @@ NEXT_PUBLIC_APP_URL=https://{USER_URL}
 
 ### AI SDK (Step 11)
 - **환경변수**: `OPENAI_API_KEY` (필수), `FAL_API_KEY` (영상 생성용, 선택)
+- **모델**: Vercel AI SDK 기반 — 프로바이더 자유 변경 가능 (OpenAI, Google, Anthropic 등 20+)
+- **인증**: 로그인 사용자만 API 호출 가능 (Supabase auth 체크 적용됨)
 - **기능**: 채팅 (GPT-4o 스트리밍), 이미지 생성 (DALL-E 3), 영상 생성 (FAL)
 - **파일 구조**:
-  - `src/app/api/ai/chat/route.ts` - 채팅 API
-  - `src/app/api/ai/image/route.ts` - 이미지 생성 API
+  - `src/app/api/ai/chat/route.ts` - 채팅 API (인증 필수)
+  - `src/app/api/ai/image/route.ts` - 이미지 생성 API (인증 필수)
   - `src/app/api/ai/video/route.ts` - 영상 생성 API
   - `src/components/ai/` - UI 컴포넌트 (ChatInterface, ImageGenerator, VideoGenerator, AILayout)
   - `src/lib/ai/config.ts` - 모델 설정
   - `src/lib/ai/storage.ts` - Supabase Storage 업로드
 - **대시보드**: `/ai` 경로에서 3탭 (Chat/Image/Video)
+- **참고**: Vercel AI Gateway 첫 가입 시 $5 무료 크레딧 제공
 
 ### Analytics (Step 9)
 - **DB**: `analytics_events` 테이블 (Supabase)
+- **주의**: Rate limiting이 Serverless 환경에서는 In-Memory Map으로 작동하지 않음. 프로덕션에서는 Upstash Redis 사용 권장
 - **파일 구조**:
   - `src/lib/analytics/` - 클라이언트 트래커 (배치 전송)
   - `src/app/api/analytics/track/route.ts` - 이벤트 수집 API
@@ -166,6 +170,7 @@ User chose **NO** for Step 3.
 - **Action**: Tell user to remove "Subscription" card from Dashboard.
   - _Target_: `src/app/[locale]/(dashboard)/dashboard/page.tsx`
   - _Edit_: Remove or comment out the Subscription Card block.
+- **Note**: Pricing 페이지의 결제 버튼은 환경변수(Variant ID) 미설정 시 자동 비활성화됨.
 
 ### 🚫 Skipping Email (Resend)
 
@@ -173,6 +178,7 @@ User chose **NO** for Step 4.
 
 - **Action**: Explain that "Email features (Welcome, Failed Payment) will not work."
 - **Action**: Ensure no critical flow blocks on email sending failure (The boilerplate usually handles this, but warn the user).
+- **Note**: `check-env.js`에서 Resend 키는 선택 항목으로 분류됨. 경고만 표시되고 에러로 처리되지 않음.
 
 ### 🚫 Skipping Support System
 
@@ -186,9 +192,9 @@ User chose **NO** for Step 11.
 
 - **Action**: Remove AI menu from Dashboard Sidebar.
   - _Target_: `src/components/features/dashboard/DashboardSidebar.tsx`
-  - _Edit_: Remove `{ href: "/ai", icon: Sparkles, label: "AI Studio" }` entry.
+  - _Edit_: Remove `{ href: "/ai", icon: Sparkles, label: t("aiStudio") }` entry.
 - **Action**: No env vars needed (`OPENAI_API_KEY`, `FAL_API_KEY` not required).
-- **Note**: API routes will return errors gracefully if keys are not set.
+- **Note**: API routes는 미인증 요청을 401로 거부하고, 키 미설정 시에도 graceful하게 에러 반환.
 
 ### 🚫 Skipping Analytics
 
@@ -205,6 +211,35 @@ User chose **NO** for Step 13.
 - **Action**: No env vars needed (`GOOGLE_GENERATIVE_AI_API_KEY` not required).
 - **Note**: ChatWidget only renders when `GOOGLE_GENERATIVE_AI_API_KEY` is set.
 - **Action**: If user wants to remove the widget completely, remove `ChatWidgetWrapper` from root layout.
+
+---
+
+## 🔒 보안 관련 안내사항
+
+온보딩 중 사용자에게 반드시 안내할 보안 사항:
+
+### 데모 모드
+- 데모 모드는 `NEXT_PUBLIC_ENABLE_DEMO=true` 환경변수가 설정된 경우에만 작동합니다.
+- **프로덕션 배포 시 반드시 이 환경변수를 제거하거나 false로 설정하세요.**
+- 데모 모드가 활성화되면 어드민 콘솔에 인증 없이 접근 가능합니다.
+
+### 환경변수 필수/선택 구분
+- `scripts/check-env.js`가 필수/선택을 구분합니다.
+- **필수**: Supabase URL/Key, APP_URL, ADMIN_EMAILS
+- **선택**: LemonSqueezy, Resend, AI, Upstash (경고만 표시)
+
+### 디버그 페이지
+- `/debug/email` 페이지는 개발 환경에서만 접근 가능합니다.
+- 프로덕션에서는 자동으로 차단됩니다.
+
+### ADMIN_EMAILS 설정
+- 콤마로 구분 시 공백이 있어도 정상 작동합니다. (자동 trim 처리)
+- 예: `admin@example.com, admin2@example.com`
+
+### DaisyUI 테마
+- 프로젝트는 DaisyUI v5 시맨틱 클래스를 사용합니다 (`bg-base-100`, `text-base-content` 등).
+- 테마 변경은 `src/app/globals.css`의 `@plugin "daisyui"` 섹션에서 설정합니다.
+- `ThemeProvider`의 `attribute="data-theme"`, `defaultTheme="fireship"`으로 설정되어 있습니다.
 
 ---
 

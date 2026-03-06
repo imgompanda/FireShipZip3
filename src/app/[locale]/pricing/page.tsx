@@ -46,23 +46,23 @@ export default function PricingPage() {
     {
       id: "basic",
       variantId:
-        process.env.NEXT_PUBLIC_LEMONSQUEEZY_VARIANT_BASIC || "1119908",
+        process.env.NEXT_PUBLIC_LEMONSQUEEZY_VARIANT_BASIC || "",
       popular: false,
     },
     {
       id: "pro",
-      variantId: process.env.NEXT_PUBLIC_LEMONSQUEEZY_VARIANT_PRO || "1178966",
+      variantId: process.env.NEXT_PUBLIC_LEMONSQUEEZY_VARIANT_PRO || "",
       popular: true,
     },
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-zinc-50 to-white dark:from-zinc-950 dark:to-black py-20">
+    <div className="min-h-screen bg-gradient-to-b from-base-200 to-base-100 py-20">
       <div className="container mx-auto px-4 max-w-6xl">
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold mb-4">{t("title")}</h1>
-          <p className="text-xl text-zinc-600 dark:text-zinc-400">
+          <p className="text-xl text-base-content/70">
             {t("subtitle")}
           </p>
         </div>
@@ -80,7 +80,7 @@ export default function PricingPage() {
             return (
               <Card
                 key={plan.id}
-                className={`border-2 relative ${plan.popular ? "border-zinc-900 dark:border-zinc-100" : ""}`}
+                className={`border-2 relative ${plan.popular ? "border-primary" : ""}`}
               >
                 {plan.popular && (
                   <Badge className="absolute -top-3 left-1/2 -translate-x-1/2">
@@ -92,7 +92,7 @@ export default function PricingPage() {
                   <CardDescription>{planT.description}</CardDescription>
                   <div className="mt-4">
                     <span className="text-5xl font-bold">{planT.price}</span>
-                    <span className="text-zinc-600 dark:text-zinc-400">
+                    <span className="text-base-content/70">
                       {t("perMonth")}
                     </span>
                   </div>
@@ -108,7 +108,7 @@ export default function PricingPage() {
                   </div>
                   <Button
                     onClick={() => handleSubscribe(plan.variantId)}
-                    disabled={loadingId !== null}
+                    disabled={loadingId !== null || !plan.variantId}
                     className="w-full mt-6"
                     variant={plan.popular ? "default" : "outline"}
                   >
@@ -140,7 +140,7 @@ export default function PricingPage() {
                     <CardTitle className="text-lg">{faq.q}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-zinc-600 dark:text-zinc-400">{faq.a}</p>
+                    <p className="text-base-content/70">{faq.a}</p>
                   </CardContent>
                 </Card>
               )

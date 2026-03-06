@@ -1,4 +1,3 @@
-// @ts-nocheck
 "use client";
 
 import { useChat } from "@ai-sdk/react";
@@ -26,7 +25,7 @@ export function ChatInterface() {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
-      if (input.trim()) {
+      if (input?.trim()) {
         handleSubmit(e as unknown as React.FormEvent<HTMLFormElement>);
       }
     }
@@ -80,7 +79,7 @@ export function ChatInterface() {
           ) : (
             <button
               type="submit"
-              disabled={!input.trim() || isLoading}
+              disabled={!input?.trim() || isLoading}
               className="btn btn-primary btn-square"
             >
               <Send className="w-4 h-4" />

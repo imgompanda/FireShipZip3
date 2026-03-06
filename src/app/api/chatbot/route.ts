@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { streamText, tool, type UIMessage } from "ai";
 import { z } from "zod";
 import { google } from "@ai-sdk/google";

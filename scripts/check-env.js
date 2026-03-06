@@ -21,9 +21,16 @@ const envVars = envContent.split("\n").reduce((acc, line) => {
   return acc;
 }, {});
 
+// 필수 키: Supabase + App 설정
 const requiredKeys = [
   "NEXT_PUBLIC_SUPABASE_URL",
   "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+  "NEXT_PUBLIC_APP_URL",
+  "ADMIN_EMAILS",
+];
+
+// 선택 키: 결제, 이메일, AI 등 (없어도 앱 실행 가능)
+const optionalKeys = [
   "LEMONSQUEEZY_API_KEY",
   "LEMONSQUEEZY_STORE_ID",
   "LEMONSQUEEZY_WEBHOOK_SECRET",
@@ -31,19 +38,28 @@ const requiredKeys = [
   "NEXT_PUBLIC_LEMONSQUEEZY_VARIANT_PRO",
   "RESEND_API_KEY",
   "RESEND_FROM_EMAIL",
-  "NEXT_PUBLIC_APP_URL",
-  "ADMIN_EMAILS",
+  "OPENAI_API_KEY",
+  "GOOGLE_GENERATIVE_AI_API_KEY",
   //   'SUPABASE_SERVICE_ROLE_KEY' // Optional for client-only, required for admin
 ];
 
-const missingKeys = requiredKeys.filter(
+const missingRequired = requiredKeys.filter(
   (key) => !envVars[key] || envVars[key] === ""
 );
 
-if (missingKeys.length > 0) {
-  console.error("❌ Missing or empty environment variables:");
-  missingKeys.forEach((key) => console.error(`   - ${key}`));
+const missingOptional = optionalKeys.filter(
+  (key) => !envVars[key] || envVars[key] === ""
+);
+
+if (missingRequired.length > 0) {
+  console.error("❌ Missing or empty REQUIRED environment variables:");
+  missingRequired.forEach((key) => console.error(`   - ${key}`));
   process.exit(1);
 }
 
 console.log("✅ All required environment variables are present!");
+
+if (missingOptional.length > 0) {
+  console.warn("⚠️  Missing optional environment variables (features may be limited):");
+  missingOptional.forEach((key) => console.warn(`   - ${key}`));
+}

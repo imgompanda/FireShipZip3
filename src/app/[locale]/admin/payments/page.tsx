@@ -86,11 +86,11 @@ function getProviderLabel(provider: PaymentProvider): string {
 function getProviderBadgeClass(provider: PaymentProvider): string {
   switch (provider) {
     case "lemon":
-      return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200";
+      return "bg-warning/10 text-warning";
     case "paddle":
-      return "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200";
+      return "bg-info/10 text-info";
     case "toss":
-      return "bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200";
+      return "bg-primary/10 text-primary";
   }
 }
 

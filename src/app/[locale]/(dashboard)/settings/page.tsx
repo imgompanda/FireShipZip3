@@ -50,8 +50,8 @@ export default async function SettingsPage() {
       <div className="space-y-6 max-w-4xl mx-auto">
         {/* Demo Banner */}
         {isDemoMode && (
-          <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-3 text-center mb-6">
-            <span className="text-sm text-blue-800 dark:text-blue-200">
+          <div className="bg-info/10 border border-info/30 rounded-lg p-3 text-center mb-6">
+            <span className="text-sm text-info">
               {tDemo.rich("banner", {
                 strong: (chunks) => <strong>{chunks}</strong>,
               })}{" "}
@@ -64,7 +64,7 @@ export default async function SettingsPage() {
 
         <div>
           <h1 className="text-3xl font-bold">{t("title")}</h1>
-          <p className="text-zinc-600 dark:text-zinc-400 mt-1">
+          <p className="text-base-content/70 mt-1">
             {t("description")}
           </p>
         </div>
@@ -86,7 +86,7 @@ export default async function SettingsPage() {
                 defaultValue={user?.email || ""}
                 disabled
               />
-              <p className="text-xs text-zinc-500">{t("profile.emailHelp")}</p>
+              <p className="text-xs text-base-content/50">{t("profile.emailHelp")}</p>
             </div>
             <div className="space-y-2">
               <Label htmlFor="name">{t("profile.nameLabel")}</Label>
@@ -124,9 +124,9 @@ export default async function SettingsPage() {
         <Separator />
 
         {/* Danger Zone */}
-        <Card className="border-red-200 dark:border-red-800">
+        <Card className="border-error/30">
           <CardHeader>
-            <CardTitle className="text-red-600 dark:text-red-400">
+            <CardTitle className="text-error">
               {t("danger.title")}
             </CardTitle>
             <CardDescription>{t("danger.description")}</CardDescription>
@@ -134,7 +134,7 @@ export default async function SettingsPage() {
           <CardContent className="space-y-4">
             <div>
               <h3 className="font-semibold mb-2">{t("danger.deleteTitle")}</h3>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-4">
+              <p className="text-sm text-base-content/70 mb-4">
                 {t("danger.deleteWarning")}
               </p>
               <Button variant="destructive" disabled={isDemoMode}>

@@ -104,9 +104,9 @@ export function UserTicketList({ tickets }: UserTicketListProps) {
                     </div>
 
                     {ticket.reply && (
-                      <div className="bg-blue-50/50 dark:bg-blue-950/20 p-4 rounded-md border border-blue-100 dark:border-blue-900">
+                      <div className="bg-info/5 p-4 rounded-md border border-info/20">
                         <div className="flex items-center justify-between mb-2">
-                          <p className="font-semibold text-blue-700 dark:text-blue-300">
+                          <p className="font-semibold text-info">
                             Answer
                           </p>
                           {ticket.replied_at && (

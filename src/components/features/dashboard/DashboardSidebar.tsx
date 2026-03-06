@@ -113,7 +113,7 @@ export function DashboardSidebar({
             <ThemeToggle />
             {!isCollapsed && (
               <span className="ml-3 text-sm text-base-content/70 font-medium">
-                Theme
+                {t("theme")}
               </span>
             )}
           </div>
@@ -169,7 +169,7 @@ export function DashboardSidebar({
                 <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-base-300 bg-base-200">
                   <div className="flex items-center px-2 py-3">
                     <ThemeToggle />
-                    <span className="ml-3 text-sm font-medium">Theme Mode</span>
+                    <span className="ml-3 text-sm font-medium">{t("themeMode")}</span>
                   </div>
                   <form action={logout}>
                     <Button
@@ -227,14 +227,14 @@ function SidebarNav({
 
   const links = [
     { href: "/dashboard", label: t("dashboard"), icon: Home },
-    { href: "/ai", label: "AI Studio", icon: Sparkles },
+    { href: "/ai", label: t("aiStudio"), icon: Sparkles },
     { href: "/settings", label: t("settings"), icon: Settings },
     { href: "/subscription", label: t("subscription"), icon: CreditCard },
     ...(isAdmin
       ? [
           {
             href: "/admin/overview",
-            label: "Admin Console",
+            label: t("adminConsole"),
             icon: LayoutDashboard,
           },
         ]

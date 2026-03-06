@@ -5,7 +5,8 @@
     "faq": "FAQ",
     "blog": "Blog",
     "login": "Log in",
-    "getStarted": "Get Started"
+    "getStarted": "Get Started",
+    "dashboard": "Dashboard"
   },
   "Metadata": {
     "title": "SaaS Starter Kit",
@@ -233,7 +234,9 @@
     "email": "Email",
     "sendMagicLink": "Send Magic Link",
     "magicLinkSent": "Check your email for the magic link!",
-    "softAgreement": "By signing up, you agree to our <terms>Terms of Service</terms> and <privacy>Privacy Policy</privacy>."
+    "softAgreement": "By signing up, you agree to our <terms>Terms of Service</terms> and <privacy>Privacy Policy</privacy>.",
+    "tryDemoMode": "Try Demo Mode",
+    "invalidEmail": "Invalid email address"
   },
   "Subscription": {
     "paymentFailedTitle": "Payment Failed",
@@ -327,7 +330,11 @@
       "settings": "Settings",
       "subscription": "Subscription",
       "logout": "Logout",
-      "menu": "Menu"
+      "menu": "Menu",
+      "aiStudio": "AI Studio",
+      "adminConsole": "Admin Console",
+      "theme": "Theme",
+      "themeMode": "Theme Mode"
     },
     "demo": {
       "banner": "👋 You are viewing the <strong>Demo Dashboard</strong>. Data is mocked.",
@@ -359,6 +366,11 @@
         "time": "2 hours ago",
         "noData": "No recent activity found."
       },
+      "quickAction": "Quick Action",
+      "reqs": "reqs",
+      "active": "active",
+      "connectDatabase": "Connect your database to track real usage.",
+      "noProjects": "No active projects found.",
       "customize": {
         "title": "Customize this Dashboard",
         "description": "This is a template for your SaaS.",
@@ -390,6 +402,15 @@
     "agreement": "I agree to the <terms>Terms of Service</terms> and <privacy>Privacy Policy</privacy>."
   },
   "Admin": {
+    "analytics": {
+      "title": "Analytics"
+    },
+    "chatbot": {
+      "title": "Chatbot"
+    },
+    "knowledge": {
+      "title": "Knowledge"
+    },
     "overview": {
       "title": "Admin Overview",
       "mrr": "Total MRR",

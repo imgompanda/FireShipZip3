@@ -281,10 +281,10 @@ export function verifyWebhookSignature(
   signature: string,
   transmissionTime?: string
 ): boolean {
-  // 시그니처가 없으면 검증을 건너뜀 (결제 이벤트는 시그니처가 없을 수 있음)
+  // 시그니처가 없으면 검증 실패 (프로덕션에서는 항상 검증 필요)
   if (!signature) {
-    console.warn("No webhook signature provided — skipping verification");
-    return true;
+    console.error("No webhook signature provided — rejecting request");
+    return false;
   }
 
   if (!tossConfig.webhookSecret) {
@@ -310,10 +310,10 @@ export function verifyWebhookSignature(
     }
 
     // v1: 포맷이 아닌 경우 직접 비교 (fallback)
-    return crypto.timingSafeEqual(
-      Buffer.from(signature),
-      Buffer.from(digest)
-    );
+    const sigBuffer = Buffer.from(signature);
+    const digestBuffer = Buffer.from(digest);
+    if (sigBuffer.length !== digestBuffer.length) return false;
+    return crypto.timingSafeEqual(sigBuffer, digestBuffer);
   } catch {
     return false;
   }

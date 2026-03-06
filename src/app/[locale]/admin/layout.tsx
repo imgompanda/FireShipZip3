@@ -10,7 +10,7 @@ export default async function AdminLayout({
   children: React.ReactNode;
 }) {
   const cookieStore = await cookies();
-  const isDemoMode = cookieStore.get("demo_mode")?.value === "true";
+  const isDemoMode = process.env.NEXT_PUBLIC_ENABLE_DEMO === "true" && cookieStore.get("demo_mode")?.value === "true";
   const t = await getTranslations("Admin");
 
   // Bypass auth for demo mode
@@ -27,7 +27,7 @@ export default async function AdminLayout({
     }
 
     const userEmail: string = user.email;
-    const adminEmails = process.env.ADMIN_EMAILS?.split(",") || [];
+    const adminEmails = process.env.ADMIN_EMAILS?.split(",").map(e => e.trim()) || [];
 
     if (!adminEmails.includes(userEmail)) {
       const { redirect } = await import("next/navigation");
@@ -45,7 +45,7 @@ export default async function AdminLayout({
             href="/admin/analytics"
             className="text-sm font-medium px-3 py-2 rounded-lg hover:bg-base-200 text-base-content/70 hover:text-base-content transition-colors whitespace-nowrap"
           >
-            Analytics
+            {t("analytics.title")}
           </Link>
           <Link
             href="/admin/overview"
@@ -75,13 +75,13 @@ export default async function AdminLayout({
             href="/admin/chatbot"
             className="text-sm font-medium px-3 py-2 rounded-lg hover:bg-base-200 text-base-content/70 hover:text-base-content transition-colors whitespace-nowrap"
           >
-            Chatbot
+            {t("chatbot.title")}
           </Link>
           <Link
             href="/admin/knowledge"
             className="text-sm font-medium px-3 py-2 rounded-lg hover:bg-base-200 text-base-content/70 hover:text-base-content transition-colors whitespace-nowrap"
           >
-            Knowledge
+            {t("knowledge.title")}
           </Link>
           <Link
             href="/admin/webhooks"
@@ -102,7 +102,7 @@ export default async function AdminLayout({
         </nav>
 
         {isDemoMode && (
-          <div className="bg-amber-50 dark:bg-amber-900/20 text-amber-800 dark:text-amber-200 px-4 py-2 rounded-md text-sm mb-4">
+          <div className="bg-warning/10 text-warning px-4 py-2 rounded-md text-sm mb-4">
             ⚠️ You are viewing the Admin Console in <strong>Demo Mode</strong>.
             Data is mocked and actions are disabled.
           </div>

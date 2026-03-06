@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 interface ContactFormProps {
-  sessionId: string;
+  sessionId?: string;
   brandColor?: string;
   language?: string;
 }

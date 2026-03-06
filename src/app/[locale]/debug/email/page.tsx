@@ -20,6 +20,16 @@ export default function EmailDebugPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [sent, setSent] = useState(false);
 
+  // 개발 환경에서만 접근 가능
+  if (process.env.NODE_ENV === "production") {
+    return (
+      <div className="container mx-auto py-20 max-w-lg text-center">
+        <h1 className="text-2xl font-bold">Access Denied</h1>
+        <p className="mt-4 text-base-content/70">This page is only available in development mode.</p>
+      </div>
+    );
+  }
+
   const handleTestEmail = async () => {
     if (!email || !name) {
       toast.error("이메일과 이름을 입력해주세요.");
@@ -94,7 +104,7 @@ export default function EmailDebugPage() {
           </Button>
 
           {sent && (
-            <div className="mt-4 p-4 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 rounded-lg text-sm">
+            <div className="mt-4 p-4 bg-success/10 text-success rounded-lg text-sm">
               ✅ 이메일이 성공적으로 요청되었습니다! 잠시 후 수신함을
               확인해보세요.
               <br />

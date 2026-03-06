@@ -69,7 +69,7 @@ function getEventBadgeColor(eventType: string): string {
   if (eventType.includes("cancelled") || eventType.includes("failed"))
     return "bg-red-100 text-red-800";
   if (eventType.includes("success")) return "bg-emerald-100 text-emerald-800";
-  return "bg-zinc-100 text-zinc-800";
+  return "bg-base-200 text-base-content";
 }
 
 export default async function AdminWebhooksPage() {

@@ -133,10 +133,10 @@ export class LemonSqueezyProvider implements PaymentProvider {
     try {
       const hmac = crypto.createHmac("sha256", lemonConfig.webhookSecret);
       const digest = hmac.update(payload).digest("hex");
-      const valid = crypto.timingSafeEqual(
-        Buffer.from(signature),
-        Buffer.from(digest)
-      );
+      const sigBuffer = Buffer.from(signature);
+      const digestBuffer = Buffer.from(digest);
+      if (sigBuffer.length !== digestBuffer.length) return { valid: false };
+      const valid = crypto.timingSafeEqual(sigBuffer, digestBuffer);
       return { valid };
     } catch (err) {
       console.error("LemonSqueezy Signature Verification Error:", err);

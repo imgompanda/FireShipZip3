@@ -50,7 +50,7 @@ export default function HomePage() {
       title: t("deepDives.one.title"), // Global Ready
       description: t("deepDives.one.description"),
       header: (
-        <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-blue-100 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 items-center justify-center">
+        <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-info/20 to-info/5 items-center justify-center">
           <Globe className="h-12 w-12 text-blue-500" />
         </div>
       ),
@@ -61,7 +61,7 @@ export default function HomePage() {
       title: t("features.secure.title"), // Secure
       description: t("features.secure.description"),
       header: (
-        <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-green-100 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 items-center justify-center">
+        <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-success/20 to-success/5 items-center justify-center">
           <Shield className="h-12 w-12 text-emerald-500" />
         </div>
       ),
@@ -72,7 +72,7 @@ export default function HomePage() {
       title: t("deepDives.two.title"), // Developer Experience
       description: t("deepDives.two.description"),
       header: (
-        <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-purple-100 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 items-center justify-center">
+        <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 items-center justify-center">
           <Code2 className="h-12 w-12 text-purple-500" />
         </div>
       ),
@@ -83,7 +83,7 @@ export default function HomePage() {
       title: t("features.deploy.title"), // Fast Deploy
       description: t("features.deploy.description"),
       header: (
-        <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-orange-100 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20 items-center justify-center">
+        <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-warning/20 to-warning/5 items-center justify-center">
           <Rocket className="h-12 w-12 text-orange-500" />
         </div>
       ),
@@ -150,25 +150,25 @@ export default function HomePage() {
       />
 
       {/* Logo Cloud Section */}
-      <section className="py-12 border-y border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-950/30 backdrop-blur-sm">
+      <section className="py-12 border-y border-base-300 bg-base-100/50 backdrop-blur-sm">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-sm font-semibold text-zinc-500 dark:text-zinc-500 uppercase tracking-widest mb-8">
+          <p className="text-sm font-semibold text-base-content/50 uppercase tracking-widest mb-8">
             {t("logos.title")}
           </p>
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale transition-all hover:grayscale-0 hover:opacity-100">
-            <div className="flex items-center gap-2 text-xl font-bold text-zinc-800 dark:text-zinc-200">
+            <div className="flex items-center gap-2 text-xl font-bold text-base-content">
               <Layers className="h-6 w-6" /> Acme Corp
             </div>
-            <div className="flex items-center gap-2 text-xl font-bold text-zinc-800 dark:text-zinc-200">
+            <div className="flex items-center gap-2 text-xl font-bold text-base-content">
               <Zap className="h-6 w-6" /> BoltShift
             </div>
-            <div className="flex items-center gap-2 text-xl font-bold text-zinc-800 dark:text-zinc-200">
+            <div className="flex items-center gap-2 text-xl font-bold text-base-content">
               <Globe className="h-6 w-6" /> Globex
             </div>
-            <div className="flex items-center gap-2 text-xl font-bold text-zinc-800 dark:text-zinc-200">
+            <div className="flex items-center gap-2 text-xl font-bold text-base-content">
               <BoxIcon className="h-6 w-6" /> Spherix
             </div>
-            <div className="flex items-center gap-2 text-xl font-bold text-zinc-800 dark:text-zinc-200">
+            <div className="flex items-center gap-2 text-xl font-bold text-base-content">
               <CommandIcon className="h-6 w-6" /> Cmd+R
             </div>
           </div>
@@ -179,10 +179,10 @@ export default function HomePage() {
       <section id="features" className="py-24 bg-transparent">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-zinc-900 dark:text-zinc-50">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-base-content">
               {t("bento.title")}
             </h2>
-            <p className="text-xl text-zinc-600 dark:text-zinc-400">
+            <p className="text-xl text-base-content/70">
               {t("bento.description")}
             </p>
           </div>
@@ -195,7 +195,7 @@ export default function HomePage() {
                 description={item.description}
                 header={item.header}
                 icon={item.icon}
-                className={item.className + " bg-white dark:bg-zinc-900"}
+                className={item.className + " bg-base-100"}
               />
             ))}
           </BentoGrid>
@@ -259,7 +259,7 @@ export default function HomePage() {
             <h2 className="text-4xl font-bold mb-4">
               {t("testimonial.title")}
             </h2>
-            <p className="text-xl text-zinc-600 dark:text-zinc-400">
+            <p className="text-xl text-base-content/70">
               {t("testimonial.subtitle")}
             </p>
           </div>
@@ -267,7 +267,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, i) => (
               <ScrollAnimation key={i} animation="slide-up" delay={i * 0.2}>
-                <Card className="h-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
+                <Card className="h-full bg-base-100 border border-base-300">
                   <CardContent className="pt-6">
                     <div className="flex gap-1 mb-4">
                       {[...Array(testimonial.rating)].map((_, i) => (
@@ -277,14 +277,14 @@ export default function HomePage() {
                         />
                       ))}
                     </div>
-                    <p className="text-zinc-700 dark:text-zinc-300 mb-6 leading-relaxed">
+                    <p className="text-base-content/70 mb-6 leading-relaxed">
                       &ldquo;{testimonial.content}&rdquo;
                     </p>
                     <div className="flex items-center gap-3">
                       <span className="text-3xl">{testimonial.avatar}</span>
                       <div>
                         <p className="font-semibold">{testimonial.name}</p>
-                        <p className="text-sm text-zinc-500">
+                        <p className="text-sm text-base-content/50">
                           {testimonial.role}
                         </p>
                       </div>
@@ -300,19 +300,19 @@ export default function HomePage() {
       {/* Pricing Section */}
       <section
         id="pricing"
-        className="py-24 bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800"
+        className="py-24 bg-base-100 border-t border-base-300"
       >
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">{t("pricing.title")}</h2>
-            <p className="text-xl text-zinc-600 dark:text-zinc-400">
+            <p className="text-xl text-base-content/70">
               {t("pricing.subtitle")}
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {/* Basic Plan */}
-            <Card className="border border-zinc-200 dark:border-zinc-800 shadow-sm hover:shadow-lg transition-all h-full bg-white dark:bg-zinc-900">
+            <Card className="border border-base-300 shadow-sm hover:shadow-lg transition-all h-full bg-base-100">
               <CardHeader>
                 <CardTitle className="text-2xl">
                   {t("pricing.basic.name")}
@@ -324,7 +324,7 @@ export default function HomePage() {
                   <span className="text-5xl font-bold">
                     {t("pricing.basic.price")}
                   </span>
-                  <span className="text-zinc-600 dark:text-zinc-400">
+                  <span className="text-base-content/70">
                     /month
                   </span>
                 </div>
@@ -349,7 +349,7 @@ export default function HomePage() {
             </Card>
 
             {/* Pro Plan */}
-            <Card className="border-2 border-primary relative h-full shadow-2xl bg-white dark:bg-zinc-900 overflow-hidden">
+            <Card className="border-2 border-primary relative h-full shadow-2xl bg-base-100 overflow-hidden">
               <div className="absolute top-0 right-0 p-4">
                 <Badge className="bg-primary text-primary-foreground hover:bg-primary/90">
                   {t("pricing.pro.popular")}
@@ -366,7 +366,7 @@ export default function HomePage() {
                   <span className="text-5xl font-bold">
                     {t("pricing.pro.price")}
                   </span>
-                  <span className="text-zinc-600 dark:text-zinc-400">
+                  <span className="text-base-content/70">
                     /month
                   </span>
                 </div>
@@ -390,7 +390,7 @@ export default function HomePage() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-24 bg-zinc-50 dark:bg-black">
+      <section id="faq" className="py-24 bg-base-200">
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">{t("faq.title")}</h2>
@@ -403,12 +403,12 @@ export default function HomePage() {
                 <AccordionItem
                   key={i}
                   value={`item-${i}`}
-                  className="border-b border-zinc-200 dark:border-zinc-800"
+                  className="border-b border-base-300"
                 >
-                  <AccordionTrigger className="text-left text-lg font-medium hover:no-underline hover:text-primary transition-colors text-zinc-900 dark:text-zinc-100">
+                  <AccordionTrigger className="text-left text-lg font-medium hover:no-underline hover:text-primary transition-colors text-base-content">
                     {faq.q}
                   </AccordionTrigger>
-                  <AccordionContent className="text-base text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                  <AccordionContent className="text-base text-base-content/70 leading-relaxed">
                     {faq.a}
                   </AccordionContent>
                 </AccordionItem>
@@ -425,12 +425,12 @@ export default function HomePage() {
           <h2 className="text-5xl font-extrabold mb-8 tracking-tight">
             {t("cta.title")}
           </h2>
-          <p className="text-xl mb-12 text-zinc-300">{t("cta.description")}</p>
+          <p className="text-xl mb-12 text-neutral-content/70">{t("cta.description")}</p>
           <Button
             size="lg"
             variant="default"
             asChild
-            className="text-lg px-12 h-16 shadow-2xl bg-white text-black hover:bg-zinc-200"
+            className="text-lg px-12 h-16 shadow-2xl bg-base-100 text-base-content hover:bg-base-200"
           >
             <Link href="/login">{t("cta.button")} →</Link>
           </Button>
@@ -438,11 +438,11 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="py-16 bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400">
+      <footer className="py-16 bg-base-200 border-t border-base-300 text-base-content/70">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
             <div>
-              <h4 className="font-bold text-zinc-900 dark:text-zinc-100 mb-4">
+              <h4 className="font-bold text-base-content mb-4">
                 {tFooter("product")}
               </h4>
               <ul className="space-y-2 text-sm">
@@ -473,7 +473,7 @@ export default function HomePage() {
               </ul>
             </div>
             <div>
-              <h4 className="font-bold text-zinc-900 dark:text-zinc-100 mb-4">
+              <h4 className="font-bold text-base-content mb-4">
                 {tFooter("resources")}
               </h4>
               <ul className="space-y-2 text-sm">
@@ -496,7 +496,7 @@ export default function HomePage() {
               </ul>
             </div>
             <div>
-              <h4 className="font-bold text-zinc-900 dark:text-zinc-100 mb-4">
+              <h4 className="font-bold text-base-content mb-4">
                 {tFooter("company")}
               </h4>
               <ul className="space-y-2 text-sm">
@@ -519,7 +519,7 @@ export default function HomePage() {
               </ul>
             </div>
             <div>
-              <h4 className="font-bold text-zinc-900 dark:text-zinc-100 mb-4">
+              <h4 className="font-bold text-base-content mb-4">
                 {tFooter("legal")}
               </h4>
               <ul className="space-y-2 text-sm">
@@ -542,14 +542,14 @@ export default function HomePage() {
               </ul>
             </div>
           </div>
-          <div className="pt-8 border-t border-zinc-200 dark:border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="pt-8 border-t border-base-300 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm">
               © 2025 SaaS Starter Kit. All rights reserved.
             </p>
             <div className="flex gap-4">
-              <div className="w-5 h-5 bg-zinc-200 dark:bg-zinc-800 rounded-full" />
-              <div className="w-5 h-5 bg-zinc-200 dark:bg-zinc-800 rounded-full" />
-              <div className="w-5 h-5 bg-zinc-200 dark:bg-zinc-800 rounded-full" />
+              <div className="w-5 h-5 bg-base-300 rounded-full" />
+              <div className="w-5 h-5 bg-base-300 rounded-full" />
+              <div className="w-5 h-5 bg-base-300 rounded-full" />
             </div>
           </div>
         </div>
