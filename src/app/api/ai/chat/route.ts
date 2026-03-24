@@ -39,5 +39,5 @@ export async function POST(req: Request) {
     messages: toModelMessages(messages),
   });
 
-  return result.toDataStreamResponse();
+  return result.toTextStreamResponse();
 }

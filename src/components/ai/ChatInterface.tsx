@@ -1,13 +1,13 @@
 "use client";
 
 import { useChat } from "@ai-sdk/react";
-import { DefaultChatTransport } from "ai";
+import { TextStreamChatTransport } from "ai";
 import { useRef, useEffect, useState } from "react";
 import { Send, Square, Sparkles, ArrowUp } from "lucide-react";
 import { MessageBubble } from "./MessageBubble";
 import { useTranslations } from "next-intl";
 
-const chatTransport = new DefaultChatTransport({
+const chatTransport = new TextStreamChatTransport({
   api: "/api/ai/chat",
 });
 
