@@ -156,7 +156,7 @@ export function ChatInterface() {
             )}
           </div>
           <p className="text-[11px] text-base-content/30 text-center mt-2">
-            Powered by <span className="font-medium">gemini-2.5-flash</span> | AI can make mistakes. Check important info.
+            Powered by <span className="font-medium">gemini-2.5-flash-lite</span> | AI can make mistakes. Check important info.
           </p>
         </div>
       </div>
