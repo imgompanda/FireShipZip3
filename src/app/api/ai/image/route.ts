@@ -33,7 +33,7 @@ export async function POST(req: Request) {
     }
 
     const { image } = await generateImage({
-      model: google.image("gemini-2.0-flash-exp"),
+      model: google.image("imagen-3.0-generate-002"),
       prompt,
     });
 
