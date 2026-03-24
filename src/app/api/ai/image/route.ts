@@ -3,16 +3,22 @@ import { google } from "@ai-sdk/google";
 import { NextResponse } from "next/server";
 import { createClient } from "@/utils/supabase/server";
 import { uploadToSupabase } from "@/lib/ai/storage";
+import { cookies } from "next/headers";
 
 export const maxDuration = 120;
 
 export async function POST(req: Request) {
   try {
-    // 인증 체크
-    const supabase = await createClient();
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) {
-      return new Response("Unauthorized", { status: 401 });
+    // 인증 체크 (데모 모드면 스킵)
+    const cookieStore = await cookies();
+    const isDemoMode = cookieStore.get("demo_mode")?.value === "true";
+
+    if (!isDemoMode) {
+      const supabase = await createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        return new Response("Unauthorized", { status: 401 });
+      }
     }
 
     const { prompt } = await req.json();

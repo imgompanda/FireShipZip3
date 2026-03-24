@@ -1,6 +1,7 @@
 import { streamText, type UIMessage } from "ai";
 import { google } from "@ai-sdk/google";
 import { createClient } from "@/utils/supabase/server";
+import { cookies } from "next/headers";
 
 /** UIMessage (parts) -> ModelMessage (content) 변환 */
 function toModelMessages(uiMessages: UIMessage[]) {
@@ -19,10 +20,15 @@ function toModelMessages(uiMessages: UIMessage[]) {
 export const maxDuration = 60;
 
 export async function POST(req: Request) {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) {
-    return new Response("Unauthorized", { status: 401 });
+  const cookieStore = await cookies();
+  const isDemoMode = cookieStore.get("demo_mode")?.value === "true";
+
+  if (!isDemoMode) {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+      return new Response("Unauthorized", { status: 401 });
+    }
   }
 
   const { messages }: { messages: UIMessage[] } = await req.json();
