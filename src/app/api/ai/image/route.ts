@@ -12,6 +12,7 @@ export async function POST(req: Request) {
     // 인증 체크 (데모 모드면 스킵)
     const cookieStore = await cookies();
     const isDemoMode = cookieStore.get("demo_mode")?.value === "true";
+    let userId: string | null = null;
 
     if (!isDemoMode) {
       const supabase = await createClient();
@@ -19,6 +20,7 @@ export async function POST(req: Request) {
       if (!user) {
         return new Response("Unauthorized", { status: 401 });
       }
+      userId = user.id;
     }
 
     const { prompt } = await req.json();
@@ -38,10 +40,10 @@ export async function POST(req: Request) {
     const base64 = image.base64;
     let url: string | null = null;
 
-    // 인증된 사용자이므로 Supabase Storage에 저장
-    if (base64) {
+    // 인증된 사용자만 Supabase Storage에 저장
+    if (base64 && userId) {
       const buffer = Buffer.from(base64, "base64");
-      url = await uploadToSupabase(buffer, user.id, "image");
+      url = await uploadToSupabase(buffer, userId, "image");
     }
 
     return NextResponse.json({
