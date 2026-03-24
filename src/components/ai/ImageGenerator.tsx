@@ -53,7 +53,7 @@ export function ImageGenerator() {
           className="textarea textarea-bordered w-full min-h-[80px] bg-base-200 text-base-content border-neutral focus:border-primary"
         />
 
-        <div className="flex flex-wrap gap-3 items-end">
+        <div className="flex flex-wrap gap-3 items-center">
           <Button
             onClick={handleGenerate}
             disabled={!prompt.trim() || isGenerating}
@@ -66,6 +66,9 @@ export function ImageGenerator() {
             )}
             {t("generate")}
           </Button>
+          <span className="text-[11px] text-base-content/30">
+            Powered by <span className="font-medium">gemini-2.5-flash-image</span>
+          </span>
         </div>
 
         {error && (

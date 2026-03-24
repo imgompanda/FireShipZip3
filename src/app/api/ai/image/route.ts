@@ -1,4 +1,4 @@
-import { experimental_generateImage as generateImage } from "ai";
+import { generateText } from "ai";
 import { google } from "@ai-sdk/google";
 import { NextResponse } from "next/server";
 import { createClient } from "@/utils/supabase/server";
@@ -32,12 +32,25 @@ export async function POST(req: Request) {
       );
     }
 
-    const { image } = await generateImage({
-      model: google.image("imagen-3.0-generate-002"),
-      prompt,
+    const result = await generateText({
+      model: google("gemini-2.5-flash-image"),
+      providerOptions: {
+        google: { responseModalities: ["TEXT", "IMAGE"] },
+      },
+      prompt: `Generate an image: ${prompt}`,
     });
 
-    const base64 = image.base64;
+    // 응답에서 이미지 파일 추출
+    const imageFile = result.files?.[0];
+
+    if (!imageFile) {
+      return NextResponse.json(
+        { error: "No image generated" },
+        { status: 500 }
+      );
+    }
+
+    const base64 = imageFile.base64;
     let url: string | null = null;
 
     // 인증된 사용자만 Supabase Storage에 저장
